@@ -884,7 +884,7 @@ body.introing .app,body.introing .tabs{transition:opacity 1s cubic-bezier(.22,1,
 .nt-test{margin-top:12px}
 .acc-row .nt-ic{width:40px;height:40px;border-radius:14px;flex:none;font-size:19px;background:var(--card2)}
 </style>
-<script src="config.js"></script>
+<script src="config.js?v=2"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.1/dist/umd/supabase.js"></script>
 </head>
 <body class="intro">
@@ -2180,7 +2180,8 @@ function ntSave(extra){
 }
 function ntSheetHTML(){
   var h='<div class="nt-h"><span class="nt-bell'+(ntOn()?" on":"")+'" id="ntBell">🔔</span><h3>Notifications</h3><p>Un petit coup de pouce au bon moment.</p></div>';
-  if(!ntSupported()||!CFG.vapid){return h+'<div class="nt-card">'+(ntIOS()&&!ntStandalone()?'<b>Ajoute d\'abord FIT KEEF à ton écran d\'accueil</b><p>Sur iPhone, les notifications ne marchent que depuis l\'icône de l\'appli : Safari → Partager → « Sur l\'écran d\'accueil ». Ouvre-la ensuite depuis l\'icône.</p>':'<b>Pas disponible ici</b><p>Ce navigateur ne gère pas les notifications. Ouvre l\'appli depuis l\'icône de ton écran d\'accueil.</p>')+'</div>';}
+  if(ntSupported()&&!CFG.vapid)return h+'<div class="nt-card"><b>L\'appli termine sa mise à jour</b><p>Ferme complètement FIT KEEF, attends une minute, puis rouvre-la depuis l\'icône.</p><button class="btn full press" style="margin-top:12px" data-act="ntReload">Recharger maintenant</button></div>';
+  if(!ntSupported()){return h+'<div class="nt-card">'+(ntIOS()&&!ntStandalone()?'<b>Ajoute d\'abord FIT KEEF à ton écran d\'accueil</b><p>Sur iPhone, les notifications ne marchent que depuis l\'icône de l\'appli : Safari → Partager → « Sur l\'écran d\'accueil ». Ouvre-la ensuite depuis l\'icône.</p>':'<b>Pas disponible ici</b><p>Ce navigateur ne gère pas les notifications. Ouvre l\'appli depuis l\'icône de ton écran d\'accueil.</p>')+'</div>';}
   if(ntIOS()&&!ntStandalone())return h+'<div class="nt-card"><b>Ouvre l\'appli depuis ton écran d\'accueil</b><p>Sur iPhone, les notifications ne marchent que depuis l\'icône FIT KEEF, pas depuis Safari.</p></div>';
   if(Notification.permission==="denied")return h+'<div class="nt-card"><b>Notifications bloquées</b><p>Va dans Réglages → Notifications → FIT KEEF et active « Autoriser les notifications », puis reviens ici.</p></div>';
   var on=ntOn(),R=NT.row||{remind_on:true,remind_time:"18:00",kudos_on:true};
@@ -2192,6 +2193,7 @@ function ntSheetHTML(){
    +'</div><button class="btn full press nt-test" data-act="ntTest">Envoyer une notification test</button></div></div>';
   return h;
 }
+A.ntReload=function(){try{navigator.serviceWorker.getRegistration().then(function(r){if(r)r.update();});}catch(e){}setTimeout(function(){location.reload();},400);};
 A.notifs=function(){closeBS();setTimeout(function(){openBS('<div id="ntBody">'+ntSheetHTML()+'</div>');ntLoad().then(ntRender);},NT.opened?150:200);NT.opened=true;};
 function ntRender(){var b=$("ntBody");if(b)b.innerHTML=ntSheetHTML();}
 A.ntToggle=function(v,b){
