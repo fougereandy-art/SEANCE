@@ -517,13 +517,59 @@ body.introing .app,body.introing .tabs{transition:opacity 1s cubic-bezier(.22,1,
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01s!important}.thumb img+img,.media img+img{opacity:0}}
 </style>
 <style>
-#auth{position:fixed;inset:0;z-index:90;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:calc(24px + env(safe-area-inset-top,0px)) 22px calc(24px + env(safe-area-inset-bottom,0px));overflow-y:auto;-webkit-user-select:text;user-select:text}
-#auth .au-in{width:100%;max-width:380px}
-#auth .au-logo{font-weight:900;letter-spacing:.16em;font-size:13px;color:var(--accent);margin-bottom:10px}
-#auth h2{margin:0 0 6px;font-size:30px;line-height:1.1}
-#auth .au-sub{color:var(--muted);font-weight:600;font-size:14.5px;margin:0 0 20px}
-#auth .au-err{min-height:20px;color:var(--c-rouge);font-size:13.5px;font-weight:700;margin:2px 0 4px}
+#auth{position:fixed;inset:0;z-index:90;background:var(--bg);overflow-y:auto;-webkit-overflow-scrolling:touch;display:flex;justify-content:center;padding:calc(28px + env(safe-area-inset-top,0px)) 22px calc(28px + env(safe-area-inset-bottom,0px));-webkit-user-select:text;user-select:text;font-family:var(--body);transition:opacity .55s var(--ease),transform .7s var(--ease)}
+#auth.out{opacity:0;transform:scale(1.05);pointer-events:none}
+#auth .au-bg{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+#auth .au-bg i{position:absolute;border-radius:50%;filter:blur(90px);opacity:var(--blobo);width:75vw;height:75vw;max-width:440px;max-height:440px;animation:auDrift 16s ease-in-out infinite alternate}
+#auth .au-bg i:nth-child(1){left:-25%;top:-12%;background:var(--c-bleu)}
+#auth .au-bg i:nth-child(2){right:-28%;bottom:-8%;background:var(--c-violet);animation-duration:19s;animation-direction:alternate-reverse}
+@keyframes auDrift{to{transform:translate(14%,10%) scale(1.12)}}
+#auth .au-in{position:relative;width:100%;max-width:400px;margin:auto 0;display:flex;flex-direction:column;animation:auRise .8s var(--ease) both}
+@keyframes auRise{from{opacity:0;transform:translateY(24px)}}
+#auth .au-plate{position:relative;width:116px;height:116px;margin:0 auto 26px}
+#auth .au-plate svg{width:100%;height:100%;transform:rotate(-90deg);overflow:visible}
+#auth .au-plate circle{fill:none;stroke-width:4.4;stroke-linecap:round}
+#auth .au-plate .tr{stroke:var(--card3)}
+#auth .au-plate .rg{stroke-dasharray:1 1;stroke-dashoffset:1;opacity:0;transition:stroke-dashoffset .9s var(--ease),opacity .25s}
+#auth .au-plate .rg.on{stroke-dashoffset:0;opacity:1}
+#auth .au-hub{position:absolute;inset:37%;border-radius:50%;background:radial-gradient(circle at 40% 35%,#E6E9F0,#7D8596 70%,#4B5160);box-shadow:0 0 0 4px var(--bg),inset 0 2px 3px rgba(255,255,255,.7);transition:transform .5s var(--spring)}
+#auth .au-plate.busy svg{animation:auSpin 1s linear infinite}
+#auth .au-plate.busy .au-hub{transform:scale(.85)}
+#auth .au-plate.shake{animation:auShake .5s var(--ease)}
+#auth .au-plate.win{animation:auWin .7s var(--spring)}
+@keyframes auSpin{from{transform:rotate(-90deg)}to{transform:rotate(270deg)}}
+@keyframes auShake{20%{transform:translateX(-10px) rotate(-8deg)}40%{transform:translateX(9px) rotate(6deg)}60%{transform:translateX(-5px) rotate(-3deg)}80%{transform:translateX(3px)}}
+@keyframes auWin{40%{transform:scale(1.18)}}
+#auth h1{font-family:var(--disp);font-weight:700;font-size:27px;line-height:1.12;letter-spacing:-.01em;text-align:center;margin:0}
+#auth .au-sub{text-align:center;color:var(--muted);font-weight:600;font-size:15px;line-height:1.45;margin:10px auto 26px;max-width:30ch}
+#auth .au-seg{position:relative;display:grid;grid-template-columns:1fr 1fr;padding:4px;border-radius:18px;background:var(--card2);margin-bottom:16px}
+#auth .au-seg button{position:relative;z-index:1;height:42px;border-radius:14px;font-family:var(--body);font-weight:800;font-size:14px;color:var(--muted);transition:color .3s}
+#auth .au-seg button[aria-selected="true"]{color:var(--text)}
+#auth .au-pill{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);border-radius:14px;background:var(--card);box-shadow:var(--shadow);transition:transform .55s var(--spring)}
+#auth .au-seg.up .au-pill{transform:translateX(100%)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #auth .au-pill{background:var(--card3)}}
+:root[data-theme="dark"] #auth .au-pill{background:var(--card3)}
+#auth .au-f{position:relative;margin-bottom:10px}
+#auth .au-f input{display:block;width:100%;height:62px;padding:25px 18px 7px;border-radius:18px;border:1.5px solid transparent;background:var(--card2);color:var(--text);font:inherit;font-size:16px;font-weight:700;outline:none;-webkit-appearance:none;appearance:none;transition:border-color .25s,background-color .25s}
+#auth .au-f.pw input{padding-right:58px}
+#auth .au-f input:focus{border-color:var(--accent);background:var(--card)}
+#auth .au-f label{position:absolute;left:19px;top:20px;font-size:15px;font-weight:600;color:var(--muted);pointer-events:none;transform-origin:left top;transition:transform .35s var(--ease),color .3s}
+#auth .au-f input:focus+label,#auth .au-f input:not(:placeholder-shown)+label{transform:translateY(-11px) scale(.76)}
+#auth .au-f input:focus+label{color:var(--accent)}
+#auth .au-eye{position:absolute;right:8px;top:9px;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;color:var(--muted)}
+#auth .au-eye svg{width:22px;height:22px}
+#auth .au-hint{font-size:13px;font-weight:600;color:var(--muted);margin:0 4px 4px;min-height:0;max-height:0;overflow:hidden;opacity:0;transition:max-height .4s var(--ease),opacity .3s}
+#auth.up .au-hint{max-height:24px;opacity:1}
+#auth .au-err{min-height:22px;font-size:13.5px;font-weight:700;color:var(--c-rouge);margin:6px 4px 8px}
+#auth .au-go{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;height:58px;border-radius:20px;background:var(--text);color:var(--bg);font-family:var(--body);font-weight:800;font-size:16px;transition:transform .2s var(--ease),opacity .2s}
+#auth .au-go:active{transform:scale(.97)}
+#auth .au-go[disabled]{opacity:.75}
+#auth .au-go i{display:none;width:18px;height:18px;border-radius:50%;border:2.5px solid currentColor;border-right-color:transparent;animation:auSpin2 .7s linear infinite}
+#auth .au-go.busy i{display:block}
+@keyframes auSpin2{to{transform:rotate(360deg)}}
+#auth .au-note{text-align:center;font-size:13px;font-weight:600;color:var(--muted);margin:18px auto 0;max-width:32ch;line-height:1.45}
 #auth input{-webkit-user-select:text;user-select:text}
+@media (prefers-reduced-motion:reduce){#auth .au-bg i,#auth .au-in,#auth .au-plate.busy svg{animation:none}}
 .syncs{display:block;font-size:12px;font-weight:700;color:var(--muted);margin-top:2px}
 </style>
 <script src="config.js"></script>
@@ -1356,31 +1402,57 @@ function authMsg(x){var m=String((x&&x.message)||x||"");
   if(/fetch|network|load failed/i.test(m))return "Pas de connexion internet.";
   if(/password/i.test(m))return "Mot de passe trop faible (6 caractères minimum).";
   return m||"Une erreur est survenue.";}
-function updAuth(){var up=AUTH_MODE==="up";$("auTitle").textContent=up?"Créer ton compte":"Connexion";$("auGo").textContent=up?"Créer mon compte":"Se connecter";$("auSw").textContent=up?"J'ai déjà un compte":"Créer un compte";$("auP").setAttribute("autocomplete",up?"new-password":"current-password");$("auErr").textContent="";}
+var EYE_O='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>';
+var EYE_C='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18"/><path d="M10.6 5.1A10 10 0 0 1 12 5c6.4 0 10 7 10 7a17 17 0 0 1-3 3.8M6.6 6.6C3.7 8.4 2 12 2 12s3.6 7 10 7a9.6 9.6 0 0 0 5.4-1.6"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>';
+var RINGS=[["--c-bleu",46],["--c-rouge",38],["--c-jaune",30],["--c-vert",22],["--c-orange",14]];
+function auRings(n){var r=document.querySelectorAll("#auth .rg");for(var i=0;i<r.length;i++)r[i].classList.toggle("on",i<n);}
+function auProgress(){var e=$("auE").value.trim(),p=$("auP").value,ok=/^\S+@\S+\.\S+$/.test(e);auRings((e.length>0?1:0)+(ok?1:0)+(p.length>0?1:0)+(p.length>=6?1:0));}
+function auPlate(c){var pl=$("auPlate");if(!pl)return;pl.classList.remove("shake","win","busy");void pl.offsetWidth;if(c)pl.classList.add(c);}
+function updAuth(){var up=AUTH_MODE==="up",a=$("auth");if(!a)return;
+  a.classList.toggle("up",up);$("auSeg").classList.toggle("up",up);
+  $("auTabIn").setAttribute("aria-selected",!up);$("auTabUp").setAttribute("aria-selected",up);
+  $("auTitle").textContent=up?"Crée ton compte":"Content de te revoir";
+  $("auSub").textContent=up?"Chaque séance sera gardée, même si tu changes de téléphone.":"Connecte-toi pour retrouver tes séances et ta progression.";
+  $("auGoT").textContent=up?"Créer mon compte":"Se connecter";
+  $("auP").setAttribute("autocomplete",up?"new-password":"current-password");$("auErr").textContent="";}
 function showAuth(){
   if($("auth"))return;
+  var svg='<svg viewBox="0 0 100 100">';
+  RINGS.forEach(function(r){svg+='<circle class="tr" cx="50" cy="50" r="'+r[1]+'"/>';});
+  RINGS.forEach(function(r){svg+='<circle class="rg" cx="50" cy="50" r="'+r[1]+'" pathLength="1" style="stroke:var('+r[0]+')"/>';});
+  svg+='</svg>';
   var d=document.createElement("div");d.id="auth";
-  d.innerHTML='<div class="au-in"><div class="au-logo">FIT KEEF</div><h2 id="auTitle">Connexion</h2><p class="au-sub">Ton compte garde toutes tes séances, sur tous tes appareils.</p>'
-   +'<label class="field"><span>Email</span><input id="auE" type="email" autocomplete="email" autocapitalize="off" autocorrect="off" spellcheck="false" inputmode="email"></label>'
-   +'<label class="field"><span>Mot de passe</span><input id="auP" type="password" autocomplete="current-password"></label>'
-   +'<p id="auErr" class="au-err"></p><button id="auGo" class="cta press" data-act="authGo">Se connecter</button><button id="auSw" class="cta alt press" data-act="authSwitch">Créer un compte</button></div>';
+  d.innerHTML='<div class="au-bg"><i></i><i></i></div><div class="au-in">'
+   +'<div class="au-plate" id="auPlate">'+svg+'<div class="au-hub"></div></div>'
+   +'<h1 id="auTitle"></h1><p class="au-sub" id="auSub"></p>'
+   +'<div class="au-seg" id="auSeg" role="tablist"><span class="au-pill"></span><button id="auTabIn" role="tab" data-act="authMode" data-v="in">Connexion</button><button id="auTabUp" role="tab" data-act="authMode" data-v="up">Nouveau compte</button></div>'
+   +'<div class="au-f"><input id="auE" type="email" placeholder=" " autocomplete="email" autocapitalize="off" autocorrect="off" spellcheck="false" inputmode="email"><label for="auE">Email</label></div>'
+   +'<div class="au-f pw"><input id="auP" type="password" placeholder=" " autocomplete="current-password"><label for="auP">Mot de passe</label><button class="au-eye" id="auEye" data-act="authEye" aria-label="Afficher le mot de passe">'+EYE_O+'</button></div>'
+   +'<p class="au-hint">6 caractères minimum.</p>'
+   +'<p id="auErr" class="au-err" role="alert"></p>'
+   +'<button id="auGo" class="au-go" data-act="authGo"><i></i><span id="auGoT"></span></button>'
+   +'<p class="au-note">Ton compte est privé : personne d\'autre ne voit tes séances.</p></div>';
   document.body.appendChild(d);updAuth();
+  $("auE").addEventListener("input",auProgress);$("auP").addEventListener("input",auProgress);
 }
-A.authSwitch=function(){AUTH_MODE=AUTH_MODE==="up"?"in":"up";updAuth();};
+A.authMode=function(v){if(v===AUTH_MODE)return;AUTH_MODE=v;updAuth();buzz&&buzz(6);};
+A.authEye=function(){var p=$("auP"),sh=p.type==="password";p.type=sh?"text":"password";$("auEye").innerHTML=sh?EYE_C:EYE_O;$("auEye").setAttribute("aria-label",sh?"Masquer le mot de passe":"Afficher le mot de passe");};
 A.authGo=function(v,b){
   var e=$("auE").value.trim(),p=$("auP").value,err=$("auErr");err.textContent="";
-  if(!/^\S+@\S+\.\S+$/.test(e)){err.textContent="Entre un email valide.";return;}
-  if(p.length<6){err.textContent="Mot de passe : 6 caractères minimum.";return;}
-  b.disabled=true;var lbl=b.textContent;b.textContent="Patiente…";
+  if(!/^\S+@\S+\.\S+$/.test(e)){err.textContent="Entre une adresse email complète.";auPlate("shake");$("auE").focus();return;}
+  if(p.length<6){err.textContent="Le mot de passe fait au moins 6 caractères.";auPlate("shake");$("auP").focus();return;}
+  if(document.activeElement)document.activeElement.blur();
+  b.disabled=true;b.classList.add("busy");auPlate("busy");
   var q=AUTH_MODE==="up"?SB.auth.signUp({email:e,password:p}):SB.auth.signInWithPassword({email:e,password:p});
   q.then(function(r){
     if(r.error)throw r.error;
     var s=r.data&&r.data.session;
-    if(!s){AUTH_MODE="in";updAuth();err.textContent="Compte créé. Confirme ton email puis connecte-toi.";return;}
-    var a=$("auth");if(a)a.parentNode.removeChild(a);
+    if(!s){AUTH_MODE="in";updAuth();auPlate("");err.textContent="Compte créé. Confirme ton email, puis connecte-toi.";return;}
+    auRings(5);auPlate("win");
     startUser(s.user,true);
-    if(!st.seen)setTimeout(help,700);else setTimeout(checkRewards,900);
-  }).catch(function(x){err.textContent=authMsg(x);}).then(function(){b.disabled=false;if(b.textContent==="Patiente…")b.textContent=lbl;});
+    setTimeout(function(){var a=$("auth");if(!a)return;a.classList.add("out");setTimeout(function(){if(a.parentNode)a.parentNode.removeChild(a);},600);},650);
+    if(!st.seen)setTimeout(help,1400);else setTimeout(checkRewards,1500);
+  }).catch(function(x){auPlate("shake");err.textContent=authMsg(x);}).then(function(){b.disabled=false;b.classList.remove("busy");});
 };
 A.logout=function(){
   if(!confirm("Te déconnecter ? Tes séances restent sauvegardées dans ton compte."))return;
