@@ -1033,6 +1033,25 @@ body.introing .app,body.introing .tabs{transition:opacity 1s cubic-bezier(.22,1,
 .week.scrub .wkpill{transition:left .32s cubic-bezier(.34,1.56,.64,1),width .32s,background-color .6s,transform .35s;transform:scale(1.07)}
 .week .wkpill{transition:left .55s var(--spring),width .55s var(--spring),background-color .6s var(--ease),transform .35s var(--spring)}
 .week.scrub .wd:not(.sel){opacity:.75}
+/* ===== titres ===== */
+.head.head2{align-items:flex-end;min-height:64px;margin-bottom:16px}
+.ht{position:relative;transform-origin:left bottom;will-change:transform,opacity}
+.ht .eb{display:inline-flex;align-items:center;gap:7px;margin-bottom:6px;padding:4px 10px 4px 8px;border-radius:99px;background:color-mix(in srgb,var(--accent) 14%,transparent);color:color-mix(in srgb,var(--accent) 75%,var(--text));font-size:12px;font-weight:800;letter-spacing:.01em;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.ht .eb i{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 25%,transparent);animation:ebP 2.4s ease-in-out infinite;flex:none}
+@keyframes ebP{50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 0%,transparent)}}
+.ht .bt{display:block;margin:0;font-family:var(--disp);font-weight:800;font-size:36px;line-height:1.02;letter-spacing:-.025em;text-align:left;color:var(--text);padding-bottom:3px}
+.ht.sm .bt{font-size:28px}
+.ht .tch{display:inline-block;color:color-mix(in srgb,var(--accent) var(--p,0%),var(--text));transition:color .6s var(--ease)}
+.ht .tch.sp{width:.28em}
+.ht.in .eb{animation:ebIn .6s var(--ease) both}
+.ht.in .tch{animation:chIn .7s var(--spring) calc(.05s + var(--i)*28ms) both}
+@keyframes ebIn{from{opacity:0;transform:translateY(8px) scale(.9)}}
+@keyframes chIn{from{opacity:0;transform:translateY(.55em) rotate(6deg);filter:blur(4px)}}
+#ctop{position:fixed;left:0;right:0;top:0;z-index:14;height:calc(46px + env(safe-area-inset-top,0px));padding-top:env(safe-area-inset-top,0px);display:grid;place-items:center;background:color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6);border-bottom:1px solid transparent;opacity:0;transform:translateY(-8px);transition:opacity .35s var(--ease),transform .45s var(--ease),border-color .35s;pointer-events:none}
+#ctop.on{opacity:1;transform:none;border-bottom-color:var(--line)}
+#ctop b{font-family:var(--disp);font-size:16px;font-weight:700;letter-spacing:-.01em}
+body.intro #ctop{opacity:0}
+
 /* ===== onglet Potes ===== */
 .av.xs{--s:22px;font-size:9px;box-shadow:0 0 0 2px var(--card)}
 .av.sm{--s:32px}
@@ -1455,7 +1474,10 @@ function coach(id,it,date){
 }
 function lastShort(C,L){var p=C.last;if(!p)return "";var a=p.sets;if(L.noW||!C.W)return Math.max.apply(null,a.map(function(x){return x.r;}))+" reps";var at=a.filter(function(x){return x.w===C.W;});return fmt(C.W)+" kg × "+Math.max.apply(null,at.map(function(x){return x.r;}));}
 function setAccent(c){var r=document.documentElement;r.style.setProperty("--accent",col(c));r.style.setProperty("--onacc",DARKON[c]?"#12151D":"#fff");}
-function buzz(p){try{navigator.vibrate&&navigator.vibrate(p);}catch(e){}}
+var HPT=null,HPT_T=0;
+function buzz(p){try{if(navigator.vibrate){navigator.vibrate(p);return;}}catch(e){}
+  try{if(!HPT){var l=document.createElement("label");l.setAttribute("aria-hidden","true");l.style.cssText="position:fixed;left:-300px;top:0;width:1px;height:1px;opacity:0;pointer-events:none";var i=document.createElement("input");i.type="checkbox";i.setAttribute("switch","");i.tabIndex=-1;l.appendChild(i);document.body.appendChild(l);HPT=l;}
+    var now=Date.now();if(now-HPT_T<30)return;HPT_T=now;HPT.click();if(Array.isArray(p)&&p.length>2){setTimeout(function(){HPT.click();},110);if(p.length>4)setTimeout(function(){HPT.click();},220);}}catch(e){}}
 var IC={
  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
  chev:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>',
@@ -1947,6 +1969,7 @@ function render(anim){
   if(ui.tab!=="s"&&P3.raf){cancelAnimationFrame(P3.raf);P3.raf=0;}
   if(ui.tab==="s")renderSeance(anim);else if(ui.tab==="c")renderPlan(anim);else if(ui.tab==="e")renderProg(anim);else if(ui.tab==="m")renderMe(anim);else if(ui.tab==="f")renderPotes(anim);else renderProt(anim);
   if(typeof tpillGo==="function")tpillGo();
+  if(typeof decorateHead==="function")decorateHead(anim);
 }
 function go(tab){if(ui.tab===tab)return;if(typeof swapTab==="function"&&TABS.indexOf(tab)>=0&&TABS.indexOf(ui.tab)>=0){swapTab(tab,TABS.indexOf(tab)>TABS.indexOf(ui.tab)?1:-1);return;}var f=function(){ui.tab=tab;render(true);window.scrollTo(0,0);};
   if(document.startViewTransition&&!matchMedia("(prefers-reduced-motion: reduce)").matches){P3.raf&&cancelAnimationFrame(P3.raf);P3.raf=0;document.startViewTransition(f);}else f();buzz(8);}
@@ -2346,6 +2369,35 @@ function wkShort(d){var s=st.sess[d],k=s?(s.wk||null):st.plan[wIdx(d)],W=k&&st.w
     if(max<=1||(dy>0&&top<=0)||(dy<0&&top>=max-1))e.preventDefault();
   },{passive:false});
 })();
+
+/* ================= TITRES ================= */
+function greet(){var h=new Date().getHours(),n=(typeof myName==="function"&&myName())||"";n=n?" "+String(n).split(" ")[0]:"";return (h<5?"Bonne nuit":h<12?"Salut":h<18?"Bon aprèm":"Bonsoir")+n;}
+function headInfo(){
+  var t=ui.tab,cap=function(x){return x.charAt(0).toUpperCase()+x.slice(1);};
+  if(t==="s"){var d=parse(ui.sel),dt=d.getDate()+" "+d.toLocaleDateString("fr-FR",{month:"long"}),ti=ui.sel===TODAY?greet():ui.sel===addD(TODAY,1)?"Demain":ui.sel===addD(TODAY,-1)?"Hier":cap(DF[wIdx(ui.sel)]);
+    return{eb:(ui.sel===TODAY?cap(DF[wIdx(ui.sel)])+" "+dt:dt),t:ti,sm:true};}
+  if(t==="c"){var m=TODAY.slice(0,7),n=Object.keys(st.sess).filter(function(k){return k.slice(0,7)===m&&st.sess[k].done;}).length;return{eb:n+" séance"+(n>1?"s":"")+" en "+monthName(m),t:"Planning"};}
+  if(t==="f"){var nf=(FR&&FR.ids?FR.ids.length:0),act=(FR&&FR.ids?FR.ids.filter(function(u){return trainedToday(u);}).length:0);return{eb:nf?nf+" pote"+(nf>1?"s":"")+(act?" · "+act+" actif"+(act>1?"s":"")+" aujourd'hui":""):"Ta bande d'entraînement",t:"Potes"};}
+  if(t==="m"){var lv=levelOf(totalXP(computeAll()));return{eb:"Niveau "+lv.n+" · "+lv.t,t:"Progrès"};}
+  if(t==="p"){if(st.nut)return{eb:fmt(ktot(TODAY))+" / "+fmt(st.nut.kcal)+" kcal aujourd'hui",t:"Nutrition"};return{eb:ptot(TODAY)+" / "+st.target+" g de protéines",t:"Protéines"};}
+  if(t==="e"){var np=st.plan.filter(Boolean).length;return{eb:np+" séance"+(np>1?"s":"")+" par semaine",t:"Programme"};}
+  return null;
+}
+function splitT(t){var n=Math.max(1,t.length-1);return t.split("").map(function(c,i){var pp=Math.round(Math.pow(i/n,1.6)*72);return c===" "?'<span class="tch sp"> </span>':'<span class="tch" style="--i:'+i+';--p:'+pp+'%">'+esc(c)+'</span>';}).join("");}
+function decorateHead(anim){
+  var h=document.querySelector("#view .head");if(!h||h.dataset.dec)return;var I=headInfo();if(!I)return;h.dataset.dec="1";
+  var tgt=h.querySelector("h1")||h.querySelector(".d");if(!tgt)return;
+  var w=document.createElement("div");w.className="ht"+(I.sm?" sm":"")+(anim?" in":"");
+  w.innerHTML='<span class="eb"><i></i><span>'+esc(I.eb)+'</span></span><h1 class="bt" aria-label="'+esc(I.t)+'">'+splitT(I.t)+'</h1>';
+  tgt.replaceWith(w);h.classList.add("head2");
+  var ct=$("ctop");if(!ct){ct=document.createElement("div");ct.id="ctop";ct.innerHTML='<b></b>';document.body.appendChild(ct);}ct.querySelector("b").textContent=I.t;
+  headScroll();
+}
+var HS={raf:0};
+function headScroll(){var y=window.scrollY||0,w=document.querySelector("#view .ht"),ct=$("ctop"),p=Math.max(0,Math.min(1,y/70));
+  if(w){w.style.transform="translateY("+(y*0.35).toFixed(1)+"px) scale("+(1-p*0.08).toFixed(3)+")";w.style.opacity=(1-p*0.9).toFixed(3);}
+  if(ct)ct.classList.toggle("on",y>56);}
+window.addEventListener("scroll",function(){if(HS.raf)return;HS.raf=requestAnimationFrame(function(){HS.raf=0;headScroll();});},{passive:true});
 
 /* ================= SUPERSETS ================= */
 function ssGroup(list,ix){var a=ix,b=ix;while(a>0&&list[a-1].ss)a--;while(b<list.length-1&&list[b].ss)b++;var g=[];for(var i=a;i<=b;i++)g.push(i);return g;}
