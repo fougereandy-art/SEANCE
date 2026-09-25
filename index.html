@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<style>html{background:#0A0C12;overscroll-behavior:none}body{overscroll-behavior:none}</style>
+<style>html{background:#0A0C12;overscroll-behavior:none}body{overscroll-behavior:none;min-height:calc(100vh + env(safe-area-inset-top,0px) + 1px)}</style>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0A0C12">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -1040,7 +1040,9 @@ body.introing .app,body.introing .tabs{transition:opacity 1s cubic-bezier(.22,1,
 .ht .eb i{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 25%,transparent);animation:ebP 2.4s ease-in-out infinite;flex:none}
 @keyframes ebP{50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 0%,transparent)}}
 .ht .bt{display:block;margin:0;font-family:var(--disp);font-weight:800;font-size:36px;line-height:1.02;letter-spacing:-.025em;text-align:left;color:var(--text);padding-bottom:3px}
-.ht.sm .bt{font-size:28px}
+.ht.sm .bt{font-size:26px}
+.ht .tw{display:inline-block;white-space:nowrap}
+.ht .bt{overflow-wrap:normal;word-break:normal}
 .ht .tch{display:inline-block;color:color-mix(in srgb,var(--accent) var(--p,0%),var(--text));transition:color .6s var(--ease)}
 .ht .tch.sp{width:.28em}
 .ht.in .eb{animation:ebIn .6s var(--ease) both}
@@ -2387,7 +2389,7 @@ function headInfo(){
   if(t==="e"){var np=st.plan.filter(Boolean).length;return{eb:np+" séance"+(np>1?"s":"")+" par semaine",t:"Programme"};}
   return null;
 }
-function splitT(t){var n=Math.max(1,t.length-1);return t.split("").map(function(c,i){var pp=Math.round(Math.pow(i/n,1.6)*72);return c===" "?'<span class="tch sp"> </span>':'<span class="tch" style="--i:'+i+';--p:'+pp+'%">'+esc(c)+'</span>';}).join("");}
+function splitT(t){var n=Math.max(1,t.length-1),k=0;return t.split(" ").map(function(w){var h='<span class="tw">'+w.split("").map(function(c){var i=k++,pp=Math.round(Math.pow(i/n,1.6)*72);return '<span class="tch" style="--i:'+i+';--p:'+pp+'%">'+esc(c)+'</span>';}).join("")+'</span>';k++;return h;}).join(' ');}
 function decorateHead(anim){
   var h=document.querySelector("#view .head");if(!h||h.dataset.dec)return;var I=headInfo();if(!I)return;h.dataset.dec="1";
   var tgt=h.querySelector("h1")||h.querySelector(".d");if(!tgt)return;
@@ -2402,6 +2404,14 @@ function headScroll(){var y=window.scrollY||0,w=document.querySelector("#view .h
   if(w){w.style.transform="translateY("+(y*0.35).toFixed(1)+"px) scale("+(1-p*0.08).toFixed(3)+")";w.style.opacity=(1-p*0.9).toFixed(3);}
   if(ct)ct.classList.toggle("on",y>56);}
 window.addEventListener("scroll",function(){if(HS.raf)return;HS.raf=requestAnimationFrame(function(){HS.raf=0;headScroll();});},{passive:true});
+
+/* titres aussi quand une vue est redessinée sans passer par render() */
+var _rS=renderSeance;renderSeance=function(a){_rS(a);decorateHead(a);};
+var _rPl=renderPlan;renderPlan=function(a){_rPl(a);decorateHead(a);};
+var _rPg=renderProg;renderProg=function(a){_rPg(a);decorateHead(a);};
+var _rM=renderMe;renderMe=function(a){_rM(a);decorateHead(a);};
+var _rPt=renderProt;renderProt=function(a){_rPt(a);decorateHead(a);};
+var _rPo=renderPotes;renderPotes=function(a){_rPo(a);decorateHead(a);};
 
 /* ================= SUPERSETS ================= */
 function ssGroup(list,ix){var a=ix,b=ix;while(a>0&&list[a-1].ss)a--;while(b<list.length-1&&list[b].ss)b++;var g=[];for(var i=a;i<=b;i++)g.push(i);return g;}
