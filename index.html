@@ -1698,6 +1698,43 @@ body.intro #ctop{opacity:0}
 .pl-row .grow{flex:1;min-width:0;display:flex;flex-direction:column}
 .pl-row b{font-size:13.5px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pl-row small{font-size:12px;font-weight:700;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-variant-numeric:tabular-nums}
+.pw-dn{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;padding:0 5px;margin:14px 0 6px;text-align:center;font-size:11px;font-weight:900;color:var(--muted)}
+.pw-dn .we{opacity:.6}
+.pw-cal{display:flex;flex-direction:column;gap:7px}
+.pw-wk{position:relative;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;padding:5px;border-radius:20px;background:var(--glass,var(--card2));border:1px solid var(--line);animation:vin .5s var(--ease) calc(var(--k)*.05s) both}
+.pw-wk.cur{border-color:color-mix(in srgb,var(--accent) 45%,transparent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 12%,transparent)}
+.pw-wk.full{background:linear-gradient(90deg,color-mix(in srgb,var(--c-orange) 12%,var(--card2)),var(--card2))}
+.pw-fire{position:absolute;right:-6px;top:-8px;font-size:15px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3));animation:popIn .5s var(--spring) .4s both}
+.pw{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;padding:7px 0 6px;border-radius:15px;min-width:0;transition:transform .35s var(--spring),background-color .35s}
+.pw .n{font-size:15px;font-weight:800;line-height:1.1}
+.pw .tg{display:block;max-width:calc(100% - 4px);min-height:13px;padding:2px 3px;border-radius:6px;font-size:7.5px;font-weight:900;letter-spacing:.02em;text-transform:uppercase;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:clip;color:var(--dc)}
+.pw:not(.st-rest):not(.st-none){background:color-mix(in srgb,var(--dc) 11%,transparent)}
+.pw.st-done .tg::before{content:"✓ "}
+.pw.st-done .tg{background:var(--dc);color:#fff;box-shadow:0 3px 8px color-mix(in srgb,var(--dc) 35%,transparent)}
+.pw.st-plan .tg{box-shadow:inset 0 0 0 1.2px color-mix(in srgb,var(--dc) 60%,transparent)}
+.pw.st-part .tg{background:color-mix(in srgb,var(--dc) 35%,transparent);color:var(--text)}
+.pw.st-miss{background:transparent!important}
+.pw.st-miss .n{color:var(--muted)}
+.pw.st-miss .tg{opacity:.55;text-decoration:line-through;text-decoration-thickness:1.5px}
+.pw.st-rest .tg,.pw.st-none .tg{color:var(--muted)}
+.pw.st-rest .tg::before{content:"·";font-size:12px;line-height:.8}
+.pw .ck{position:absolute;top:3px;right:3px;width:13px;height:13px;border-radius:50%;display:grid;place-items:center;background:var(--dc);color:#fff;box-shadow:0 0 0 1.5px var(--card)}
+.pw .ck svg{width:8px;height:8px}
+.pw.out{opacity:.32}
+.pw.tod:not(.sel) .n{color:var(--accent)}
+.pw.tod:not(.sel)::after{content:"";position:absolute;bottom:-3px;left:50%;width:14px;height:3px;margin-left:-7px;border-radius:2px;background:var(--accent)}
+.pw.sel{z-index:2;color:#fff;transform:translateY(-2px) scale(1.06);background:linear-gradient(165deg,color-mix(in srgb,var(--dc) 70%,#fff) 0%,var(--dc) 45%,color-mix(in srgb,var(--dc) 75%,#000) 100%)!important;box-shadow:0 10px 24px color-mix(in srgb,var(--dc) 50%,transparent),inset 0 1px 0 rgba(255,255,255,.35)}
+.pw.sel.st-rest,.pw.sel.st-none{--dc:var(--accent)}
+.pw.sel .n{font-size:17px;color:#fff}
+.pw.sel .tg{color:#fff!important;background:rgba(255,255,255,.24)!important;opacity:1!important;text-decoration:none!important;box-shadow:none!important}
+.pw.sel .ck{background:#fff;color:var(--dc);box-shadow:none}
+.pw.sel::before{content:"";position:absolute;left:50%;bottom:-5px;width:10px;height:10px;margin-left:-5px;border-radius:2px;background:color-mix(in srgb,var(--dc) 78%,#000);transform:rotate(45deg);z-index:-1}
+.pw-leg{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 6px;margin:14px 0 4px;font-size:11.5px;font-weight:700;color:var(--muted)}
+.pw-lc{padding:2px 4px;border-radius:5px;font-size:7.5px;font-weight:900;color:var(--accent);margin-left:6px}
+.pw-lc.done{background:var(--accent);color:#fff}
+.pw-lc.plan{box-shadow:inset 0 0 0 1.2px color-mix(in srgb,var(--accent) 60%,transparent)}
+.pw-lc.miss{opacity:.55;text-decoration:line-through;color:var(--muted)}
+.pw-lc.fire{font-size:11px;padding:0}
 </style>
 <script src="config.js?v=2"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.1/dist/umd/supabase.js"></script>
@@ -2311,11 +2348,14 @@ function renderPlan(anim){
   /* calendrier */
   var m0=parse(ui.calM),y=m0.getFullYear(),mo=m0.getMonth(),first=iso(new Date(y,mo,1)),start=monday(first),last=new Date(y,mo+1,0).getDate(),weeks=Math.ceil((wIdx(first)+last)/7);
   var md=0,mm=0,mv=0;for(var q=1;q<=last;q++){var dq=iso(new Date(y,mo,q)),sq=status(dq);if(sq==="done"){md++;var ss=st.sess[dq];if(ss&&ss.list)mv+=sStats(ss).vol;}else if(sq==="miss")mm++;}
-  h+='<div class="card pl-cal"><div class="calhead"><button class="iconbtn press" data-act="cal" data-v="-1" aria-label="Mois précédent">'+IC.left+'</button><div class="pl-mt"><b>'+m0.toLocaleDateString("fr-FR",{month:"long",year:"numeric"})+'</b><span>'+md+' faite'+(md>1?"s":"")+(mm?' · '+mm+' manquée'+(mm>1?"s":""):'')+(mv?' · '+fmt(Math.round(mv/100)/10)+' t':'')+'</span></div><button class="iconbtn press" data-act="cal" data-v="1" aria-label="Mois suivant">'+IC.chev+'</button></div><div class="calgrid pl-grid">';
-  DL.forEach(function(l){h+='<span class="dn">'+l+'</span>';});
-  for(var i=0;i<weeks*7;i++){var d=addD(start,i),inM=parse(d).getMonth()===mo,sx=status(d),c=colorOf(d);
-    h+='<button class="pc s-'+sx+(inM?"":" out")+(d===tw?" tod":"")+(d===ui.calSel?" csel":"")+'" style="--c:'+col(c)+'" data-act="calday" data-v="'+d+'" aria-label="'+parse(d).toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long"})+'"><span>'+parse(d).getDate()+'</span></button>';}
-  h+='</div><div class="pl-leg"><span><i class="lg done"></i>Faite</span><span><i class="lg plan"></i>Prévue</span><span><i class="lg miss"></i>Manquée</span></div>'+dayDetail(ui.calSel)+'</div>';
+  h+='<div class="card pl-cal"><div class="calhead"><button class="iconbtn press" data-act="cal" data-v="-1" aria-label="Mois précédent">'+IC.left+'</button><div class="pl-mt"><b>'+m0.toLocaleDateString("fr-FR",{month:"long",year:"numeric"})+'</b><span>'+md+' faite'+(md>1?"s":"")+(mm?' · '+mm+' manquée'+(mm>1?"s":""):'')+(mv?' · '+fmt(Math.round(mv/100)/10)+' t':'')+'</span></div><button class="iconbtn press" data-act="cal" data-v="1" aria-label="Mois suivant">'+IC.chev+'</button></div><div class="pw-dn">'+DL.map(function(l,i){return '<span'+(i>4?' class="we"':'')+'>'+l+'</span>';}).join("")+'</div><div class="pw-cal">';
+  var curMon=monday(TODAY);
+  for(var wi=0;wi<weeks;wi++){var wm=addD(start,wi*7),wcn=0,wpl=0;for(var z=0;z<7;z++){var zd=addD(wm,z),zs=status(zd);if(zs==="done")wcn++;if(zs!=="rest"&&zs!=="none")wpl++;}
+    h+='<div class="pw-wk'+(wm===curMon?" cur":"")+(wpl&&wcn>=wpl&&wm<=curMon?" full":"")+'" style="--k:'+wi+'">';
+    for(var i=0;i<7;i++){var d=addD(wm,i),inM=parse(d).getMonth()===mo,sx=status(d),c=colorOf(d),tg=wkShort(d);
+      h+='<button class="pw st-'+sx+(inM?"":" out")+(d===tw?" tod":"")+(d===ui.calSel?" sel":"")+'" style="--dc:'+col(c)+'" data-act="calday" data-v="'+d+'" aria-label="'+parse(d).toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long"})+(tg?", "+esc(tg):"")+'"><span class="n">'+parse(d).getDate()+'</span><span class="tg">'+esc(tg)+'</span>'+'</button>';}
+    h+=(wpl&&wcn>=wpl&&wm<=curMon?'<span class="pw-fire" title="Semaine validée">🔥</span>':'')+'</div>';}
+  h+='</div><div class="pw-leg"><span class="pw-lc done">HAUT</span>faite<span class="pw-lc plan">HAUT</span>prévue<span class="pw-lc miss">HAUT</span>manquée<span class="pw-lc fire">🔥</span>semaine validée</div>'+dayDetail(ui.calSel)+'</div>';
   /* volume */
   var mT=monday(TODAY),vals=[];for(var k=7;k>=0;k--){vals.push({m:addD(mT,-7*k),v:weekVol(addD(mT,-7*k))});}
   var mx=Math.max.apply(null,vals.map(function(x){return x.v;}).concat([1])),nz=vals.filter(function(x){return x.v>0;}),avg=nz.length?nz.reduce(function(a,x){return a+x.v;},0)/nz.length:0,dv=vals[6].v?Math.round((vals[7].v/vals[6].v-1)*100):null;
@@ -2338,7 +2378,7 @@ function dayDetail(d){
   var wk=st.plan[wIdx(d)],name=s&&s.name?s.name:(wk&&st.wk[wk]?st.wk[wk].name:"Repos");
   if(sx==="rest"||sx==="none")name=sx==="rest"?"Repos":name;
   var txt={done:"Terminée",plan:d===TODAY?"Aujourd'hui":"Prévue",part:"Commencée",miss:"Manquée",rest:"Repos",none:"Avant tes débuts"}[sx],ic={done:"✓",plan:"◷",part:"◐",miss:"✕",rest:"☾",none:"·"}[sx];
-  var h='<div class="detail pl-det s-'+sx+'" id="detail" style="--c:'+col(colorOf(d))+'"><div class="pl-dh"><span class="pl-dic">'+ic+'</span><div class="grow"><small>'+lbl.charAt(0).toUpperCase()+lbl.slice(1)+'</small><h4>'+esc(name)+'</h4></div><span class="pl-dst">'+txt+'</span></div>';
+  var h='<div class="detail pl-det s-'+sx+'" id="detail" style="--c:'+col(colorOf(d))+'"><div class="pl-dh"><span class="pl-dic">'+ic+'</span><div class="grow"><small>'+dd.toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"short"}).replace(/^./,function(c){return c.toUpperCase();})+'</small><h4>'+esc(name)+'</h4></div><span class="pl-dst">'+txt+'</span></div>';
   if(s&&s.list&&anyDone(s)){var S=sStats(s),czd=cardioOf(s),du=s.t0&&s.t1&&s.t0>1e12?Math.max(1,Math.round((s.t1-s.t0)/60000)):0;
     h+='<div class="pl-dk">'+(S.vol>0?'<span><b>'+fmt(Math.round(S.vol/100)/10)+' t</b>soulevées</span>':'')+'<span><b>'+S.dn+'</b>séries</span>'+(czd.min?'<span><b>'+czd.min+' min</b>cardio</span>':'')+(du?'<span><b>'+du+' min</b>durée</span>':'')+'</div>';
     h+='<div class="pl-dl">'+s.list.map(function(it){var a=doneArr(s,it.id);if(!a.length)return "";return '<div class="pl-row">'+thumb(it.id)+'<span class="grow"><b>'+esc(lib(it.id).n)+'</b><small>'+lastTxt({sets:a})+'</small></span></div>';}).join("")+'</div>';}
