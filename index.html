@@ -1959,6 +1959,40 @@ body.intro #ctop{opacity:0}
 .bl-up .grow>span,.bl-tip .grow>span{font-size:12.5px;font-weight:600;color:var(--muted);line-height:1.35}
 .bl-up .grow>span b{color:var(--text);font-size:12.5px}
 .pl-bl{margin-top:10px;padding:7px 12px;border-radius:12px;background:rgba(255,255,255,.2);box-shadow:inset 0 0 0 1px rgba(255,255,255,.25);font-size:12px;font-weight:800;color:#fff}
+.ord-card{display:block;margin:0 0 14px;padding:12px;border-radius:22px;background:linear-gradient(120deg,color-mix(in srgb,var(--accent) 18%,var(--card)),var(--card) 75%);border:1px solid color-mix(in srgb,var(--accent) 30%,var(--line));box-shadow:var(--shadow);animation:vin .5s var(--ease) both;transition:opacity .3s,transform .3s}
+.ord-card.out{opacity:0;transform:scale(.96)}
+.ord-ic{width:38px;height:38px;border-radius:13px;display:grid;place-items:center;flex:none;font-size:19px;background:color-mix(in srgb,var(--accent) 22%,var(--card2));animation:ordTw 2.4s ease-in-out infinite}
+@keyframes ordTw{0%,100%{transform:rotate(0) scale(1)}50%{transform:rotate(12deg) scale(1.08)}}
+.ord-card .grow{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+.ord-card b{font-size:14px;font-weight:800}
+.ord-card .grow span{font-size:11.5px;font-weight:700;color:var(--muted);line-height:1.3}
+.ord-t{display:flex;align-items:center;gap:10px}
+.ord-b{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.ord-b .btn{padding:10px;font-size:13px}
+.ord-why{flex:none;font-size:12.5px;font-weight:800;color:var(--muted);padding:6px 4px}
+.ord-x{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;flex:none;color:var(--muted)}
+.ord-x svg{width:14px;height:14px}
+.ord-list{display:flex;flex-direction:column;gap:6px;margin:8px 0 14px}
+.ord-r{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:16px;background:var(--card2);animation:vin .45s var(--ease) var(--d) both}
+.ord-n{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;flex:none;background:var(--rc);color:#fff;font-size:12px;font-weight:900}
+.ord-r .thumb{width:38px;height:38px;border-radius:11px;flex:none}
+.ord-r .grow{flex:1;min-width:0;display:flex;flex-direction:column}
+.ord-r b{font-size:13.5px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ord-tag{align-self:flex-start;margin-top:2px;padding:2px 7px;border-radius:7px;background:color-mix(in srgb,var(--rc) 18%,transparent);font-size:10.5px;font-weight:900}
+.ord-r em{font-style:normal;flex:none;min-width:30px;text-align:center;padding:3px 6px;border-radius:8px;font-size:11.5px;font-weight:900}
+.ord-r em.up{background:color-mix(in srgb,var(--c-vert) 18%,transparent);color:color-mix(in srgb,var(--c-vert) 70%,var(--text))}
+.ord-r em.dn{background:color-mix(in srgb,var(--c-rouge) 14%,transparent);color:color-mix(in srgb,var(--c-rouge) 70%,var(--text))}
+.ord-r em.eq{color:var(--muted)}
+.ord-rules{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.ord-rules>div{padding:12px;border-radius:16px;background:var(--card2);display:flex;flex-direction:column;gap:3px}
+.ord-rules span{font-size:20px}.ord-rules b{font-size:13px;font-weight:800}.ord-rules small{font-size:11.5px;font-weight:600;color:var(--muted);line-height:1.35}
+.ord-ed{display:flex;align-items:center;gap:12px;width:100%;margin:0 0 10px;padding:12px;border-radius:18px;text-align:left;background:linear-gradient(120deg,color-mix(in srgb,var(--accent) 16%,var(--card2)),var(--card2));border:1px solid color-mix(in srgb,var(--accent) 28%,transparent)}
+.ord-ed>span:first-child{font-size:20px}
+.ord-ed .grow{flex:1;min-width:0;display:flex;flex-direction:column}
+.ord-ed b{font-size:14px;font-weight:800}.ord-ed small{font-size:11.5px;font-weight:700;color:var(--muted)}
+.ord-ed svg{width:16px;height:16px;color:var(--muted)}
+.ord-ok{margin:0 4px 10px;font-size:12px;font-weight:800;color:color-mix(in srgb,var(--c-vert) 70%,var(--text))}
+@media (prefers-reduced-motion:reduce){.ord-ic{animation:none}}
 </style>
 <script src="config.js?v=2"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.1/dist/umd/supabase.js"></script>
@@ -2320,7 +2354,7 @@ function renderSeance(anim){
   else if(s.done){var du=s.t0&&s.t1?Math.max(1,Math.round((s.t1-s.t0)/60000)):0;h+='<div class="donebar"><span class="db-ic">🎉</span><span class="grow"><b>Séance validée</b><span>'+(allC?CZS.min+' min de cardio · ≈ '+fmt(CZS.kcal)+' kcal':fmt(Math.round(S.vol))+' kg soulevés'+(CZS.min?' · '+CZS.min+' min de cardio':''))+(du?' · '+du+' min':'')+'</span></span><button class="db-sh press" data-act="storyOpen" aria-label="Partager en story">📸</button></div>';}
   var rem=0;s.list.forEach(function(it){var c0=dcount(s,it.id);rem+=Math.max(0,it.s-c0)*(isCMin(it)?it.lo*60+(it.rest||0):45+(it.rest||60));});rem=Math.round(rem/60/5)*5;
   var dk=d,prevD=(ui.sd&&ui.sd[dk])||null,nowD=[];
-  h+=czNewHTML()+'<div class="rt-head"><b>Ton parcours</b><span>'+S.exd+'/'+S.n+' terminé'+(S.exd>1?'s':'')+(rem&&!s.done?' · ≈ '+rem+' min':'')+'</span></div>'+dndHint()+'<div class="route" id="exlist">';
+  h+=czNewHTML()+ordCardHTML(s,d)+'<div class="rt-head"><b>Ton parcours</b><span>'+S.exd+'/'+S.n+' terminé'+(S.exd>1?'s':'')+(rem&&!s.done?' · ≈ '+rem+' min':'')+'</span></div>'+dndHint()+'<div class="route" id="exlist">';
   s.list.forEach(function(it,ix){var L=lib(it.id),c=dcount(s,it.id),full=c>=it.s,C=coach(it.id,it,d),ls=lastShort(C,L),td=doneArr(s,it.id);if(td.length){var tw=Math.max.apply(null,td.map(function(x){return x.w;}));ls=null;var tdt=(tw?fmt(tw)+" kg × ":"")+Math.max.apply(null,td.filter(function(x){return x.w===tw;}).map(function(x){return x.r;}))+(tw?"":(isCMin(it)?" min":isTime(it)?" s":" reps"));}
     if(full)nowD.push(ix);var st2=full?"done":ix===first&&!s.done?"now":c>0?"part":"todo",just=full&&prevD&&prevD.indexOf(ix)<0,last=ix===s.list.length-1,lk=it.ss&&!last;
     h+='<div class="rt-row '+st2+(just?" just":"")+(last?" last":"")+(lk?" ss-l":"")+(ix>0&&s.list[ix-1].ss?" ss-r":"")+'" style="--d:'+(Math.min(ix,8)*0.05)+'s;--pr:'+(c/it.s)+'"><div class="rt-rail"><span class="rt-node">'+(full?IC.check:'<b>'+(ix+1)+'</b>')+'</span></div>';
@@ -2638,7 +2672,7 @@ function renderEditor(){
   var h='<div class="grab"></div><div class="sbar"><button class="iconbtn press" data-act="closeA" aria-label="Fermer">'+IC.x+'</button><span class="pos">Modifier la séance</span><span style="width:40px"></span></div>';
   h+='<label class="field"><span>Nom</span><input id="wkName" value="'+esc(W.name)+'" maxlength="24"></label>';
   h+='<div class="field"><span>Couleur</span><div class="swatches">'+COLORS.map(function(c){return '<button class="swb press" style="--c:'+col(c)+'" data-act="wkColor" data-v="'+c+'" aria-pressed="'+(W.color===c)+'" aria-label="'+c+'"></button>';}).join("")+'</div></div>';
-  h+='<h3 class="sec" style="margin-top:18px">Exercices</h3>'+dndHint()+'<div id="erlist">';
+  h+='<h3 class="sec" style="margin-top:18px">Exercices</h3>'+ordEdHTML(W)+dndHint()+'<div id="erlist">';
   W.ex.forEach(function(it,i){var L=lib(it.id),x=ui.exp===i;
     h+='<div class="er'+(x?" x":"")+ssCls(W.ex,i)+'" data-k="'+it.id+i+'"><button class="erh" data-act="exp" data-v="'+i+'" aria-expanded="'+x+'">'+thumb(it.id)+'<span class="grow"><b>'+esc(L.n)+'</b><span>'+it.s+' × '+esc(reps(it))+' · repos '+restTxt(it.rest)+(it.ss&&i<W.ex.length-1?'<i class="ss-tag">⚡</i>':'')+'</span></span><span class="chev">'+IC.chev+'</span></button>'
      +'<div class="erb"><div><div class="in">'
@@ -3365,6 +3399,44 @@ function maybeBilan(tries){tries=tries||0;if(SB&&!USER)return;var w=wIdx(TODAY),
   var any=false;for(var i=0;i<7;i++){var d=addD(mon,i);if(isDone(d)||(st.sess[d]&&st.sess[d].list&&anyDone(st.sess[d])))any=true;}if(!any)return;
   if($("modal").classList.contains("open")||$("bs").classList.contains("open")||$("onb")||$("recap")||$("run")||$("story")){if(tries<20)setTimeout(function(){maybeBilan(tries+1);},2000);return;}
   st.set.blSeen=mon;save();A.blOpen(mon);}
+
+/* ================= ORDRE IDÉAL ================= */
+var ROLE={warm:{t:"Échauffement",c:"jaune",e:"🔥"},heavy:{t:"Polyarticulaire",c:"rouge",e:"🏋️"},mach:{t:"Guidé",c:"bleu",e:"⚙️"},iso:{t:"Isolation",c:"violet",e:"🎯"},core:{t:"Gainage",c:"vert",e:"🧱"},cardio:{t:"Cardio",c:"orange",e:"🫀"}};
+function exRole(it){var L=lib(it.id),n=(L.n||"").toLowerCase(),gi={"Jambes":0,"Dos":1,"Pecs":1,"Épaules":3,"Bras":4}[L.g];if(gi==null)gi=3;
+  if(L.cardio)return isCMin(it)&&it.lo<=6&&!/marche/.test(n)?{r:"warm",s:0}:(isCMin(it)&&it.lo<=6?{r:"cardio",s:95}:{r:"cardio",s:90});
+  if(L.g==="Abdos")return{r:"core",s:80+(isTime(it)?2:0)};
+  var iso=/curl|extension|élévation|kickback|écarté|pec deck|butterfly|mollet|abduction|adduction|face pull|oiseau|shrug|pull-over|crunch|frontale|pull-through/.test(n);
+  var heavy=/squat|soulevé|développé|rowing barre|rowing t-bar|hip thrust|traction|dips|fentes|presse à cuisses|hack|good morning|militaire|pont fessier barre|step-up|swing/.test(n);
+  if(iso&&!(heavy&&/extension lombaires/.test(n)))return{r:"iso",s:50};
+  return heavy||L.bar||L.dumb||L.noW?{r:"heavy",s:20}:{r:"mach",s:20};}
+function idealIdx(list){var blocks=[],cur=null;list.forEach(function(it,i){if(!cur){cur={ix:[i]};blocks.push(cur);}else cur.ix.push(i);if(!it.ss)cur=null;});
+  blocks.forEach(function(b,k){b.k=k;b.s=Math.min.apply(null,b.ix.map(function(i){return exRole(list[i]).s;}));});
+  blocks.sort(function(a,b){return a.s-b.s||a.k-b.k;});var out=[];blocks.forEach(function(b){out=out.concat(b.ix);});return out;}
+function ordPlan(s){var list=s.list,fixed=[],rest=[];list.forEach(function(it,i){(dcount(s,it.id)>0?fixed:rest).push(i);});
+  var sub=rest.map(function(i){return list[i];}),id=idealIdx(sub),order=fixed.concat(id.map(function(k){return rest[k];}));
+  var same=order.every(function(v,i){return v===i;});return{order:order,same:same};}
+function ordSig(s){return (s.wk||"")+":"+s.list.map(function(x){return x.id;}).join(",");}
+function ordCardHTML(s,d){if(s.done||!s.list||s.list.length<3)return "";var P=ordPlan(s);if(P.same)return "";var sk=st.set.ordSkip||{};if(sk[d]===ordSig(s))return "";
+  var mv=P.order.map(function(o,i){return o!==i;}).filter(Boolean).length;
+  return '<div class="ord-card"><div class="ord-t"><span class="ord-ic">✨</span><div class="grow"><b>Ordre idéal proposé</b><span>'+mv+' exercice'+(mv>1?"s":"")+' à déplacer · gros mouvements d\'abord, isolation et gainage à la fin</span></div><button class="ord-x press" data-act="ordSkip" aria-label="Garder mon ordre">'+IC.x+'</button></div><div class="ord-b"><button class="btn press" data-act="ordWhy">Voir l\'ordre</button><button class="btn acc press" data-act="ordApply">✨ Appliquer</button></div></div>';}
+function rowFlip(listSel,rowSel,oldKeys,mutate,newKeys){var L=document.querySelector(listSel),rects={};if(L)[].slice.call(L.querySelectorAll(":scope > "+rowSel)).forEach(function(el,i){rects[oldKeys[i]]=el.getBoundingClientRect().top;});
+  mutate();var L2=document.querySelector(listSel);if(!L2||!L2.animate)return;L2.classList.add("dnd-quiet");setTimeout(function(){L2.classList.remove("dnd-quiet");},1400);
+  [].slice.call(L2.querySelectorAll(":scope > "+rowSel)).forEach(function(el,i){var k=newKeys[i],a=rects[k];if(a==null)return;var dy=a-el.getBoundingClientRect().top;if(Math.abs(dy)<2)return;
+    el.animate([{transform:"translate3d(0,"+dy+"px,0) scale(1)",zIndex:5},{transform:"translate3d(0,"+(dy*0.5)+"px,0) scale(1.04)",offset:.45},{transform:"none"}],{duration:720,delay:i*45,easing:"cubic-bezier(.34,1.4,.64,1)",fill:"backwards"});
+    setTimeout(function(){el.classList.add("dnd-land");setTimeout(function(){el.classList.remove("dnd-land");},650);},i*45+620);});}
+A.ordApply=function(){var s=ensure(),P=ordPlan(s);if(P.same)return;var old=s.list.slice(),oldK=old.map(function(x){return x.id;});closeBS();
+  rowFlip("#exlist",".rt-row",oldK,function(){s.list=P.order.map(function(i){return old[i];});s.custom=true;if(ui.sd)delete ui.sd[ui.sel];save();renderSeance(false);},P.order.map(function(i){return old[i].id;}));
+  buzz([10,40,10,40,20]);toast("✨ Ordre idéal appliqué",function(){var s2=ensure();s2.list=old;save();renderSeance(false);});};
+A.ordSkip=function(){var s=curS();st.set.ordSkip=st.set.ordSkip||{};st.set.ordSkip[ui.sel]=ordSig(s);var ks=Object.keys(st.set.ordSkip);if(ks.length>40)delete st.set.ordSkip[ks[0]];save();
+  var c=document.querySelector(".ord-card");if(c){c.classList.add("out");setTimeout(function(){renderSeance(false);},320);}else renderSeance(false);toast("Ton ordre est gardé");};
+function ordListHTML(list,order){return '<div class="ord-list">'+order.map(function(o,i){var it=list[o],R=ROLE[exRole(it).r],d=o-i;return '<div class="ord-r" style="--rc:'+col(R.c)+';--d:'+(i*0.05)+'s"><span class="ord-n">'+(i+1)+'</span>'+thumb(it.id)+'<span class="grow"><b>'+esc(lib(it.id).n)+'</b><span class="ord-tag">'+R.e+' '+R.t+'</span></span>'+(d>0?'<em class="up">↑'+d+'</em>':d<0?'<em class="dn">↓'+(-d)+'</em>':'<em class="eq">=</em>')+'</div>';}).join("")+'</div>';}
+function ordWhyHTML(){return '<div class="ord-rules"><div><span>🏋️</span><b>Polyarticulaires en premier</b><small>Squat, développés, rowings : quand tu es frais, tu soulèves plus lourd et en sécurité.</small></div><div><span>⚙️</span><b>Machines ensuite</b><small>Guidées, elles restent sûres même quand la fatigue monte.</small></div><div><span>🎯</span><b>Isolation à la fin</b><small>Curls, élévations, mollets : pour finir le muscle.</small></div><div><span>🧱</span><b>Gainage et cardio pour conclure</b><small>Ils fatiguent le tronc, dont tu as besoin pour les charges lourdes. Sauf 5 min d\'échauffement cardio au début.</small></div></div>';}
+A.ordWhy=function(){var s=curS(),P=ordPlan(s);openBS('<h3>✨ L\'ordre idéal</h3><p class="plabel" style="font-weight:600">Les exercices déjà commencés restent en haut.</p>'+ordListHTML(s.list,P.order)+ordWhyHTML()+'<button class="cta press" data-act="ordApply">Appliquer cet ordre</button><button class="cta alt press" data-act="ordSkip2">Garder mon ordre</button>');};
+A.ordSkip2=function(){closeBS();A.ordSkip();};
+function ordEdHTML(W){if(!W.ex||W.ex.length<3)return "";var id=idealIdx(W.ex);if(id.every(function(v,i){return v===i;}))return '<p class="ord-ok">✓ Tes exercices sont dans l\'ordre idéal</p>';return '<button class="ord-ed press" data-act="ordEd"><span>✨</span><span class="grow"><b>Ranger dans l\'ordre idéal</b><small>Gros mouvements d\'abord, isolation et gainage à la fin</small></span>'+IC.chev+'</button>';}
+A.ordEd=function(){var W=st.wk[ui.editWk];if(!W)return;var id=idealIdx(W.ex),old=W.ex.slice(),y=sheetA.scrollTop;
+  rowFlip("#erlist",".er",old.map(function(x){return x.id;}),function(){W.ex=id.map(function(i){return old[i];});ui.exp=-1;save();renderEditor();sheetA.scrollTop=y;},id.map(function(i){return old[i].id;}));
+  buzz([10,40,10,40,20]);toast("✨ Séance rangée dans l'ordre idéal",function(){var W2=st.wk[ui.editWk];if(!W2)return;W2.ex=old;save();renderEditor();});};
 
 /* ================= NUTRITION ================= */
 // valeurs moyennes pour 100 g (ou 100 ml) · u = portion par défaut en g · ul = nom de la portion
