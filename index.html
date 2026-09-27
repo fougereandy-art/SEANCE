@@ -28,7 +28,7 @@
 <title>FIT KEEF</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
 <style>
 :root{
   --bg:#F2F3F7;--glass:rgba(255,255,255,.72);--card:#FFFFFF;--card2:#ECEEF3;--card3:#E1E4EB;--line:rgba(20,24,36,.08);
@@ -490,6 +490,8 @@ button.chip[aria-pressed="true"]{background:var(--text);color:var(--bg)}
 #splash.out{pointer-events:none;animation:spFade .6s cubic-bezier(.4,0,.2,1) .15s forwards}
 @keyframes spFade{to{opacity:0;visibility:hidden}}
 #splash.skip{animation:spFade .3s linear forwards}
+#splash:not(.go),#splash:not(.go) *{animation-play-state:paused!important}
+.sp-np{position:absolute;inset:0;width:100%;height:100%;opacity:0;pointer-events:none}.sp-np-t{inset:auto;left:0;top:0;width:300px;height:auto;margin:0;font-size:2px;line-height:1;color:transparent;overflow:hidden}
 body.intro .app,body.intro .tabs{opacity:0}
 body.intro .app{transform:scale(.94) translateY(16px)}
 body.intro .tabs{transform:translateX(-50%) translateY(30px)}
@@ -1990,12 +1992,13 @@ body.intro #ctop{opacity:0}
 .ord-ed svg{width:16px;height:16px;color:var(--muted)}
 .ord-ok{margin:0 4px 10px;font-size:12px;font-weight:800;color:color-mix(in srgb,var(--c-vert) 70%,var(--text))}
 @media (prefers-reduced-motion:reduce){.ord-ic{animation:none}}
+.upd-bar{white-space:nowrap;position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 10px);z-index:300;display:flex;align-items:center;gap:8px;padding:10px 14px 10px 12px;border:0;border-radius:99px;background:rgba(20,23,33,.92);color:#fff;font:700 13px Manrope,system-ui,sans-serif;box-shadow:0 10px 30px rgba(0,0,0,.35);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);transform:translate(-50%,-140%);transition:transform .6s cubic-bezier(.16,1,.3,1)}.upd-bar.in{transform:translate(-50%,0)}.upd-bar em{font-style:normal;padding:5px 10px;border-radius:99px;background:#6C8CFF}
 </style>
-<script src="config.js?v=3"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.1/dist/umd/supabase.js"></script>
 </head>
 <body class="intro">
-<div id="splash" aria-hidden="true"><script>if(navigator.standalone||matchMedia("(display-mode: standalone)").matches)document.getElementById("splash").className="sp-ready"</script><div class="sp-stage"><div class="sp-mark" id="spMark"><span class="sp-glow"></span><span class="sp-wave"></span><svg class="sp-l" viewBox="0 0 100 100" style="--k:0;--r0:-160deg;--r1:-360deg"><path d="M55.37 37.36A13.73 13.73 0 1 1 44.63 37.36" stroke="#FF8F5A" pathLength="1"/></svg><svg class="sp-l" viewBox="0 0 100 100" style="--k:1;--r0:140deg;--r1:360deg"><path d="M55.37 25.81A24.78 24.78 0 1 1 31.59 66.58" stroke="#FFC24B" pathLength="1"/><path d="M26.44 57.66A24.78 24.78 0 0 1 44.63 25.81" stroke="#3DDC97" pathLength="1"/></svg><svg class="sp-l" viewBox="0 0 100 100" style="--k:2;--r0:-120deg;--r1:-360deg"><path d="M49.69 85.52A35.52 35.52 0 0 1 44.63 14.89" stroke="#FF6B6B" pathLength="1"/><path d="M55.37 14.89A35.52 35.52 0 0 1 60.39 83.97" stroke="#3DDC97" pathLength="1"/></svg><svg class="sp-l" viewBox="0 0 100 100" style="--k:3;--r0:100deg;--r1:360deg"><path d="M55.37 3.74A46.57 46.57 0 1 1 44.63 3.74" stroke="#6C8CFF" pathLength="1"/></svg><i class="sp-dot"></i></div><div class="sp-word"><span class="sp-w"><i style="animation-delay:1.00s">F</i><i style="animation-delay:1.04s">I</i><i style="animation-delay:1.09s">T</i></span><span class="sp-w k"><i style="animation-delay:1.18s">K</i><i style="animation-delay:1.22s">E</i><i style="animation-delay:1.27s">E</i><i style="animation-delay:1.31s">F</i></span></div></div></div>
+<div id="splash" class="sp-ready" aria-hidden="true"><div class="sp-stage"><div class="sp-mark" id="spMark"><span class="sp-glow"></span><span class="sp-wave"></span><svg class="sp-l" viewBox="0 0 100 100" style="--k:0;--r0:-160deg;--r1:-360deg"><path d="M55.37 37.36A13.73 13.73 0 1 1 44.63 37.36" stroke="#FF8F5A" pathLength="1"/></svg><svg class="sp-l" viewBox="0 0 100 100" style="--k:1;--r0:140deg;--r1:360deg"><path d="M55.37 25.81A24.78 24.78 0 1 1 31.59 66.58" stroke="#FFC24B" pathLength="1"/><path d="M26.44 57.66A24.78 24.78 0 0 1 44.63 25.81" stroke="#3DDC97" pathLength="1"/></svg><svg class="sp-l" viewBox="0 0 100 100" style="--k:2;--r0:-120deg;--r1:-360deg"><path d="M49.69 85.52A35.52 35.52 0 0 1 44.63 14.89" stroke="#FF6B6B" pathLength="1"/><path d="M55.37 14.89A35.52 35.52 0 0 1 60.39 83.97" stroke="#3DDC97" pathLength="1"/></svg><svg class="sp-l" viewBox="0 0 100 100" style="--k:3;--r0:100deg;--r1:360deg"><path d="M55.37 3.74A46.57 46.57 0 1 1 44.63 3.74" stroke="#6C8CFF" pathLength="1"/></svg><i class="sp-dot"></i><img class="sp-np" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2Ij48ZyBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjQ2LjAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+PHBhdGggZD0iTTU0OC4wIDIwMi4xQTMxMi4wIDMxMi4wIDAgMSAxIDQ3Ni4wIDIwMi4xIiBzdHJva2U9IiM2QzhDRkYiLz48cGF0aCBkPSJNNTA5LjkgNzUwLjBBMjM4LjAgMjM4LjAgMCAwIDEgNDc2LjAgMjc2LjciIHN0cm9rZT0iI0ZGNkI2QiIvPjxwYXRoIGQ9Ik01NDguMCAyNzYuN0EyMzguMCAyMzguMCAwIDAgMSA1ODEuNiA3MzkuNiIgc3Ryb2tlPSIjM0REQzk3Ii8+PHBhdGggZD0iTTU0OC4wIDM1MC4wQTE2Ni4wIDE2Ni4wIDAgMSAxIDM4OC42IDYyMy4xIiBzdHJva2U9IiNGRkMyNEIiLz48cGF0aCBkPSJNMzU0LjEgNTYzLjNBMTY2LjAgMTY2LjAgMCAwIDEgNDc2LjAgMzUwLjAiIHN0cm9rZT0iIzNEREM5NyIvPjxwYXRoIGQ9Ik01NDguMCA0MjcuM0E5Mi4wIDkyLjAgMCAxIDEgNDc2LjAgNDI3LjMiIHN0cm9rZT0iI0ZGOEY1QSIvPjwvZz48Y2lyY2xlIGN4PSI1MTIiIGN5PSI1MTIiIHI9IjQ0LjAiIGZpbGw9IiNFNkU5RjAiLz48L3N2Zz4=" alt="" width="136" height="136"></div><p class="sp-np sp-np-t">FIT KEEF — ton coach muscu, cardio et nutrition. Séances, programme, progression, records, badges, potes et duels. FIT KEEF — ton coach muscu, cardio et nutrition. Séances, programme, progression, records, badges, potes et duels. </p><div class="sp-word"><span class="sp-w"><i style="animation-delay:1.00s">F</i><i style="animation-delay:1.04s">I</i><i style="animation-delay:1.09s">T</i></span><span class="sp-w k"><i style="animation-delay:1.18s">K</i><i style="animation-delay:1.22s">E</i><i style="animation-delay:1.27s">E</i><i style="animation-delay:1.31s">F</i></span></div></div></div>
+<script src="config.js?v=3"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.1/dist/umd/supabase.js"></script>
 <div class="amb" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
 <div class="grain" aria-hidden="true"></div>
 <main class="app" id="view"></main>
@@ -4708,10 +4711,15 @@ boot();
   var reveal=function(){if(!document.body.classList.contains("intro"))return;document.body.classList.add("introing");requestAnimationFrame(function(){document.body.classList.remove("intro");setTimeout(function(){document.body.classList.remove("introing");},1300);});};
   var out=function(fast){if(done)return;done=true;sp.classList.add(fast||rm?"skip":"out");setTimeout(reveal,fast||rm?0:120);setTimeout(function(){if(sp.parentNode)sp.parentNode.removeChild(sp);},fast||rm?400:900);};
   sp.addEventListener("click",function(){out(true);});
-  setTimeout(out,rm?500:2100);
+  var went=false,go=function(){if(went)return;went=true;sp.classList.add("go");setTimeout(out,rm?500:2100);};
+  requestAnimationFrame(function(){requestAnimationFrame(go);});setTimeout(go,400);
 })();
 setTimeout(function(){if(SB&&!USER)return;if(typeof maybeOnb==="function"&&(maybeOnb()||maybeMaj()))return;if($("onb"))return;if(!st.seen)help();else{checkRewards();setTimeout(maybeBilan,1500);}},3600);
-if("serviceWorker" in navigator&&location.protocol==="https:"&&/github\.io$/.test(location.hostname)){navigator.serviceWorker.register("sw.js").catch(function(){});}
+if("serviceWorker" in navigator&&location.protocol==="https:"&&/github\.io$/.test(location.hostname)){navigator.serviceWorker.register("sw.js").catch(function(){});
+  var updShow=function(){if($("updBar"))return;var b=document.createElement("button");b.id="updBar";b.className="upd-bar press";b.innerHTML="<span>✨</span><b>Nouvelle version prête</b><em>Recharger</em>";b.onclick=function(){b.disabled=true;var go=function(){location.reload();};if(window.caches)caches.keys().then(function(ks){return Promise.all(ks.map(function(k){return caches.open(k).then(function(c){return c.delete("./__upd");});}));}).then(go,go);else go();};document.body.appendChild(b);requestAnimationFrame(function(){b.classList.add("in");});};
+  var updChk=function(){if(window.caches)caches.match("./__upd").then(function(m){if(m)updShow();}).catch(function(){});};
+  navigator.serviceWorker.addEventListener("message",function(e){if(e.data&&e.data.t==="upd")updShow();});try{navigator.serviceWorker.startMessages();}catch(e){}
+  setTimeout(updChk,4500);document.addEventListener("visibilitychange",function(){if(!document.hidden)setTimeout(updChk,1500);});}
 })();
 </script>
 </body>
