@@ -1,4 +1,4 @@
-const C="seance-v19",CI="fk-img-v1";const F=["./","./index.html","./imgs.js?v=3","./config.js","./manifest.webmanifest","./icon-192.png?v=3","./icon-512.png?v=3","./apple-touch-icon.png?v=3"];
+const C="seance-v20",CI="fk-img-v1";const F=["./","./index.html","./imgs.js?v=3","./config.js","./manifest.webmanifest","./icon-192.png?v=3","./icon-512.png?v=3","./apple-touch-icon.png?v=3"];
 self.addEventListener("install",e=>{e.waitUntil(caches.open(C).then(c=>Promise.all(F.map(u=>c.add(u).catch(()=>{})))));self.skipWaiting();});
 self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C&&x!==CI).map(x=>caches.delete(x)))).then(()=>self.clients.claim()));});
 function warmImgs(){return caches.open(CI).then(c=>fetch("./img/list.json",{cache:"no-store"}).then(r=>r.json()).then(L=>{let i=0;const next=()=>{if(i>=L.length)return Promise.resolve();const u="./"+L[i++];return c.match(u).then(m=>m||c.add(u).catch(()=>{})).then(next);};return Promise.all([next(),next(),next(),next()]);})).catch(()=>{});}
