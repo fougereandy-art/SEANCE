@@ -3142,6 +3142,42 @@ body.ovl #view *,body.ovl #view *::before,body.ovl #view *::after{animation-play
 .bk-go{flex:none;border:0;border-radius:999px;padding:9px 16px;font:inherit;font-weight:800;font-size:14px;background:var(--accent);color:var(--onacc,#fff)}
 .bk-go:disabled{opacity:.5}
 .bk-ok{flex:none;width:34px;text-align:center;color:var(--c-vert);font-weight:900}
+/* m17 : allègement pour iOS — moins de calques GPU et plus de flou permanent sous des fenêtres invisibles */
+#view{will-change:auto!important}
+.bs,.modal{transition:opacity .4s var(--ease),visibility 0s linear .4s!important}
+.bs.open,.modal.open{transition:opacity .4s var(--ease),visibility 0s!important}
+.bs:not(.open),.modal:not(.open){visibility:hidden;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+#ctop:not(.on),#net:not(.show){-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+.ro,.sty,.iconbtn,.week,.fd-day{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+.fd-day{background:color-mix(in srgb,var(--card) 96%,transparent)!important}
+.thumb img+img{animation:none!important;opacity:0!important}
+.grain{display:none!important}
+.amb{position:absolute!important;inset:auto!important;left:0!important;right:0!important;top:0!important;height:100vh!important;height:100lvh!important}
+.rc-t::after,.ep-pr::after,.pod-b::after,.coin3d .face::before,.startbtn::after{animation-iteration-count:1!important}
+.ep-rays,.ep-plate,.pod-spot::before,.crown,.moon,.pc-coin,.story.hot .st-ring,.story.hot .st-ring .av,.st-fire,.ht .eb i,.rt-row.now .rt-node::after,.flame{animation:none!important}
+.bdc-coin::after,.pg-pick::after,.exprog i.cur::after{animation-iteration-count:1!important}
+.ep-hero::after{animation-fill-mode:none!important}
+.fl-big::before{animation:none!important}
+/* pièces plates hors des fenêtres de célébration : la pièce 3D tournante = une dizaine de calques 3D filtrés par pièce, et le fil des potes en affichait des dizaines */
+.coin3d:not(.pop){perspective:none!important;filter:none!important}
+.coin3d:not(.pop) .spin{animation:none!important;transform:none!important;transform-style:flat!important;will-change:auto!important}
+.coin3d:not(.pop) .lay,.coin3d:not(.pop) .face.back{display:none!important}
+.coin3d:not(.pop) .face{transform:none!important}
+.coin3d:not(.pop) .face::before{animation:none!important}
+.coin3d:not(.pop) .em{filter:none!important}
+/* fil des potes : rien d'animé en continu, les publications hors écran ne sont pas dessinées */
+.story{animation:none!important}
+.post .ep-rays{display:none!important}
+.post .ep-hero::after{animation:none!important}
+.fd-more{display:block;width:100%;margin:6px 0 14px;padding:15px;border:0;border-radius:18px;background:var(--card2);color:var(--text);font:inherit;font-weight:800;font-size:15px}
+/* cartes d'exercice : la perspective 3D seulement pendant qu'on appuie (sinon chaque carte devient un calque GPU) */
+.ex{transform:none}
+.ex.tilting{transform:perspective(800px) rotateX(var(--rx)) rotateY(var(--ry))}
+/* fiche d'exercice ouverte : l'écran derrière (entièrement caché) n'est plus dessiné */
+body.shA #view,body.shA .tabs,body.shA .amb{visibility:hidden}
+/* après deux plantages de suite : mode léger 24 h (plus aucune animation en continu, plus aucun flou) */
+html.safe *,html.safe *::before,html.safe *::after{animation-duration:.001s!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:0s!important;transition-delay:0s!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;will-change:auto!important}
+html.safe .tabs{background:var(--card)!important}
 </style>
 </head>
 <body class="intro">
@@ -7191,18 +7227,18 @@ document.addEventListener("visibilitychange",function(){if(document.hidden||!SB|
 /* ---------- sauvegardes quotidiennes : liste et récupération ---------- */
 function svLevel(S){var keep=st;try{st=S;return levelOf(totalXP(computeAll())).n;}catch(e){return 0;}finally{st=keep;}}
 function svDay(d,low){try{var t=parse(d).toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long"});return low?t:t.charAt(0).toUpperCase()+t.slice(1);}catch(e){return d;}}
-function bkOpts(day){return {tT:localTs(),tO:Date.parse(day)+864e5};}
+function bkOpts(day,D){var t=Date.parse(day)||0;try{if(D){Object.keys(D.sess||{}).forEach(function(d){var m=+(D.sess[d]&&D.sess[d].mt)||0;if(m>t)t=m;});Object.keys(D.del||{}).forEach(function(d){if(+D.del[d]>t)t=+D.del[d];});}}catch(e){}return {tT:localTs(),tO:t};}   /* « heure » d'une sauvegarde : sa dernière modification connue */
 function bkFetch(lim){if(!SB||!USER)return Promise.reject(new Error("hors ligne"));var uid=USER.id;
   return SB.from("fitkeef_backups").select("day,data").eq("user_id",uid).order("day",{ascending:false}).limit(lim||31).then(function(r){
     if(r.error)throw r.error;if(!USER||USER.id!==uid)throw new Error("compte");
     var rows=(r.data||[]).filter(function(x){return x&&x.day&&x.data&&x.data.v===4&&x.data.sess;}),cur=svCount(st);
-    rows.forEach(function(x){x.n=svCount(x.data);var m=svMerge(svCp(st),x.data,bkOpts(x.day));x.gain=Math.max(0,svCount(m)-cur);});
+    rows.forEach(function(x){x.n=svCount(x.data);var m=svMerge(svCp(st),x.data,bkOpts(x.day,x.data));x.gain=Math.max(0,svCount(m)-cur);});
     SV.bk=rows;return rows;});}
 function bkAuto(){if(!SB||!USER)return;var k="fk:bk17:"+USER.id,v=null;try{v=localStorage.getItem(k);}catch(e){}
   if(v==="done"||(v&&Date.now()<+v))return;
   bkFetch(31).then(function(rows){var best=null;rows.forEach(function(x){if(x.gain>0&&(!best||x.gain>best.gain||(x.gain===best.gain&&x.day>best.day)))best=x;});
     if(!best){try{localStorage.setItem(k,"done");}catch(e){}return;}
-    var o=bkOpts(best.day);o.takeO=best.n>svCount(st);
+    var o=bkOpts(best.day,best.data);o.takeO=best.n>svCount(st);
     var lv0=svLevel(st),lv1=svLevel(svMerge(svCp(st),best.data,o));
     showModal('<div class="sv-i">🛟</div><h2 style="text-align:center">On a retrouvé ta progression</h2>'
       +'<p style="text-align:center">Ta sauvegarde du <b>'+esc(svDay(best.day,true))+'</b> contient <b>'+best.gain+' séance'+(best.gain>1?"s":"")+'</b> qui ne '+(best.gain>1?"sont":"est")+' plus dans l\'appli.'+(lv1>lv0?' En la récupérant, tu repasses <b>niveau '+lv1+'</b>.':'')+'</p>'
@@ -7213,13 +7249,13 @@ function bkAuto(){if(!SB||!USER)return;var k="fk:bk17:"+USER.id,v=null;try{v=loc
   }).catch(function(){});}
 A.bkLater=function(){try{localStorage.setItem("fk:bk17:"+USER.id,String(Date.now()+864e5));}catch(e){}closeModal();};
 A.bkGo=function(day,b){var x=(SV.bk||[]).filter(function(r){return r.day===day;})[0];if(!x||!USER)return;if(b)b.disabled=true;
-  var lv0=svLevel(st),o=bkOpts(day);o.takeO=x.n>svCount(st);
+  var lv0=svLevel(st),o=bkOpts(day,x.data);o.takeO=x.n>svCount(st);
   svMerge(st,x.data,o);
   try{stFix();}catch(e){}
   var R=computeAll(),lv=levelOf(totalXP(R)).n;st.lvlSeen=Math.max(+st.lvlSeen||1,lv);try{st.bSeen=earnedBadges(R);}catch(e){}
   svTomb(true);SV.cloudN=-1;save();try{localStorage.setItem("fk:bk17:"+USER.id,"done");}catch(e){}
   clearTimeout(PUSH_T);DIRTY=true;if(PULL_OK)cloudPush();
-  (SV.bk||[]).forEach(function(r){var m=svMerge(svCp(st),r.data,bkOpts(r.day));r.gain=Math.max(0,svCount(m)-svCount(st));});
+  (SV.bk||[]).forEach(function(r){var m=svMerge(svCp(st),r.data,bkOpts(r.day,r.data));r.gain=Math.max(0,svCount(m)-svCount(st));});
   if($("modal").classList.contains("open"))closeModal();
   if($("bs").classList.contains("open")&&document.querySelector("#bsin .bk-l"))$("bsin").innerHTML='<div class="grab"></div>'+bkHTML(SV.bk);
   render(false);
@@ -7236,7 +7272,34 @@ A.bkList=function(){if($("modal").classList.contains("open"))closeModal();openBS
 var _acc17=A.account;A.account=function(){_acc17.apply(this,arguments);try{var b=document.querySelector('#bsin [data-act="exportFile"]');
   if(b&&!document.querySelector('#bsin [data-act="bkList"]'))b.insertAdjacentHTML("beforebegin",'<button class="acc-i press" data-act="bkList"><span class="acc-ic">🛟</span><span class="grow">Mes sauvegardes</span>'+IC.chev+'</button>');}catch(e){}};
 var _stU17=startUser;startUser=function(u,a){var p=_stU17(u,a);Promise.resolve(p).then(function(){setTimeout(bkAuto,1500);});return p;};
-APPV="17";
+APPV="17.1";
+/* ---------- stabilité iOS ---------- */
+/* changement d'onglet : pas de glissement animé sur les pages très longues (gros pic de mémoire graphique sur iPhone) */
+var _swp17=swapTab;swapTab=function(tab,dir){var v=$("view");if(!v||!v.animate)return _swp17(tab,dir);
+  v.animate=function(k,o){if(document.documentElement.scrollHeight>window.innerHeight*2.2)return null;return Element.prototype.animate.call(v,k,o);};
+  try{return _swp17(tab,dir);}finally{try{delete v.animate;}catch(e){}}};
+/* journal des dernières actions : si l'appli se ferme toute seule, le diagnostic dira ce qui s'est passé juste avant */
+var BC={k:"fk:bc",prev:null};try{BC.prev=JSON.parse(localStorage.getItem(BC.k)||"null");}catch(e){}
+function bcPush(a,v){try{var L=JSON.parse(localStorage.getItem(BC.k)||"[]");if(!Array.isArray(L))L=[];
+  L.push({t:Date.now(),a:String(a).slice(0,24),v:v==null?"":String(v).slice(0,24),tab:ui.tab,ex:ui.ex,n:document.getElementsByTagName("*").length,h:Math.round(document.documentElement.scrollHeight)});
+  if(L.length>8)L=L.slice(-8);localStorage.setItem(BC.k,JSON.stringify(L));}catch(e){}}
+document.addEventListener("click",function(e){var b=e.target&&e.target.closest&&e.target.closest("[data-act]");if(b)bcPush(b.dataset.act,b.dataset.v);},true);
+var _go17=go;go=function(t){bcPush("onglet",t);return _go17(t);};
+try{if(typeof RES!=="undefined"&&RES&&RES.crash&&Array.isArray(BC.prev)&&BC.prev.length){var bcT=BC.prev.slice(-5).map(function(x){var s=Math.round((RES.h.t-x.t)/1000);return x.a+(x.v?"("+x.v+")":"")+" "+x.tab+(x.ex>=0?"/ex"+x.ex:"")+" · "+x.n+" éléments · page "+x.h+" px"+(s>=0?" · "+s+" s avant":"");}).join(" → ");
+  setTimeout(function(){try{errLog("avant le plantage","Dernières actions : "+bcT,"","");}catch(e){}},1500);}}catch(e){}
+try{localStorage.removeItem(BC.k);}catch(e){}
+/* fil d'activité : 12 publications à la fois (avec beaucoup de potes, tout afficher d'un coup faisait exploser la mémoire graphique) */
+var FDN={n:12};
+var _fh17=feedHTML;feedHTML=function(){if(!FEED.rows||FEED.rows.length<=FDN.n)return _fh17();var all=FEED.rows,h;FEED.rows=all.slice(0,FDN.n);
+  try{h=_fh17();}finally{FEED.rows=all;}return h+'<button class="fd-more press" data-act="fdMore">Voir plus d\'activité · '+(all.length-FDN.n)+'</button>';};
+A.fdMore=function(){FDN.n+=12;var y=window.scrollY;render(false);window.scrollTo(0,y);buzz(8);};
+(function(){var sh=$("sheetA");if(!sh||!window.MutationObserver)return;var t=0;
+  new MutationObserver(function(){clearTimeout(t);if(sh.classList.contains("open"))t=setTimeout(function(){if(sh.classList.contains("open"))document.body.classList.add("shA");},750);else document.body.classList.remove("shA");}).observe(sh,{attributes:true,attributeFilter:["class"]});})();
+/* plantage : on ne rouvre pas l'écran des potes directement ; deux plantages de suite = mode léger pendant 24 h */
+var SAFE=0;try{SAFE=+(localStorage.getItem("fk:safe")||0);}catch(e){}
+try{if(typeof RES!=="undefined"&&RES&&RES.crash){if(RES.h&&RES.h.tab==="f")RES.h.tab="s";
+  if(RES.loop){SAFE=Date.now()+864e5;try{localStorage.setItem("fk:safe",String(SAFE));}catch(e){}setTimeout(function(){try{toast("Mode léger activé pour 24 h, pour que l'appli reste stable");}catch(e){}},2500);}}}catch(e){}
+if(SAFE>Date.now())document.documentElement.classList.add("safe");
 
 try{boot();}catch(e){bootFail(e);}
 if(RES)setTimeout(resumeApply,120);
