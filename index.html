@@ -3423,6 +3423,16 @@ html.safe .tabs{background:var(--card)!important}
 .fin-fx small{display:block;margin-top:1px;font-size:12px;font-weight:700;opacity:.8;line-height:1.3}
 .fin-fxi{flex:none;width:32px;height:32px;border-radius:11px;display:grid;place-items:center;background:rgba(255,255,255,.16);font-size:16px}
 .fin-fx button{flex:none;padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.18);color:inherit;font-size:12px;font-weight:800;white-space:nowrap}
+
+/* 18.6 : en-tête compact opaque qui glisse (plus de flou) */
+#ctop{display:flex!important;align-items:center;justify-content:flex-start;gap:9px;height:calc(50px + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) 18px 0;background:color-mix(in srgb,var(--accent) 6%,var(--bg))!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;border-bottom:0!important;opacity:1;transform:translate3d(0,-100%,0);box-shadow:none;transition:transform .42s cubic-bezier(.2,.9,.25,1),box-shadow .3s ease;will-change:transform;overflow:hidden}
+#ctop.on{transform:none;box-shadow:0 1px 0 var(--line),0 12px 26px -20px rgba(0,0,0,.4);pointer-events:auto;cursor:pointer}
+body.intro #ctop{transform:translate3d(0,-100%,0)}
+#ctop b{min-width:0;font-family:var(--disp);font-size:16.5px;font-weight:800;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#ctop .ct-s{flex:none;font-size:12.5px;font-weight:800;color:var(--muted);white-space:nowrap}
+#ctop .ct-dot{flex:none;width:10px;height:10px;border-radius:50%}
+#ctop .ct-r{flex:none;width:28px;height:28px;margin-left:auto}
+#ctop .ct-bar{position:absolute;left:0;bottom:0;height:3px;border-radius:0 3px 3px 0;transition:width .5s var(--ease)}
 </style>
 </head>
 <body class="intro">
@@ -8553,6 +8563,20 @@ var _rx185=renderEx;renderEx=function(full){_rx185.apply(this,arguments);try{var
 var _st185=startTimer;startTimer=function(sec,sub){try{var s=curS();if(lastSet(s)!=null)sub="Puis : dernière série 🏁";}catch(e){}return _st185.call(this,sec,sub);};
 var _rs185=renderSeance;renderSeance=function(anim){_rs185.apply(this,arguments);try{var s=curS(),p=lastSet(s);if(p==null||(typeof kbOf==="function"&&kbOf(s)))return;var go=document.querySelector("#view .ss-go");if(!go)return;
   go.classList.add("ss-last");var b=go.querySelector("b"),em=go.querySelector("em");if(b)b.textContent="🏁 Dernière série !";if(em)em.textContent=lib(s.list[p].id).n;}catch(e){}};
+
+/* ================= 18.6 : en-tête compact net (sans flou) ================= */
+APPV="18.6";
+function ctopFill(){var ct=$("ctop");if(!ct)return;var I=headInfo();if(!I)return;var h="";
+  if(ui.tab==="s"){var s=curS();
+    if(s&&!s.rest&&s.list&&s.list.length){var S=sStats(s),p=S.tot?Math.min(1,S.dn/S.tot):0,c=col(s.color||"violet");
+      h='<span class="ct-dot" style="background:'+c+'"></span><b>'+esc(s.name)+'</b><span class="ct-s">'+(s.done?"Faite ✓":S.dn+"/"+S.tot+" séries")+'</span>'
+       +'<svg class="ct-r" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="14" style="fill:none;stroke:var(--line);stroke-width:5"/>'+(p>0?'<circle cx="18" cy="18" r="14" pathLength="100" transform="rotate(-90 18 18)" style="fill:none;stroke:'+c+';stroke-width:5;stroke-linecap:round;stroke-dasharray:'+(p*100).toFixed(1)+' 100"/>':'')+'</svg>'
+       +'<i class="ct-bar" style="background:'+c+';width:'+(p*100).toFixed(1)+'%"></i>';}
+    else h='<span class="ct-dot" style="background:var(--muted)"></span><b>Repos</b><span class="ct-s">'+esc(I.eb)+'</span>';}
+  else h='<b>'+esc(I.t)+'</b><span class="ct-s">'+esc(I.eb)+'</span>';
+  ct.innerHTML=h;ct.setAttribute("role","button");ct.setAttribute("aria-label","Remonter en haut");}
+var _dh186=decorateHead;decorateHead=function(anim){_dh186.apply(this,arguments);try{ctopFill();}catch(e){}};
+document.addEventListener("click",function(e){if(e.target.closest&&e.target.closest("#ctop.on")){window.scrollTo({top:0,behavior:"smooth"});buzz(6);}});
 
 try{boot();}catch(e){bootFail(e);}
 if(RES)setTimeout(resumeApply,120);
