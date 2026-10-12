@@ -7642,12 +7642,12 @@ A.m18Diet=function(v){st.set.diet=v;save();m18Cats();m18Quick();buzz(8);var y=wi
   toast(v==="vege"?"Alimentation végétarienne : aliments adaptés":v==="vegan"?"Alimentation vegan : aliments adaptés":"Tous les aliments");};
 
 /* ---------- nouveautés : présentées une fois aux comptes existants ---------- */
-var WN18=[["🔍","Chaque muscle en détail","Dans Progrès, touche un muscle sur la carte : ses parties (3 fessiers, 3 têtes d'épaule, haut/bas des pecs…) et leurs meilleurs exos"],["⭐","Tes propres exercices","Danse, mobilité, ta machine… tout en haut de « Ajouter un exercice »"],["🔁","Variantes","La même machine utilisée autrement, avec ses propres charges et records"],["📝","Notes perso","Sur chaque exercice, bien visibles pendant ta séance"],["🏋️","Avec ou sans charge","Ajoute du lest à n'importe quel exercice"],["⚙️","Machines ou poids libres","Le programme tout prêt s'adapte à ce que tu préfères"],["🥗","Végé & vegan","Tofu, tempeh, seitan… et un réglage pour ton alimentation"],["💊","Compléments","Vitamine D, B12, fer… coche-les chaque jour dans Nutrition"]];
+var WN18=[["🔍","Chaque muscle en détail","Dans Progrès, touche un muscle sur la carte : ses parties (3 fessiers, 3 têtes d'épaule, haut/bas des pecs…) et leurs meilleurs exos"],["🥪","Plus de 200 nouveaux aliments","Jambon de poulet, fromages, viennoiseries, sauces, plats du quotidien… et la recherche comprend « oeuf », « knacki », « coca »"],["⭐","Tes propres exercices","Danse, mobilité, ta machine… tout en haut de « Ajouter un exercice »"],["🔁","Variantes","La même machine utilisée autrement, avec ses propres charges et records"],["📝","Notes perso","Sur chaque exercice, bien visibles pendant ta séance"],["🏋️","Avec ou sans charge","Ajoute du lest à n'importe quel exercice"],["⚙️","Machines ou poids libres","Le programme tout prêt s'adapte à ce que tu préfères"],["🥗","Végé & vegan","Tofu, tempeh, seitan… et un réglage pour ton alimentation"],["💊","Compléments","Vitamine D, B12, fer… coche-les chaque jour dans Nutrition"]];
 function wn18HTML(){return '<div class="m18-wn"><div class="m18-wi">✨</div><h3>Nouveau dans FIT KEEF</h3><p class="m18-p">Merci pour vos retours : voici ce qui arrive.</p><div class="m18-wl">'+WN18.map(function(x,i){return '<div style="--d:'+(0.08+i*0.05)+'s"><span>'+x[0]+'</span><span class="grow"><b>'+x[1]+'</b><small>'+x[2]+'</small></span></div>';}).join("")+'</div><button class="cta press" data-act="closeBS">Super, merci !</button></div>';}
-function wn18(){try{if(localStorage.getItem("fk:wn182"))return;}catch(e){return;}var t=0,iv=setInterval(function(){t++;if(t>80){clearInterval(iv);return;}
-  if(!USER||!PULL_OK)return;if(typeof isNewUser==="function"&&isNewUser()){clearInterval(iv);try{localStorage.setItem("fk:wn182","1");}catch(e){}return;}
+function wn18(){try{if(localStorage.getItem("fk:wn183"))return;}catch(e){return;}var t=0,iv=setInterval(function(){t++;if(t>80){clearInterval(iv);return;}
+  if(!USER||!PULL_OK)return;if(typeof isNewUser==="function"&&isNewUser()){clearInterval(iv);try{localStorage.setItem("fk:wn183","1");}catch(e){}return;}
   if(document.body.classList.contains("intro")||$("onb")||($("modal")&&$("modal").classList.contains("open"))||($("sheetA")&&$("sheetA").classList.contains("open"))||($("bs")&&$("bs").classList.contains("open"))||($("auth")&&$("auth").classList.contains("show"))||$("lvup"))return;
-  clearInterval(iv);try{localStorage.setItem("fk:wn182","1");}catch(e){}openBS(wn18HTML());},1500);}
+  clearInterval(iv);try{localStorage.setItem("fk:wn183","1");}catch(e){}openBS(wn18HTML());},1500);}
 var _stU18=startUser;startUser=function(u,a){var p=_stU18(u,a);Promise.resolve(p).then(function(){setTimeout(wn18,5000);});return p;};
 
 
@@ -7812,6 +7812,249 @@ A.g3AddTo=function(k,b){var id=b&&b.dataset.id,W=st.wk[k];if(!id||!W)return;var 
 /* programmes fessiers : chaque séance bas du corps travaille aussi le moyen fessier */
 var _pw181=PROG_WK;PROG_WK=function(){var W=_pw181.apply(this,arguments);try{var sw=function(w,a,b){if(!w||!w.ex)return;if(w.ex.some(function(e){return e.id===b;}))return;w.ex.forEach(function(e){if(e.id===a)e.id=b;});};
   sw(W.fjB,"adduc","abducp");sw(W.basF2,"adduc","abdside");}catch(e){}return W;};
+
+/* ================= 18.3 : plus d'aliments ================= */
+APPV="18.3";
+/* [emoji, nom, kcal, prot, gluc, lip (pour 100 g), portion g, nom de portion, régime, placé après, mots-clés]
+   régime : "nv" = contient viande/poisson (exclu végé et vegan) · "nvg" = produit animal (exclu vegan) */
+var FX={
+"Viandes & poissons":[
+ ["🍗","Haut de cuisse de poulet (sans peau, cuit)",180,25,0,9,100,"","","Blanc de poulet cuit","pilon"],
+ ["🍗","Cuisse de poulet rôtie (avec peau)",230,25,0,14,140,"1 cuisse","","Blanc de poulet cuit","poulet roti"],
+ ["🍗","Jambon de poulet",105,21.5,1,1.8,30,"1 tranche","","Blanc de poulet cuit","blanc de poulet en tranches charcuterie"],
+ ["🦃","Jambon de dinde",105,21,1,2,30,"1 tranche","","Escalope de dinde cuite","blanc de dinde en tranches charcuterie"],
+ ["🥩","Steak haché 20 % (cru)",250,17,0,20,100,"1 steak","","Steak haché 15 % (cru)","boeuf viande hachee"],
+ ["🥩","Entrecôte cuite",220,26,0,13,200,"","","Rumsteck cuit","boeuf cote de boeuf"],
+ ["🥩","Bavette cuite",170,27,0,7,150,"","","Rumsteck cuit","boeuf"],
+ ["🥩","Escalope de veau cuite",140,29,0,2.5,150,"","","Rumsteck cuit","veau"],
+ ["🍖","Côte de porc cuite",210,28,0,11,150,"1 côte","","Rumsteck cuit","porc"],
+ ["🍖","Filet mignon de porc cuit",150,28,0,4,150,"","","Rumsteck cuit","porc"],
+ ["🍖","Gigot d'agneau cuit",220,27,0,12,150,"","","Rumsteck cuit","agneau mouton"],
+ ["🦆","Magret de canard cuit",230,24,0,15,150,"","","Rumsteck cuit","canard"],
+ ["🥓","Jambon cru",240,27,0.5,15,18,"1 tranche","","Jambon blanc","jambon sec bayonne serrano parme charcuterie"],
+ ["🥓","Filet de bacon",125,22,1,4,40,"4 tranches","","Jambon blanc","bacon"],
+ ["🍖","Viande des Grisons / bresaola",160,33,0.5,3,25,"4 tranches","","Jambon blanc","boeuf seche charcuterie"],
+ ["🌶️","Chorizo",440,24,2,38,20,"4 rondelles","","Lardons","charcuterie"],
+ ["🥓","Saucisson sec",410,26,2,34,20,"4 rondelles","","Lardons","charcuterie"],
+ ["🥫","Pâté / rillettes",340,14,1.5,31,30,"1 tartine","","Lardons","terrine charcuterie"],
+ ["🌭","Merguez cuite",300,15,1,26,50,"1 merguez","","Saucisse cuite",""],
+ ["🌭","Chipolata cuite",280,15,1,24,50,"1 chipolata","","Saucisse cuite","chipo"],
+ ["🌭","Saucisse de Strasbourg",270,12,1.5,24,35,"1 saucisse","","Saucisse cuite","knacki hot dog"],
+ ["🐟","Thon à l'huile (égoutté)",190,26,0,9.5,110,"1 boîte","","Thon au naturel",""],
+ ["🐟","Steak de thon cuit",150,30,0,3,150,"","","Thon au naturel","thon frais"],
+ ["🐟","Saumon fumé",180,22,0,10,40,"2 tranches","","Saumon cuit",""],
+ ["🐟","Colin / lieu cuit",90,20,0,1,150,"","","Cabillaud cuit","merlu poisson blanc"],
+ ["🐟","Maquereau (en boîte)",210,19,1,14,120,"1 boîte","","Sardines à l'huile","maquereaux"],
+ ["🦀","Surimi",105,7.5,15,1.5,100,"6 bâtonnets","","Crevettes cuites","crabe"],
+ ["🦪","Moules cuites",110,18,4,2.5,200,"","","Crevettes cuites","moules marinieres fruits de mer"],
+ ["🦑","Calamars cuits",100,18,3,1.5,150,"","","Crevettes cuites","encornets"]],
+"Œufs & laitiers":[
+ ["🍳","Omelette nature",155,11,0.5,12,120,"2 œufs","","Blanc d'œuf","oeufs brouilles"],
+ ["🥛","Skyr aux fruits",75,9,9,0.2,150,"1 pot","","Skyr nature",""],
+ ["🥛","Yaourt protéiné (type HiPRO)",60,10,4,0.2,160,"1 pot","","Skyr nature","hipro proteine"],
+ ["🍮","Pudding protéiné",85,10,7.5,1.5,200,"1 pot","","Skyr nature","dessert proteine hipro ehrmann"],
+ ["🥣","Petit-suisse",120,9,3.5,8,60,"1 pot","","Fromage blanc 3 %","petits suisses"],
+ ["🥛","Yaourt 0 %",45,4.5,6,0.1,125,"1 pot","","Yaourt nature","allege"],
+ ["🍓","Yaourt aux fruits",95,3.5,14,2.5,125,"1 pot","","Yaourt nature",""],
+ ["🥛","Yaourt grec 0 %",55,10,3.5,0.2,150,"1 pot","","Yaourt grec","fage"],
+ ["🥛","Lait entier",65,3.2,4.7,3.6,250,"1 verre","","Lait demi-écrémé",""],
+ ["🥛","Lait écrémé",34,3.4,5,0.1,250,"1 verre","","Lait demi-écrémé",""],
+ ["🥛","Kéfir",50,3.3,4,2.5,250,"1 verre","","Lait demi-écrémé","kefir"],
+ ["🥄","Crème fraîche épaisse",300,2.4,3,30,30,"2 c. à soupe","","Lait demi-écrémé","creme"],
+ ["🥄","Crème fraîche légère 15 %",160,2.8,4,15,30,"2 c. à soupe","","Lait demi-écrémé","creme allegee"],
+ ["🧀","Comté",410,27,0,34,30,"","","Emmental","fromage"],
+ ["🧀","Camembert",270,20,0.5,21,30,"1 portion","","Emmental","fromage"],
+ ["🧀","Brie",330,20,0.5,28,30,"1 portion","","Emmental","fromage"],
+ ["🧀","Chèvre",300,19,1,24,30,"1 rondelle","","Emmental","buche fromage de chevre"],
+ ["🧀","Roquefort / bleu",360,20,0.5,31,30,"","","Emmental","fromage"],
+ ["🧀","Raclette",340,23,0.5,27,60,"2 tranches","","Emmental","fromage"],
+ ["🧀","Parmesan",400,33,0,29,10,"1 c. à soupe râpé","","Emmental","parmigiano grana fromage"],
+ ["🧀","Feta",265,14,1.5,22,30,"","","Emmental","fromage"],
+ ["🧀","Mini fromage (Babybel)",300,22,0,24,20,"1 mini","","Emmental","babybel fromage"],
+ ["🧀","Fromage fondu (Vache qui rit)",235,11,6,19,17,"1 portion","","Emmental","kiri fromage"],
+ ["🧀","Fromage frais à tartiner",230,6,4,21,30,"","","Emmental","philadelphia st moret boursin fromage"],
+ ["🧀","Ricotta",140,9,3.5,10,50,"","","Mozzarella","fromage"],
+ ["🥤","Whey isolate",370,88,2,1,30,"1 dose","","Whey","isolat proteine shaker"],
+ ["🥤","Caséine",360,80,5,2,30,"1 dose","","Whey","caseine proteine shaker"]],
+"Féculents":[
+ ["🍚","Riz complet cuit",140,3,29,1,200,"","","Riz cuit","riz brun"],
+ ["🥟","Gnocchis",150,4,32,0.4,200,"","","Pâtes complètes cuites","gnocchi"],
+ ["🍜","Nouilles aux œufs cuites",140,4.5,27,2,200,"","nvg","Pâtes complètes cuites","nouilles chinoises"],
+ ["🍜","Nouilles instantanées (sèches)",465,9,61,20,60,"1 sachet","","Pâtes complètes cuites","yum yum ramen"],
+ ["🥔","Purée de pommes de terre",90,2,13,3.5,200,"","nvg","Pommes de terre cuites","puree"],
+ ["🍟","Frites",300,3.5,37,15,130,"1 portion","","Pommes de terre cuites","frite"],
+ ["🥔","Pommes de terre sautées",150,2.5,20,7,200,"","","Pommes de terre cuites","potatoes"],
+ ["🌾","Boulgour cuit",100,3.5,20,0.4,150,"","","Semoule cuite","boulghour"],
+ ["🌾","Blé (type Ebly) cuit",145,5,29,1,200,"","","Semoule cuite","ebly"],
+ ["🥣","Crème de riz (sèche)",370,7,82,1,50,"","","Flocons d'avoine",""],
+ ["🥣","Muesli",365,10,60,6.5,50,"","","Flocons d'avoine",""],
+ ["🥣","Granola",450,9,62,18,45,"","","Flocons d'avoine","croustillant"],
+ ["🍞","Pain aux céréales",265,10,41,5.5,40,"1 tranche","","Pain complet","pain"],
+ ["🍞","Pain de mie complet",250,9,42,4,25,"1 tranche","","Pain de mie","pain"],
+ ["🍔","Pain burger",270,9,48,4.5,60,"1 pain","","Pain de mie","bun"],
+ ["🫓","Pain pita",275,9,55,1.2,60,"1 pita","","Pain de mie",""],
+ ["🍘","Galette de riz soufflé",390,8,81,3,8,"1 galette","","Pain de mie","galettes de riz"],
+ ["🍞","Biscottes",405,12,72,6.5,16,"2 biscottes","","Pain de mie",""],
+ ["🥣","Céréales chocolatées",390,8,75,5,40,"","","Céréales du petit-déj","chocapic coco pops"]],
+"Fruits & légumes":[
+ ["🍊","Clémentine",47,0.8,10,0.2,70,"1 clémentine","","Orange","mandarine"],
+ ["🥝","Kiwi",60,1.1,11,0.5,75,"1 kiwi","","Orange",""],
+ ["🍐","Poire",55,0.4,12,0.1,170,"1 poire","","Orange",""],
+ ["🍇","Raisin",70,0.7,16,0.2,125,"1 grappe","","Orange",""],
+ ["🍓","Fraises",33,0.7,6,0.3,150,"","","Orange","fraise"],
+ ["🍒","Cerises",60,1,13,0.3,100,"","","Orange","cerise"],
+ ["🍑","Pêche / nectarine",40,0.8,9,0.2,150,"1 pêche","","Orange","brugnon"],
+ ["🍑","Abricot",45,0.8,9,0.2,45,"1 abricot","","Orange",""],
+ ["🥭","Mangue",65,0.8,14,0.3,150,"1/2 mangue","","Orange",""],
+ ["🍍","Ananas",50,0.5,11,0.1,150,"2 tranches","","Orange",""],
+ ["🍉","Pastèque",30,0.6,7,0.2,300,"1 tranche","","Orange",""],
+ ["🍈","Melon",35,0.8,7.5,0.2,200,"1/2 melon","","Orange",""],
+ ["🍎","Compote sans sucre ajouté",60,0.3,13,0.2,100,"1 pot","","Fruits rouges","compote pomme gourde"],
+ ["🌴","Dattes",290,2.5,64,0.4,24,"3 dattes","","Fruits rouges","datte"],
+ ["🍇","Raisins secs",300,3,68,0.5,30,"1 poignée","","Fruits rouges",""],
+ ["🥕","Carotte",36,0.8,7,0.3,80,"1 carotte","","Haricots verts","carottes rapees"],
+ ["🥒","Courgette cuite",18,1.2,2.5,0.3,200,"","","Haricots verts","courgettes"],
+ ["🥬","Épinards cuits",25,3,1,0.6,150,"","","Haricots verts","epinards"],
+ ["🍄","Champignons",25,3,1.5,0.4,100,"","","Haricots verts","champignons de paris"],
+ ["🫑","Poivron",30,1,5,0.3,100,"1/2 poivron","","Haricots verts",""],
+ ["🥦","Chou-fleur cuit",25,2,2.5,0.3,150,"","","Haricots verts",""],
+ ["🍆","Aubergine cuite",25,1,4,0.2,150,"","","Haricots verts",""],
+ ["🫛","Petits pois cuits",80,5.5,10,0.4,150,"","","Haricots verts",""],
+ ["🌽","Maïs (en boîte)",100,3,16,1.2,100,"","","Haricots verts","mais doux"],
+ ["🧅","Oignon",40,1.2,8,0.2,50,"1/2 oignon","","Haricots verts",""],
+ ["🥒","Concombre",13,0.6,2,0.1,150,"","","Haricots verts",""],
+ ["🟣","Betterave cuite",45,1.6,8,0.1,100,"","","Haricots verts",""],
+ ["🍲","Ratatouille",60,1.2,6,3.5,200,"","","Haricots verts",""]],
+"Petit-déj & desserts":[
+ ["🥐","Croissant",410,8,45,21,55,"1 croissant","nvg","","viennoiserie"],
+ ["🥐","Pain au chocolat",420,7.5,47,22,65,"1 pain au chocolat","nvg","","chocolatine viennoiserie"],
+ ["🥐","Chausson aux pommes",320,4,37,17,80,"1 chausson","nvg","","viennoiserie"],
+ ["🍞","Brioche",360,8.5,50,13,35,"1 tranche","nvg","","harrys"],
+ ["🥖","Pain au lait",340,9,53,10,35,"1 pain au lait","nvg","",""],
+ ["🥞","Crêpe",210,6,27,8,60,"1 crêpe","nvg","","crepes"],
+ ["🥞","Pancake",230,6,32,8.5,50,"1 pancake","nvg","","pancakes"],
+ ["🍯","Miel",320,0.4,80,0,20,"1 c. à soupe","nvg","",""],
+ ["🍓","Confiture",245,0.4,60,0.1,20,"1 c. à soupe","","",""],
+ ["🍫","Pâte à tartiner (Nutella)",540,6,57,31,15,"1 c. à soupe","nvg","","nutella"],
+ ["🍬","Sucre",400,0,100,0,5,"1 morceau","","",""],
+ ["🍪","Biscuits secs (petit-beurre)",440,7.5,74,12,25,"3 biscuits","nvg","","gateau sec"],
+ ["🍪","Cookies",490,6,63,23,25,"2 cookies","nvg","","cookie"],
+ ["🍪","Biscuits fourrés (Prince, Oreo)",470,5.5,69,19,30,"3 biscuits","nvg","","oreo prince gateau"],
+ ["🧁","Madeleine",440,6,53,23,25,"1 madeleine","nvg","","gateau"],
+ ["🍰","Gâteau au chocolat",400,5.5,45,22,80,"1 part","nvg","","fondant brownie"],
+ ["🥧","Tarte aux fruits",260,3,35,12,120,"1 part","nvg","","tarte aux pommes"],
+ ["🍦","Glace",210,3.5,26,10,70,"2 boules","nvg","","creme glacee"],
+ ["🍮","Crème dessert (Danette)",125,3.4,20,3.4,125,"1 pot","nvg","","danette flan"],
+ ["🍫","Mousse au chocolat",230,5,24,12,60,"1 pot","nvg","",""],
+ ["🍚","Riz au lait",120,3.2,20,3,125,"1 pot","nvg","",""]],
+"Snacks & gras":[
+ ["🫗","Huile de colza / tournesol",900,0,0,100,10,"1 c. à soupe","","Huile d'olive","huile"],
+ ["🥜","Purée d'amande / noisette",630,20,10,55,15,"1 c. à soupe","","Beurre de cacahuète",""],
+ ["🌰","Noix",690,15,7,65,30,"1 poignée","","Noix de cajou","cerneaux"],
+ ["🌰","Noisettes",650,15,7,61,30,"1 poignée","","Noix de cajou",""],
+ ["🥜","Pistaches",600,21,17,48,30,"1 poignée","","Noix de cajou",""],
+ ["🥜","Cacahuètes",600,26,12,49,30,"1 poignée","","Noix de cajou","arachides"],
+ ["🥜","Mélange noix & fruits secs",480,12,40,30,40,"1 poignée","","Noix de cajou","student randonneur"],
+ ["🍫","Chocolat au lait",540,7,57,31,20,"2 carrés","nvg","Chocolat noir 70 %",""],
+ ["🍫","Barre chocolatée (Mars, Snickers…)",480,6,62,22,50,"1 barre","nvg","Chocolat noir 70 %","twix kinder bueno"],
+ ["🍬","Bonbons",340,5,78,0.5,30,"1 poignée","nv","Chocolat noir 70 %","haribo"],
+ ["🥣","Barre de céréales",400,6,68,11,25,"1 barre","","Barre protéinée",""],
+ ["🥩","Bœuf séché (jerky)",280,46,10,5,25,"1 sachet","nv","Barre protéinée","beef jerky"],
+ ["🍿","Pop-corn",480,9,58,22,30,"","","Chips","popcorn"],
+ ["🍘","Crackers apéritif",480,9,65,20,25,"","","Chips","tuc biscuits aperitif"],
+ ["🫒","Olives",150,1,1,15,30,"10 olives","","Chips",""]],
+"Sauces & condiments":[
+ ["🍅","Ketchup",110,1.2,25,0.1,15,"1 c. à soupe","","",""],
+ ["🥚","Mayonnaise",700,1.5,1.5,77,15,"1 c. à soupe","nvg","","mayo"],
+ ["🟡","Moutarde",150,7,5,11,5,"1 c. à café","","",""],
+ ["🥗","Vinaigrette",430,0.5,3,45,15,"1 c. à soupe","","","sauce salade"],
+ ["🍶","Sauce soja",55,8,5,0.1,15,"1 c. à soupe","","","soja salee"],
+ ["🍅","Sauce tomate",50,1.5,7,1.5,100,"","","","coulis"],
+ ["🍝","Sauce bolognaise",110,7,5,7,150,"1 louche","nv","","bolo"],
+ ["🌿","Pesto",470,5,6,47,20,"1 c. à soupe","nvg","",""],
+ ["🍖","Sauce barbecue",160,1,38,0.4,15,"1 c. à soupe","","","bbq"],
+ ["🥙","Sauce blanche",320,1.5,6,32,30,"1 portion","nvg","","kebab"],
+ ["🌶️","Sauce algérienne / samouraï",450,1,8,46,30,"1 portion","nvg","","samourai biggy andalouse burger"]],
+"Plats":[
+ ["🍗","Nuggets de poulet",260,15,18,14,100,"6 nuggets","nv","","nugget"],
+ ["🍗","Poulet frit (type KFC)",270,20,10,17,150,"2 morceaux","nv","","tenders wings"],
+ ["🍗","Cordon bleu",240,13,15,14,100,"1 cordon bleu","nv","",""],
+ ["🍗","Escalope panée",220,18,14,10,120,"1 escalope","nv","","schnitzel poulet pane"],
+ ["🐟","Poisson pané",190,12,18,8,100,"4 bâtonnets","nv","","colin pane"],
+ ["🍔","Cheeseburger",260,13,28,10,120,"1 cheeseburger","nv","","mcdo"],
+ ["🥪","Sandwich jambon-beurre",265,12,32,9.5,200,"1 sandwich","nv","","baguette"],
+ ["🥪","Sandwich poulet crudités",210,11,25,7,250,"1 sandwich","nv","",""],
+ ["🥪","Panini",270,12,30,11,200,"1 panini","nv","",""],
+ ["🥪","Croque-monsieur",270,14,24,13,150,"1 croque","nv","",""],
+ ["🥧","Quiche lorraine",270,10,18,18,150,"1 part","nv","","quiche"],
+ ["🌯","Burrito",200,9,25,7,300,"1 burrito","nv","",""],
+ ["🥣","Poke bowl",140,8,18,4,400,"1 bowl","nv","","poke"],
+ ["🍝","Pâtes bolognaise",140,6.5,18,4.5,350,"1 assiette","nv","","spaghetti bolo"],
+ ["🍝","Pâtes carbonara",210,8,22,10,350,"1 assiette","nv","",""],
+ ["🥗","Salade de pâtes",170,5,22,7,250,"1 bol","nvg","",""],
+ ["🥗","Taboulé",150,3.5,22,5,200,"","","",""],
+ ["🥗","Salade niçoise",110,7,4,7,300,"1 assiette","nv","",""],
+ ["🍚","Riz cantonais",160,5,24,5,300,"1 assiette","nv","",""],
+ ["🥘","Paella",150,9,17,5,350,"1 assiette","nv","",""],
+ ["🌶️","Chili con carne",110,8,10,4,300,"1 assiette","nv","",""],
+ ["🥧","Hachis parmentier",130,7,10,7,300,"1 part","nv","",""],
+ ["🥔","Gratin dauphinois",140,3,12,9,200,"1 part","nvg","","gratin"],
+ ["🧀","Tartiflette",200,9,14,12,350,"1 assiette","nv","",""],
+ ["🍲","Bœuf bourguignon",120,14,3,6,300,"1 assiette","nv","",""],
+ ["🍛","Poulet au curry",140,14,5,7,250,"1 assiette","nv","","curry"],
+ ["🫓","Galette complète",200,11,18,9,250,"1 galette","nv","","crepe sarrasin jambon oeuf fromage"],
+ ["🍜","Ramen",90,5,11,3,500,"1 bol","nv","",""],
+ ["🍜","Pad thaï",170,7,24,5.5,350,"1 assiette","nv","","pad thai"],
+ ["🥟","Nems",230,8,22,12,100,"2 nems","nv","","nem rouleau de printemps"],
+ ["🥣","Soupe de légumes",35,1,5,1,300,"1 bol","","","veloute potage"]],
+"Boissons":[
+ ["☕","Café / thé (sans sucre)",1,0.1,0.2,0,200,"1 tasse","","Jus d'orange","cafe the expresso"],
+ ["☕","Café latte / cappuccino",40,2.5,4,1.5,250,"1 grand","nvg","Jus d'orange","latte cappuccino"],
+ ["🍫","Lait chocolaté",75,3.2,10,2.2,250,"1 verre","nvg","Jus d'orange","chocolat chaud cacolac"],
+ ["🧃","Jus de pomme",46,0.1,11,0.1,200,"1 verre","","Jus d'orange",""],
+ ["🧃","Jus multifruits",50,0.4,11.5,0.1,200,"1 verre","","Jus d'orange",""],
+ ["🥤","Smoothie",55,0.7,12,0.2,250,"1 bouteille","","Jus d'orange",""],
+ ["🧋","Ice tea",20,0,4.7,0,330,"1 canette","","Soda zéro","the glace"],
+ ["⚡","Boisson énergisante",46,0,11,0,250,"1 canette","","Soda zéro","red bull monster"],
+ ["🥤","Sirop à l'eau",25,0,6,0,250,"1 verre","","Soda zéro","grenadine"],
+ ["🥤","Boisson protéinée (prête à boire)",60,9,4,1,330,"1 bouteille","nvg","Soda zéro","yopro shake proteine"],
+ ["🍷","Vin",83,0.1,0.2,0,125,"1 verre","","Bière","vin rouge blanc rose"],
+ ["🥃","Alcool fort",230,0,0,0,40,"1 verre (4 cl)","","Bière","vodka whisky rhum gin"]],
+"Végé & vegan":[
+ ["🥛","Lait d'avoine",45,0.5,7,1.5,250,"1 verre","","","boisson avoine vegetal"],
+ ["🥛","Lait d'amande",15,0.5,0.3,1.2,250,"1 verre","","","boisson amande vegetal"],
+ ["🥄","Crème végétale (soja, avoine)",150,2.5,5,13,30,"2 c. à soupe","","","creme vegetal"],
+ ["🍗","Nuggets végétaux",230,13,18,11,100,"6 nuggets","","","vegetal"],
+ ["🌭","Saucisse végétale",220,16,6,14,100,"2 saucisses","","","vegetal"]]};
+/* mots-clés des aliments déjà présents (la recherche les trouve aussi) */
+var FKW={"Blanc de poulet cuit":"filet aiguillettes","Steak haché 5 % (cru)":"boeuf viande hachee","Steak haché 15 % (cru)":"boeuf viande hachee","Rumsteck cuit":"boeuf steak","Jambon blanc":"jambon de paris charcuterie",
+ "Thon au naturel":"thon","Sardines à l'huile":"sardine","Œuf":"oeufs dur","Fromage blanc 0 %":"faisselle","Fromage blanc 3 %":"faisselle","Whey":"proteine shaker","Emmental":"fromage rape","Mozzarella":"fromage",
+ "Riz cuit":"basmati thai","Pâtes cuites":"spaghetti penne coquillettes tagliatelles","Pommes de terre cuites":"patate","Flocons d'avoine":"porridge avoine oats","Baguette":"pain","Wrap / tortilla":"galette",
+ "Céréales du petit-déj":"corn flakes","Fruits rouges":"myrtilles framboises mures","Salade verte":"mache roquette","Brocolis cuits":"brocoli","Chips":"pringles",
+ "Burger":"hamburger","Tacos":"french tacos","Kebab":"doner grec","Sushis / makis":"maki california","Soda":"coca cola pepsi fanta sprite limonade orangina","Soda zéro":"coca zero light","Bière":"biere"};
+(function(){var byN={},orig=FOODS.slice(),out=[],after={},tail={},fresh={};
+  orig.forEach(function(F){byN[F.n]=1;if(FKW[F.n])F.kw=FKW[F.n];});
+  Object.keys(FX).forEach(function(cat){FX[cat].forEach(function(a){if(byN[a[1]]||fresh[a[1]])return;fresh[a[1]]=1;
+    var F={cat:cat,e:a[0],n:a[1],k:a[2],p:a[3],c:a[4],f:a[5],u:a[6],ul:a[7]||"",kw:a[10]||""};if(a[8]==="nv")F.nv=1;if(a[8]==="nv"||a[8]==="nvg")F.nvg=1;if(cat==="Végé & vegan")F.veg=2;
+    if(a[9]&&byN[a[9]])(after[a[9]]=after[a[9]]||[]).push(F);else(tail[cat]=tail[cat]||[]).push(F);});});
+  var last={};orig.forEach(function(F,i){last[F.cat]=i;});
+  orig.forEach(function(F,i){out.push(F);(after[F.n]||[]).forEach(function(x){out.push(x);});if(last[F.cat]===i&&tail[F.cat]){tail[F.cat].forEach(function(x){out.push(x);});delete tail[F.cat];}});
+  Object.keys(tail).forEach(function(c){tail[c].forEach(function(x){out.push(x);});});
+  FOODS.length=0;out.forEach(function(F,i){F.i=i;FOODS.push(F);});
+  var ins=function(c,ref,dx){if(FCATS_ALL.indexOf(c)>=0)return;var j=FCATS_ALL.indexOf(ref);FCATS_ALL.splice(j<0?FCATS_ALL.length:j+dx,0,c);};
+  ins("Petit-déj & desserts","Fruits & légumes",1);ins("Sauces & condiments","Snacks & gras",1);m18Cats();})();
+var _fo183=foodOk;foodOk=function(F,d){if(d!=="all"&&F){if(F.nv)return false;if(d==="vegan"&&F.nvg)return false;}return _fo183(F,d);};
+/* recherche : accents, « oe », pluriels, plusieurs mots et mots-clés (knacki, coca, nutella…) */
+function fnrm(t){return String(t||"").toLowerCase().replace(/œ/g,"oe").replace(/æ/g,"ae").normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9%]+/g," ");}
+var _fl183=fsList;fsList=function(){var q=fnrm(FS.q).trim();if(!q)return _fl183.apply(this,arguments);
+  var T=q.split(" ").filter(Boolean).map(function(t){return t.length>3?t.replace(/[sx]$/,""):t;}),d=dietOf();
+  var L=FOODS.filter(function(F){if(!foodOk(F,d))return false;var h=" "+fnrm(F.n+" "+(F.kw||""));return T.every(function(t){return h.indexOf(" "+t)>=0;});});
+  var sc=function(F){var n=" "+fnrm(F.n);return n.indexOf(" "+T[0])===0?3:n.indexOf(" "+T[0])>0?2:1;};
+  L.sort(function(a,b){return sc(b)-sc(a)||a.i-b.i;});
+  if(!L.length)return '<div class="empty">Aucun aliment trouvé. Utilise la saisie libre en bas.</div>';
+  return L.slice(0,60).map(function(F,i){var m=fmac(F,F.u);return '<button class="fd-row press" data-act="fsPick" data-v="'+F.i+'" style="--d:'+Math.min(i,12)*0.025+'s"><span class="fd-e">'+F.e+'</span><span class="grow"><b>'+esc(F.n)+'</b><span>'+m.k+' kcal · '+fmt(m.p)+' g prot. · '+(F.ul?F.ul+" ("+F.u+" g)":F.u+" g")+'</span></span><span class="fd-plus">+</span></button>';}).join("");};
+/* journal : l'émoji de l'aliment au lieu de 🍽️ */
+var _fe183=foodEmoji;foodEmoji=function(lb){var r=_fe183(lb);if(r!=="🍽️")return r;var n=String(lb||"").split(" · ")[0],f=FOODS.filter(function(x){return x.n===n;})[0];return f?f.e:r;};
 
 try{boot();}catch(e){bootFail(e);}
 if(RES)setTimeout(resumeApply,120);
