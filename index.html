@@ -3295,6 +3295,108 @@ html.safe .tabs{background:var(--card)!important}
 .g3-wl svg{width:16px;height:16px;color:var(--muted)}
 .g3-tx text{font:800 12px M,sans-serif;fill:var(--muted);text-anchor:middle}
 .g3-tabs b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+
+/* 18.4 : kettlebell */
+.kb-chip{box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--c-orange) 55%,transparent)}
+.kb-card{display:flex;align-items:center;gap:12px;width:100%;margin:12px 0 2px;padding:12px 14px 12px 12px;border-radius:22px;text-align:left;background:linear-gradient(135deg,color-mix(in srgb,var(--c-orange) 20%,var(--card)),var(--card) 72%);box-shadow:0 0 0 1px color-mix(in srgb,var(--c-orange) 30%,var(--line)),0 14px 30px -22px var(--c-orange);transition:transform .35s var(--spring)}
+.kb-card:active{transform:scale(.97)}
+.kb-card .grow{flex:1;min-width:0}
+.kb-card small{display:block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:color-mix(in srgb,var(--c-orange) 75%,var(--text))}
+.kb-card b{display:block;font-family:var(--disp);font-size:17px;font-weight:800;line-height:1.2}
+.kb-card em{display:block;margin-top:2px;font-style:normal;font-size:12.5px;font-weight:700;color:var(--muted)}
+.kb-card.done em{color:color-mix(in srgb,var(--c-vert) 75%,var(--text));font-weight:800}
+.kb-ci{flex:none;width:46px;height:46px;border-radius:15px;display:grid;place-items:center;font-size:24px;background:color-mix(in srgb,var(--c-orange) 18%,var(--card2))}
+.kb-pl{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--c-orange);color:#fff;box-shadow:0 10px 22px -10px var(--c-orange)}
+.kb-pl svg{width:18px;height:18px}
+.kb-pg .e{background:color-mix(in srgb,var(--c-orange) 18%,var(--card2))}
+.kb-lv{margin:14px 2px 6px}
+.kb-opt small{line-height:1.35}
+/* éditeur */
+.kb-ed{margin:16px 0 4px;padding:14px;border-radius:22px;background:var(--card2);box-shadow:0 0 0 1px color-mix(in srgb,var(--c-orange) 25%,transparent)}
+.kb-edh{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.kb-edh .grow{flex:1;min-width:0}
+.kb-edh b{display:block;font-size:15px;font-weight:800}
+.kb-edh small{display:block;font-size:12px;font-weight:700;color:var(--muted)}
+.kb-edi{flex:none;width:38px;height:38px;border-radius:13px;display:grid;place-items:center;font-size:20px;background:var(--card)}
+.kb-fs{margin:0 -14px;padding:0 14px 2px}
+.kb-fs .chip[aria-pressed="true"]{background:var(--c-orange);color:#fff}
+.kb-exp{margin:10px 2px 8px;font-size:13px;font-weight:700;line-height:1.4;color:var(--muted)}
+.kb-tip{margin:8px 2px 0;font-size:12.5px;font-weight:700;line-height:1.4;color:var(--muted)}
+.kb-opts{display:flex;gap:6px;margin:4px 0 8px}
+.kb-opts button{flex:1;padding:10px 6px;border-radius:14px;background:var(--card);font-size:12.5px;font-weight:800;line-height:1.2;border:2px solid transparent;transition:border-color .3s,background-color .3s}
+.kb-opts button[aria-pressed="true"]{border-color:var(--c-orange);background:color-mix(in srgb,var(--c-orange) 12%,var(--card))}
+.kb-p{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:7px 0;border-top:1px solid var(--line)}
+.kb-p>span{font-size:13.5px;font-weight:800}
+.kb-st{display:flex;align-items:center;gap:4px}
+.kb-st button{width:34px;height:34px;border-radius:50%;background:var(--card);font-size:18px;font-weight:800;display:grid;place-items:center;box-shadow:0 0 0 1px var(--line)}
+.kb-st b{min-width:74px;text-align:center;font-size:14px;font-weight:800;font-variant-numeric:tabular-nums}
+.kb-st.sm button{width:30px;height:30px;font-size:16px}
+.kb-st.sm b{min-width:30px;font-size:14px}
+.kb-st.sm.w b{min-width:46px}
+.kb-st b small{font-size:10px;margin-left:1px;color:var(--muted)}
+/* lecteur */
+.wup.kb{--wc:var(--c-orange)}
+.kb-clk{font-size:13px;font-weight:800;font-variant-numeric:tabular-nums;color:var(--text);width:auto;min-width:42px;padding:0 8px}
+.kb-hero{display:flex;flex-direction:column;align-items:center;gap:4px;padding:18px 26px 16px;border-radius:30px;background:radial-gradient(circle at 50% 30%,color-mix(in srgb,var(--wc) 22%,var(--card)),var(--card) 75%);box-shadow:0 20px 40px -26px var(--wc);animation:finPop .7s cubic-bezier(.34,1.5,.64,1) both}
+.kb-fe{font-size:46px;line-height:1}
+.kb-hero b{font-family:var(--disp);font-size:clamp(22px,6.4vw,28px);font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.kb-hm{font-size:13px;font-weight:800;color:var(--muted)}
+.kb-intro .wp-d,.wp-intro .wp-d{margin-top:12px}
+.kb-w{width:100%;margin-top:16px;text-align:left}
+.kb-w>span{display:block;margin:0 2px 6px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.kb-wc{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px}
+.kb-wc .chip{flex:none}
+.kb-wc .chip[aria-pressed="true"]{background:var(--wc);color:#fff}
+.wp-stage.rest .wp-ph{filter:saturate(.3) brightness(.55)}
+.kb-rs{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#fff;text-shadow:0 4px 20px rgba(0,0,0,.4)}
+.kb-rs span{font-size:44px}
+.kb-rs b{font-family:var(--disp);font-size:34px;font-weight:800}
+.wp-stage.rest:not(:has(.wp-ph)) .kb-rs{color:var(--text);text-shadow:none}
+.wp-stage.chain{background:var(--card)}
+.kb-chain{position:absolute;inset:12px 12px 34px;display:flex;flex-direction:column;justify-content:center;gap:6px;overflow-y:auto}
+.kb-cr{display:flex;align-items:center;gap:10px;padding:5px 12px 5px 5px;border-radius:16px;background:var(--card2);text-align:left;animation:vin .45s var(--ease) var(--d) both}
+.kb-cr .grow{flex:1;min-width:0}.kb-cr b{display:block;font-size:13.5px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kb-cr em{font-style:normal;font-size:13px;font-weight:800;color:var(--wc);white-space:nowrap}
+.kb-cr .wp-mf{width:38px;height:38px;border-radius:12px}
+.wp-stage.amrap .kb-chain{inset:12px 92px 34px 12px}
+.kb-am{position:absolute;right:12px;top:50%;transform:translateY(-62%);width:72px;padding:10px 0;border-radius:20px;background:var(--wc);color:#fff;display:flex;flex-direction:column;align-items:center;box-shadow:0 14px 26px -12px var(--wc)}
+.kb-am b{font-family:var(--disp);font-size:34px;font-weight:800;line-height:1}
+.kb-am span{font-size:11px;font-weight:800}
+.kb-am.pop{animation:finPop .5s cubic-bezier(.34,1.7,.64,1)}
+.kb-ni{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--disp);font-size:56px;font-weight:800;color:color-mix(in srgb,var(--wc) 60%,var(--text))}
+.kb-inf .kb-lab{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--wc)}
+.kb-inf h2{margin-top:4px}
+.kb-reps{margin:2px 0 6px;font-family:var(--disp);font-size:20px;font-weight:800;color:var(--text)}
+.wp-timer.idle .wp-tt1{opacity:.22}
+.wp-pp.kb-ok{background:var(--c-vert);box-shadow:0 16px 30px -12px var(--c-vert)}
+.wp-pp.kb-ok svg{width:32px;height:32px}
+.kb-p1{font-family:var(--disp);font-size:28px;font-weight:800}
+/* résumé */
+.wp-done.kb-sum{justify-content:flex-start;padding-bottom:6px}
+.kb-sum .wp-ok{width:84px;height:84px;flex:none}
+.kb-sum h2{margin-top:12px}
+.kb-sum .wp-ds{flex-wrap:wrap;justify-content:center}
+.kb-sum .wp-ds b{font-size:22px}
+.wup.kb-static .fin-arc,.wup.kb-static .fin-ck{animation:none!important;stroke-dashoffset:0!important}
+.kb-amr{display:flex;gap:8px;width:100%;margin-top:14px}
+.kb-amr>div{flex:1;padding:10px;border-radius:18px;background:var(--card);display:flex;flex-direction:column;align-items:center;gap:6px}
+.kb-amr>div>span{font-size:12px;font-weight:800;color:var(--muted)}
+.kb-amr .kb-st b{min-width:40px;font-size:20px;font-family:var(--disp)}
+.kb-cap{align-self:flex-start;margin:16px 2px 6px}
+.kb-rl{width:100%;display:flex;flex-direction:column;gap:6px;text-align:left}
+.kb-row{display:flex;align-items:center;gap:8px;padding:6px 8px 6px 6px;border-radius:18px;background:var(--card)}
+.kb-row.off{opacity:.5}
+.kb-row .grow{flex:1;min-width:0}
+.kb-row b{display:block;font-size:13.5px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kb-row small{display:block;font-size:12px;font-weight:700;color:var(--muted)}
+.kb-row .wp-mf{width:40px;height:40px;border-radius:12px}
+.kb-quit{align-self:center;padding:6px 12px;font-size:13.5px;font-weight:800;color:var(--muted)}
+.kb-row{flex-direction:column;align-items:stretch;gap:4px}
+.kb-rt{display:flex;align-items:center;gap:10px;min-width:0}
+.kb-rc{display:flex;justify-content:flex-end;gap:14px;padding:0 2px 2px 50px}
+.kb-cl{display:flex;align-items:center;gap:6px}
+.kb-cl>span{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.restcard .rc-acts .btn[data-act=kbPick]{flex-basis:100%}
 </style>
 </head>
 <body class="intro">
@@ -3302,6 +3404,7 @@ html.safe .tabs{background:var(--card)!important}
 <script src="config.js?v=3"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.1/dist/umd/supabase.js"></script>
 <script async src="imgs.js?v=3"></script>
+<script async src="imgs-kb.js?v=1"></script>
 <div class="amb" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
 <div class="grain" aria-hidden="true"></div>
 <main class="app" id="view"></main>
@@ -7642,12 +7745,12 @@ A.m18Diet=function(v){st.set.diet=v;save();m18Cats();m18Quick();buzz(8);var y=wi
   toast(v==="vege"?"Alimentation végétarienne : aliments adaptés":v==="vegan"?"Alimentation vegan : aliments adaptés":"Tous les aliments");};
 
 /* ---------- nouveautés : présentées une fois aux comptes existants ---------- */
-var WN18=[["🔍","Chaque muscle en détail","Dans Progrès, touche un muscle sur la carte : ses parties (3 fessiers, 3 têtes d'épaule, haut/bas des pecs…) et leurs meilleurs exos"],["🥪","Plus de 200 nouveaux aliments","Jambon de poulet, fromages, viennoiseries, sauces, plats du quotidien… et la recherche comprend « oeuf », « knacki », « coca »"],["⭐","Tes propres exercices","Danse, mobilité, ta machine… tout en haut de « Ajouter un exercice »"],["🔁","Variantes","La même machine utilisée autrement, avec ses propres charges et records"],["📝","Notes perso","Sur chaque exercice, bien visibles pendant ta séance"],["🏋️","Avec ou sans charge","Ajoute du lest à n'importe quel exercice"],["⚙️","Machines ou poids libres","Le programme tout prêt s'adapte à ce que tu préfères"],["🥗","Végé & vegan","Tofu, tempeh, seitan… et un réglage pour ton alimentation"],["💊","Compléments","Vitamine D, B12, fer… coche-les chaque jour dans Nutrition"]];
+var WN18=[["🔔","Kettlebell","40 exercices, 18 séances prêtes et un chrono guidé : EMOM, AMRAP, Tabata, échelles, complexes"],["🔍","Chaque muscle en détail","Dans Progrès, touche un muscle sur la carte : ses parties (3 fessiers, 3 têtes d'épaule, haut/bas des pecs…) et leurs meilleurs exos"],["🥪","Plus de 200 nouveaux aliments","Jambon de poulet, fromages, viennoiseries, sauces, plats du quotidien… et la recherche comprend « oeuf », « knacki », « coca »"],["⭐","Tes propres exercices","Danse, mobilité, ta machine… tout en haut de « Ajouter un exercice »"],["🔁","Variantes","La même machine utilisée autrement, avec ses propres charges et records"],["📝","Notes perso","Sur chaque exercice, bien visibles pendant ta séance"],["🏋️","Avec ou sans charge","Ajoute du lest à n'importe quel exercice"],["⚙️","Machines ou poids libres","Le programme tout prêt s'adapte à ce que tu préfères"],["🥗","Végé & vegan","Tofu, tempeh, seitan… et un réglage pour ton alimentation"],["💊","Compléments","Vitamine D, B12, fer… coche-les chaque jour dans Nutrition"]];
 function wn18HTML(){return '<div class="m18-wn"><div class="m18-wi">✨</div><h3>Nouveau dans FIT KEEF</h3><p class="m18-p">Merci pour vos retours : voici ce qui arrive.</p><div class="m18-wl">'+WN18.map(function(x,i){return '<div style="--d:'+(0.08+i*0.05)+'s"><span>'+x[0]+'</span><span class="grow"><b>'+x[1]+'</b><small>'+x[2]+'</small></span></div>';}).join("")+'</div><button class="cta press" data-act="closeBS">Super, merci !</button></div>';}
-function wn18(){try{if(localStorage.getItem("fk:wn183"))return;}catch(e){return;}var t=0,iv=setInterval(function(){t++;if(t>80){clearInterval(iv);return;}
-  if(!USER||!PULL_OK)return;if(typeof isNewUser==="function"&&isNewUser()){clearInterval(iv);try{localStorage.setItem("fk:wn183","1");}catch(e){}return;}
+function wn18(){try{if(localStorage.getItem("fk:wn184"))return;}catch(e){return;}var t=0,iv=setInterval(function(){t++;if(t>80){clearInterval(iv);return;}
+  if(!USER||!PULL_OK)return;if(typeof isNewUser==="function"&&isNewUser()){clearInterval(iv);try{localStorage.setItem("fk:wn184","1");}catch(e){}return;}
   if(document.body.classList.contains("intro")||$("onb")||($("modal")&&$("modal").classList.contains("open"))||($("sheetA")&&$("sheetA").classList.contains("open"))||($("bs")&&$("bs").classList.contains("open"))||($("auth")&&$("auth").classList.contains("show"))||$("lvup"))return;
-  clearInterval(iv);try{localStorage.setItem("fk:wn183","1");}catch(e){}openBS(wn18HTML());},1500);}
+  clearInterval(iv);try{localStorage.setItem("fk:wn184","1");}catch(e){}openBS(wn18HTML());},1500);}
 var _stU18=startUser;startUser=function(u,a){var p=_stU18(u,a);Promise.resolve(p).then(function(){setTimeout(wn18,5000);});return p;};
 
 
@@ -8055,6 +8158,341 @@ var _fl183=fsList;fsList=function(){var q=fnrm(FS.q).trim();if(!q)return _fl183.
   return L.slice(0,60).map(function(F,i){var m=fmac(F,F.u);return '<button class="fd-row press" data-act="fsPick" data-v="'+F.i+'" style="--d:'+Math.min(i,12)*0.025+'s"><span class="fd-e">'+F.e+'</span><span class="grow"><b>'+esc(F.n)+'</b><span>'+m.k+' kcal · '+fmt(m.p)+' g prot. · '+(F.ul?F.ul+" ("+F.u+" g)":F.u+" g")+'</span></span><span class="fd-plus">+</span></button>';}).join("");};
 /* journal : l'émoji de l'aliment au lieu de 🍽️ */
 var _fe183=foodEmoji;foodEmoji=function(lb){var r=_fe183(lb);if(r!=="🍽️")return r;var n=String(lb||"").split(" · ")[0],f=FOODS.filter(function(x){return x.n===n;})[0];return f?f.e:r;};
+
+/* ================= 18.4 : kettlebell ================= */
+APPV="18.4";
+/* ---------- 1. exercices ---------- */
+var KB1={kb:1},KB2={kb:1,lab:"kg / kettlebell"},KBU={kb:1,uni:1};
+var KBLIB={
+ kbsw1:E("One-Arm_Kettlebell_Swings","Swing à une main","Jambes",["Fessiers","Ischios","Avant-bras","Gainage"],["Kettlebell devant toi, saisis-la d'une main, l'autre bras libre.","Envoie-la entre les jambes puis claque les hanches : elle monte à hauteur de poitrine.","Fais tes reps d'un côté puis change de main. Épaule basse, gainage serré."],KBU),
+ kbswalt:E("One-Arm_Kettlebell_Swings","Swing alterné","Jambes",["Fessiers","Ischios","Gainage","Avant-bras"],["Swing à une main, en changeant de main à chaque rep.","Le changement se fait en haut, quand la kettlebell flotte : l'autre main vient la saisir.","Regard devant, gainage serré pendant tout le mouvement."],KB1),
+ kbswam:E("One-Arm_Kettlebell_Swings","Swing américain","Jambes",["Fessiers","Épaules","Ischios","Gainage"],["Comme un swing à deux mains, mais la kettlebell monte jusqu'au-dessus de la tête.","Bras tendus en haut, cul de la kettlebell vers le plafond, sans cambrer.","Plus dur pour les épaules : prends plus léger qu'au swing classique."],KB1),
+ kbdl:E("FK_kbdl","Soulevé de terre kettlebell","Jambes",["Fessiers","Ischios","Lombaires"],["Kettlebell entre les pieds, pieds largeur de hanches.","Pousse les fesses en arrière, dos plat, et saisis la poignée à deux mains.","Pousse dans le sol et serre les fessiers pour te redresser. Le mouvement à maîtriser avant le swing."],KB1),
+ kbsldl:E("Kettlebell_One-Legged_Deadlift","Soulevé de terre une jambe","Jambes",["Ischios","Fessiers","Gainage"],["Kettlebell dans la main opposée à la jambe d'appui.","Penche le buste en tendant la jambe libre derrière toi, dos plat.","Remonte en poussant la hanche vers l'avant, hanches bien de face."],KBU),
+ kbclean:E("FK_kbclean","Clean kettlebell (épaulé)","Jambes",["Fessiers","Ischios","Épaules","Avant-bras"],["Lance la kettlebell entre les jambes comme pour un swing.","Claque les hanches, coude près du corps : elle s'enroule autour de ta main.","Elle arrive en rack, contre l'avant-bras et la poitrine, sans taper le poignet."],KBU),
+ kbclean2:E("Two-Arm_Kettlebell_Clean","Double clean","Jambes",["Fessiers","Ischios","Trapèzes","Avant-bras"],["Une kettlebell dans chaque main, entre les jambes.","Claque les hanches et ramène les deux kettlebells en rack.","Coudes serrés contre le corps, poignets droits."],KB2),
+ kbbup:E("Bottoms-Up_Clean_From_The_Hang_Position","Clean bottoms-up (cul en l'air)","Bras",["Avant-bras","Épaules","Gainage"],["Kettlebell pendue au bout du bras.","Fais un clean en serrant fort la poignée : elle arrive à l'envers, cul vers le plafond.","Tiens-la en équilibre une seconde. Top pour la poigne et l'épaule."],KBU),
+ kbpress:E("One-Arm_Kettlebell_Para_Press","Développé militaire kettlebell","Épaules",["Épaules","Triceps","Gainage"],["Kettlebell en rack, contre l'avant-bras.","Pousse-la au-dessus de la tête, bras tendu, biceps près de l'oreille.","Redescends en contrôlant jusqu'au rack. Fessiers et abdos serrés, sans cambrer."],KBU),
+ kbpress2:E("Two-Arm_Kettlebell_Military_Press","Développé double kettlebell","Épaules",["Épaules","Triceps","Gainage"],["Deux kettlebells en rack.","Pousse-les ensemble au-dessus de la tête.","Redescends en contrôlant, coudes devant toi."],KB2),
+ kbpalt:E("Alternating_Kettlebell_Press","Développé alterné kettlebell","Épaules",["Épaules","Triceps","Gainage"],["Deux kettlebells en rack.","Pousse un bras au-dessus de la tête, redescends, puis l'autre.","Buste immobile : pas de balancement d'un côté à l'autre."],KB2),
+ kbpp:E("One-Arm_Kettlebell_Push_Press","Push press kettlebell","Épaules",["Épaules","Triceps","Quadriceps"],["Kettlebell en rack.","Petite flexion des genoux, puis pousse avec les jambes pour lancer la kettlebell.","Termine bras tendu au-dessus de la tête. Plus lourd qu'au développé strict."],KBU),
+ kbpp2:E("Double_Kettlebell_Push_Press","Push press double","Épaules",["Épaules","Triceps","Quadriceps"],["Deux kettlebells en rack.","Petite flexion des genoux et pousse avec les jambes.","Verrouille les deux bras au-dessus de la tête."],KB2),
+ kbjerk:E("One-Arm_Kettlebell_Jerk","Jerk kettlebell","Épaules",["Épaules","Triceps","Quadriceps","Mollets"],["Kettlebell en rack.","Petite flexion, poussée des jambes, puis plonge sous la kettlebell bras verrouillé.","Redresse-toi, bras toujours tendu. Rapide et explosif."],KBU),
+ kbjerk2:E("Double_Kettlebell_Jerk","Double jerk","Épaules",["Épaules","Triceps","Quadriceps"],["Deux kettlebells en rack.","Double flexion : pousse avec les jambes, plonge sous les kettlebells.","Redresse-toi bras verrouillés au-dessus de la tête."],KB2),
+ kbcj:E("One-Arm_Kettlebell_Clean_and_Jerk","Clean & jerk (long cycle)","Épaules",["Épaules","Fessiers","Ischios","Triceps"],["Un clean pour amener la kettlebell en rack.","Enchaîne un jerk pour la verrouiller au-dessus de la tête.","Redescends au rack puis entre les jambes, et recommence. Le roi du kettlebell sport."],KBU),
+ kbcp:E("FK_kbcp","Clean & press","Épaules",["Épaules","Fessiers","Triceps","Ischios"],["Un clean pour amener la kettlebell en rack.","Développé strict au-dessus de la tête.","Redescends au rack puis entre les jambes. 1 rep = 1 clean + 1 développé."],KBU),
+ kbsn:E("One-Arm_Kettlebell_Snatch","Snatch kettlebell (arraché)","Épaules",["Épaules","Fessiers","Ischios","Cardio"],["Lance la kettlebell entre les jambes, comme un swing.","Claque les hanches et tire-la en ligne droite jusqu'au-dessus de la tête.","Glisse la main dans la poignée pour qu'elle ne tape pas l'avant-bras. Bras verrouillé en haut."],KBU),
+ kbsn2:E("Double_Kettlebell_Snatch","Double snatch","Épaules",["Épaules","Fessiers","Ischios"],["Deux kettlebells entre les jambes.","Claque les hanches et amène-les ensemble au-dessus de la tête.","Réservé aux confirmé(e)s."],KB2),
+ kbtgu:E("Kettlebell_Turkish_Get-Up_Squat_style","Turkish get-up","Abdos",["Gainage","Épaules","Fessiers"],["Allongé(e), kettlebell bras tendu vers le plafond, genou du même côté plié.","Monte sur le coude, puis sur la main, lève les hanches, passe la jambe dessous et relève-toi.","Refais tout le chemin jusqu'au sol, les yeux sur la kettlebell. Lent et contrôlé."],KBU),
+ kbwind:E("Kettlebell_Windmill","Windmill (moulin)","Abdos",["Obliques","Épaules","Ischios"],["Kettlebell au-dessus de la tête, pieds tournés à 45° de l'autre côté.","Pousse la hanche vers la kettlebell et descends la main libre le long de la jambe.","Bras chargé toujours vertical, yeux sur la kettlebell. Remonte doucement."],KBU),
+ kbhalo:E("FK_kbhalo","Halo","Épaules",["Épaules","Trapèzes","Gainage"],["Tiens la kettlebell par les cornes, à l'envers, devant ta poitrine.","Fais-la tourner autour de ta tête, au plus près, coudes vers le haut.","Change de sens à chaque tour. Parfait pour échauffer les épaules."],KB1),
+ kbatw:E("FK_kbatw","Tour de taille (around the world)","Abdos",["Gainage","Obliques","Avant-bras"],["Debout, kettlebell dans une main devant les hanches.","Passe-la dans ton dos, récupère-la de l'autre main et ramène-la devant.","Hanches immobiles, change de sens à mi-parcours."],KB1),
+ kbfig8:E("Kettlebell_Figure_8","Huit entre les jambes (figure 8)","Abdos",["Gainage","Fessiers","Avant-bras"],["Pieds écartés, buste penché, dos plat.","Passe la kettlebell entre les jambes d'une main à l'autre en dessinant un 8.","Fesses en arrière, regard devant."],KB1),
+ kbpirate:E("Kettlebell_Pirate_Ships","Pirate ships (rotations bras tendus)","Épaules",["Épaules","Obliques"],["Kettlebell à deux mains, bras tendus devant toi.","Fais-la passer d'un côté à l'autre en arc de cercle, de la hanche à hauteur des yeux.","Pivote sur le pied arrière, gainage serré."],KB1),
+ kbfsq2:E("Front_Squats_With_Two_Kettlebells","Front squat double kettlebell","Jambes",["Quadriceps","Fessiers","Gainage"],["Deux kettlebells en rack, coudes serrés.","Descends en squat, cuisses au moins parallèles au sol.","Remonte en poussant dans les talons, buste droit."],KB2),
+ kbohsq:E("One-Arm_Overhead_Kettlebell_Squats","Squat bras tendu au-dessus de la tête","Jambes",["Quadriceps","Épaules","Gainage"],["Kettlebell verrouillée au-dessus de la tête, bras tendu.","Descends en squat en gardant le bras vertical.","Remonte sans laisser le bras partir en avant. Commence léger."],KBU),
+ kbrlunge:E("Dumbbell_Rear_Lunge","Fente arrière kettlebell","Jambes",["Quadriceps","Fessiers"],["Kettlebell en goblet contre la poitrine (ou en rack).","Grand pas en arrière, genou arrière qui frôle le sol.","Pousse sur le talon avant pour revenir. Alterne les jambes."],KB1),
+ kblpt:E("Lunge_Pass_Through","Fente avec passage sous la jambe","Jambes",["Quadriceps","Fessiers","Gainage"],["Kettlebell dans une main, debout.","Fais une fente et passe la kettlebell sous la cuisse avant, dans l'autre main.","Remonte et recommence de l'autre côté."],KB1),
+ kbhp:E("Kettlebell_Sumo_High_Pull","Tirage menton sumo (high pull)","Épaules",["Trapèzes","Fessiers","Épaules"],["Pieds écartés, kettlebell au sol entre les pieds.","Redresse-toi en claquant les hanches et tire la kettlebell jusqu'au menton, coudes hauts.","Redescends en contrôlant."],KB1),
+ kbrow:E("One-Arm_Kettlebell_Row","Rowing kettlebell une main","Dos",["Dos","Biceps","Arrière d'épaules"],["Buste penché, main libre sur la cuisse ou un banc, dos plat.","Tire la kettlebell vers la hanche, coude près du corps.","Redescends lentement, bras tendu."],KBU),
+ kbrow2:E("Two-Arm_Kettlebell_Row","Rowing double kettlebell","Dos",["Dos","Biceps","Lombaires"],["Une kettlebell dans chaque main, buste penché, dos plat.","Tire les deux kettlebells vers les hanches.","Serre les omoplates en haut, redescends en contrôlant."],KB2),
+ kbgor:E("Alternating_Kettlebell_Row","Gorilla row (rowing alterné)","Dos",["Dos","Biceps","Gainage"],["Pieds larges, deux kettlebells au sol entre les pieds, buste penché.","Tire une kettlebell vers la hanche pendant que l'autre reste au sol.","Alterne les côtés sans tourner le buste."],KB2),
+ kbren:E("Alternating_Renegade_Row","Renegade row","Dos",["Dos","Gainage","Pectoraux"],["En planche, mains sur les poignées de deux kettlebells.","Tire une kettlebell vers la hanche sans tourner le bassin.","Repose-la et change de côté. Pieds écartés pour plus de stabilité."],KB2),
+ kbfp:E("One-Arm_Kettlebell_Floor_Press","Floor press kettlebell (au sol)","Pecs",["Pectoraux","Triceps","Épaules"],["Allongé(e) au sol, kettlebell en rack, coude au sol.","Pousse-la vers le plafond, poignet droit.","Redescends jusqu'à ce que le coude touche le sol."],KBU),
+ kbfp2:E("Alternating_Floor_Press","Floor press alterné","Pecs",["Pectoraux","Triceps","Épaules"],["Allongé(e) au sol, une kettlebell dans chaque main.","Pousse un bras vers le plafond, redescends, puis l'autre.","Coudes à 45° du corps."],KB2),
+ kbpush:E("Plyo_Kettlebell_Pushups","Pompes sur kettlebells","Pecs",["Pectoraux","Triceps","Gainage"],["Mains sur les poignées de deux kettlebells.","Descends la poitrine entre les mains, corps gainé.","Pousse fort pour remonter."],{kb:1,bw:true}),
+ kbarn:E("Kettlebell_Arnold_Press","Arnold press kettlebell","Épaules",["Épaules","Triceps"],["Kettlebell en rack, paume vers toi.","Pousse-la au-dessus de la tête en tournant la paume vers l'avant.","Redescends en faisant la rotation inverse."],KBU),
+ kbspress:E("Kettlebell_Seated_Press","Développé assis au sol","Épaules",["Épaules","Triceps","Gainage"],["Assis(e) au sol, jambes écartées, buste droit.","Pousse la kettlebell au-dessus de la tête.","Sans appui du dos : le gainage travaille fort."],KBU),
+ kbsuit:E("Farmers_Walk","Marche valise (une kettlebell)","Abdos",["Gainage","Obliques","Avant-bras"],["Une kettlebell lourde dans une seule main.","Marche droit devant, épaules à la même hauteur, sans pencher.","Change de main à mi-parcours."],KB1)
+};
+for(var _kb in KBLIB)if(!LIB[_kb])LIB[_kb]=KBLIB[_kb];
+["kbswing","kbthr"].forEach(function(k){if(LIB[k])LIB[k].kb=1;});if(LIB.kbthr)LIB.kbthr.lab="kg / kettlebell";
+["goblet","russian","sumo","pistol","farmer"].forEach(function(k){if(LIB[k])LIB[k].kbOk=1;});
+function isKB(L){return !!(L&&(L.kb||L.kbOk));}
+var _lxe184=lxEq;lxEq=function(L){if(L&&L.kb)return["Kettlebell","🔔"];return _lxe184(L);};
+/* les poids des kettlebells vont par paliers */
+var KBW=[4,6,8,10,12,14,16,18,20,22,24,26,28,32,36,40,44,48];
+function kbWStep(w,d){w=+w||0;if(d>0){for(var i=0;i<KBW.length;i++)if(KBW[i]>w+0.01)return KBW[i];return w+4;}for(var j=KBW.length-1;j>=0;j--)if(KBW[j]<w-0.01)return KBW[j];return 0;}
+var _rw184=A.rw;A.rw=function(v,b){try{var s=curS(),it=s.list[ui.ex],L=it&&lib(it.id);if(L&&L.kb&&!L.bw&&!L.noW){var C=coach(it.id,it,ui.sel),arr=s.sets[it.id]||[],cur=arr[+v]!=null?arr[+v].w:getDr(s,it,+v,C).w;setRowW(+v,kbWStep(cur,+b.dataset.d));return;}}catch(e){}return _rw184.apply(this,arguments);};
+/* bibliothèque : onglet Kettlebell */
+var _rl184=renderLib;renderLib=function(){_rl184();var g=$("libG"),grid=$("libGrid"),m=ui.libMode||{};if(!g||!grid||m.type==="czadd")return;
+  var q=fnrm(ui.libQ||"").trim(),T=q?q.split(" "):[];
+  var all=Object.keys(LIB).filter(function(id){return isKB(LIB[id]);}).filter(function(id){if(!T.length)return true;var L=lib(id),h=" "+fnrm(L.n+" "+(L.mu||[]).join(" ")+" "+L.g+" kettlebell");return T.every(function(t){return h.indexOf(t)>=0;});});
+  var first=g.querySelector(".chip");var chip='<button class="chip press kb-chip" data-act="libG" data-v="Kettlebell" aria-pressed="'+(ui.libG==="Kettlebell")+'">🔔 Kettlebell'+(all.length?' <em>'+all.length+'</em>':'')+'</button>';
+  if(first)first.insertAdjacentHTML("afterend",chip);else g.insertAdjacentHTML("afterbegin",chip);
+  if(ui.libG!=="Kettlebell")return;
+  g.querySelectorAll(".chip").forEach(function(c){c.setAttribute("aria-pressed",c.dataset.v==="Kettlebell");});
+  var W=m.type==="add"&&ui.editWk&&st.wk[ui.editWk],inW={};if(W)W.ex.forEach(function(e){inW[e.id]=1;});
+  var h="",k=0;
+  if(!all.length)h='<div class="lx-empty"><span>🔔</span><b>Aucun exercice kettlebell trouvé</b><small>Essaie un autre mot.</small></div>';
+  else if(T.length)h='<p class="lx-n">'+all.length+' exercice'+(all.length>1?"s":"")+'</p><div class="lx-grid">'+all.map(function(id){return lxCard(id,inW[id],k++);}).join("")+'</div>';
+  else G.forEach(function(gr){var l=all.filter(function(id){return lib(id).g===gr;});if(!l.length)return;h+='<div class="lx-h"><b>'+gr+'</b><span>'+l.length+'</span></div><div class="lx-grid">'+l.map(function(id){return lxCard(id,inW[id],k++);}).join("")+'</div>';});
+  grid.innerHTML=h;if(typeof lzScan==="function")lzScan(grid);};
+
+/* ---------- 2. formats de séance ---------- */
+var KBF={
+ emom:{n:"EMOM",e:"⏱️",d:"Au début de chaque minute, fais tes reps, puis récupère le reste de la minute."},
+ amrap:{n:"AMRAP",e:"🔁",d:"Le maximum de tours du circuit dans le temps donné. Compte tes tours."},
+ int:{n:"Tabata / intervalles",s:"Intervalles",e:"⚡",d:"Effort et repos chronométrés, par exemple 20 s / 10 s (Tabata)."},
+ circ:{n:"Circuit",e:"🔄",d:"Les exercices à la suite, puis repos entre les tours."},
+ ladder:{n:"Échelle",e:"🪜",d:"1 rep, puis 2, puis 3… à chaque palier. Puis on recommence l'échelle."},
+ cx:{n:"Complexe",e:"⛓️",d:"Tous les mouvements à la suite sans poser la kettlebell = 1 tour."},
+ ft:{n:"Chrono",e:"🏁",d:"Tout le travail, le plus vite possible. Bats ton temps."}};
+var KBD={emom:{order:"alt"},amrap:{min:15},int:{on:20,off:10,rounds:8,mode:"block",rr:60},circ:{rounds:3,rest:60,tr:0},ladder:{a:1,b:5,n:3,rest:0,rr:90},cx:{rounds:5,rest:90},ft:{cap:0}};
+var KBLV={1:"Débutant",2:"Intermédiaire",3:"Avancé"};
+function kbOf(s){if(!s||s.rest||!s.list)return null;if(s.kb&&s.kb.f)return s.kb;var W=s.wk&&st.wk[s.wk];return W&&W.kb&&W.kb.f?W.kb:null;}
+function kbSync(F,ex){if(!F||!ex)return;ex.forEach(function(it){if(F.f==="circ"||F.f==="cx"||F.f==="int")it.s=F.rounds;else if(F.f==="ladder"){it.s=F.n*(F.b-F.a+1);it.lo=F.a;it.hi=F.b;it.suf="";}else if(F.f==="emom"&&F.chain)it.s=F.min;});}
+function kbRepTxt(it,r){if(isTime(it))return (r||it.lo)+" s";var v=r==null?it.lo:r;return v>0?v+" rep"+(v>1?"s":""):"max de reps";}
+function kbEst(it,r){if(isTime(it))return it.lo;var x=(r==null?it.lo:r)||12,L=lib(it.id);return Math.max(12,x*(L.uni?2:1)*3);}
+function kbSteps(F,list){var S=[],L=list||[],n=L.length;if(!F||!n)return S;var all=L.map(function(x,i){return i;});
+  var W=function(i,o){var it=L[i],x={k:"work",ex:i,reps:it.lo,dur:isTime(it)?it.lo:0,est:kbEst(it)};for(var q in o)x[q]=o[q];return x;};
+  var R=function(d,lab){return{k:"rest",dur:d,lab:lab||"Repos"};};
+  if(F.f==="emom"){
+    if(F.chain){for(var m=1;m<=F.min;m++)S.push({k:"work",chain:all,dur:60,min:m,mins:F.min});}
+    else{var q=L.map(function(it){return Math.max(0,it.s);}),tot=q.reduce(function(a,b){return a+b;},0),m2=0;
+      if(F.order==="seq")L.forEach(function(it,i){for(var j=0;j<q[i];j++)S.push(W(i,{dur:60,min:++m2,mins:tot}));});
+      else{var left=true;while(left){left=false;for(var i=0;i<n;i++)if(q[i]>0){q[i]--;left=true;S.push(W(i,{dur:60,min:++m2,mins:tot}));}}}}}
+  else if(F.f==="amrap")S.push({k:"work",chain:all,dur:F.min*60,amrap:1});
+  else if(F.f==="int"){var on=F.on,off=F.off,Rn=F.rounds;
+    if(F.mode==="block")L.forEach(function(it,i){for(var r=1;r<=Rn;r++){S.push(W(i,{dur:on,rd:r,rds:Rn,iv:1}));if(r<Rn){if(off)S.push(R(off));}else if(i<n-1&&F.rr)S.push(R(F.rr,"Pause"));}});
+    else for(var r=1;r<=Rn;r++)L.forEach(function(it,i){S.push(W(i,{dur:on,rd:r,rds:Rn,iv:1}));if(i<n-1){if(off)S.push(R(off));}else if(r<Rn){var p=F.rr||off;if(p)S.push(R(p,F.rr?"Pause":"Repos"));}});}
+  else if(F.f==="circ"){for(var r2=1;r2<=F.rounds;r2++){L.forEach(function(it,i){S.push(W(i,{rd:r2,rds:F.rounds}));if(i<n-1&&F.tr)S.push(R(F.tr,"Transition"));});if(r2<F.rounds&&F.rest)S.push(R(F.rest));}}
+  else if(F.f==="ladder"){for(var l=1;l<=F.n;l++)for(var v=F.a;v<=F.b;v++){L.forEach(function(it,i){S.push(W(i,{reps:v,dur:0,est:kbEst(it,v),rung:v,ld:l,lds:F.n}));});
+      var lastRung=v===F.b,lastAll=lastRung&&l===F.n;if(!lastAll){if(lastRung){if(F.rr)S.push(R(F.rr,"Pause"));}else if(F.rest)S.push(R(F.rest));}}}
+  else if(F.f==="cx"){var ce=L.reduce(function(a,it){return a+kbEst(it);},0);for(var r3=1;r3<=F.rounds;r3++){S.push({k:"work",chain:all,rd:r3,rds:F.rounds,est:ce});if(r3<F.rounds&&F.rest)S.push(R(F.rest));}}
+  else if(F.f==="ft")L.forEach(function(it,i){for(var j=1;j<=it.s;j++)S.push(W(i,{set:j,sets:it.s}));});
+  return S;}
+function kbMin(F,list){var t=0;kbSteps(F,list).forEach(function(x){t+=x.dur||x.est||0;});return Math.max(1,Math.round(t/60));}
+function kbLabel(F,list){if(!F||!KBF[F.f])return "";
+  if(F.f==="emom")return "EMOM "+kbMin(F,list)+" min";if(F.f==="amrap")return "AMRAP "+F.min+" min";
+  if(F.f==="int")return (F.on===20&&F.off===10?"Tabata":"Intervalles "+F.on+"/"+F.off)+" · "+F.rounds+" tours";
+  if(F.f==="circ")return "Circuit · "+F.rounds+" tours";if(F.f==="ladder")return "Échelle "+F.a+" → "+F.b+(F.n>1?" · "+F.n+" fois":"");
+  if(F.f==="cx")return "Complexe · "+F.rounds+" tours";if(F.f==="ft")return "Chrono"+(F.cap?" · limite "+F.cap+" min":"");return KBF[F.f].n;}
+function kbSub(F,list){if(F.f==="emom")return F.chain?"Tout le complexe au début de chaque minute":"Tes reps au début de chaque minute";
+  if(F.f==="amrap")return "Le max de tours en "+F.min+" min";if(F.f==="int")return F.on+" s d'effort · "+F.off+" s de repos"+(F.mode==="block"?" · exercice par exercice":" · en circuit");
+  if(F.f==="circ")return list.length+" exercices"+(F.rest?" · repos "+restTxt(F.rest)+" entre les tours":"");if(F.f==="ladder")return "Paliers de "+F.a+" à "+F.b+" reps"+(F.rest?" · repos "+restTxt(F.rest):" · à ton rythme");
+  if(F.f==="cx")return "Sans poser la kettlebell"+(F.rest?" · repos "+restTxt(F.rest):"");if(F.f==="ft")return "Le plus vite possible";return "";}
+function kbW0(s){var w=st.set&&st.set.kbw;if(w)return w;for(var i=0;i<s.list.length;i++){var it=s.list[i];if(lib(it.id).kb&&st.w&&st.w[it.id])return st.w[it.id];}return GN()==="f"?8:16;}
+
+/* ---------- 3. le chrono guidé ---------- */
+var KP=null;
+function kbClk(sec){sec=Math.max(0,Math.round(sec));var m=Math.floor(sec/60),r=sec%60;return m+":"+(r<10?"0":"")+r;}
+function kbNowEl(){if(!KP||!KP.g0)return 0;return (KP.pause?KP.pt:Date.now())-KP.g0;}
+function kbStage(id,rest){var L=lib(id),im=L.img&&IMGS[L.img];if(!im||!im[0])return '<div class="kb-ni">'+esc(initials(L.n))+'</div>';
+  return '<div class="wp-ph dyn"><img src="'+im[0]+'" alt=""><img class="b" src="'+(im[1]||im[0])+'" alt=""></div>'+(rest?'':'<div class="wp-pos dyn"><span>Départ</span><span>Mouvement</span></div>');}
+function kbTh(id){var L=lib(id),im=L.img&&IMGS[L.img];return '<span class="wp-mf'+(im&&im[0]?' ph':'')+'">'+(im&&im[0]?'<img src="'+im[0]+'" alt="">':esc(initials(L.n)))+'</span>';}
+function kbUniTxt(F){var f=F&&F.f;if(f==="emom"&&!F.chain)return "change de main chaque minute";if(f==="ft")return "change de main à chaque série";if(f==="int")return "alterne les côtés";if(f==="cx"||(f==="emom"&&F.chain))return "change de côté à chaque tour";return "par bras";}
+function kbHint(it,F){var L=lib(it.id);if(L.uni){var t=kbUniTxt(F||(KP&&KP.F));return t==="par bras"?"Reps par bras":t.charAt(0).toUpperCase()+t.slice(1);}return L.lab?"Une kettlebell dans chaque main":"";}
+function kbRepsLine(it,r,F){var L=lib(it.id),t=kbRepTxt(it,r);if(!L.uni)return t;var u=kbUniTxt(F);return u==="par bras"?t+" par bras":t;}
+A.kbGo=function(){var s0=curS(),F=kbOf(s0);if(!F||!s0.list||!s0.list.length)return;var s=ensure();F=kbOf(s);
+  var steps=kbSteps(F,s.list);if(!steps.length){toast("Ajoute au moins un exercice");return;}
+  var w0=kbW0(s);KP={F:clone(F),s:s,d:ui.sel,steps:steps,i:-1,pause:false,raf:0,last:-1,g0:0,lg:[],rounds:0,extra:0,w:w0,res:null,fin:false,
+    nW:steps.filter(function(x){return x.k==="work";}).length};
+  var two=s.list.some(function(it){return lib(it.id).lab;});
+  var o=document.createElement("div");o.id="kbp";o.className="wup kb";
+  var segs=KP.nW<=28&&!(steps.length===1);
+  o.innerHTML='<div class="wp-bg"></div><div class="wp-top"><button class="wp-ib press" data-kb="x" aria-label="Arrêter">'+WIC.x+'</button><div class="wp-tt"><b>'+esc(s.name)+'</b><span id="kbC">'+esc(kbLabel(F,s.list))+'</span></div><span class="wp-ib kb-clk" id="kbT">'+KBF[F.f].e+'</span></div>'
+   +'<div class="wp-prog" id="kbPg">'+(segs?steps.map(function(x){return x.k==="work"?'<i style="flex:'+(x.dur||x.est||30)+'"><b></b></i>':'';}).join(""):'<i style="flex:1"><b></b></i>')+'</div>'
+   +'<div class="wp-body" id="kbB"></div>';
+  KP.segs=segs;KP.two=two;
+  document.body.appendChild(o);document.body.style.overflow="hidden";requestAnimationFrame(function(){o.classList.add("in");});wake(true);
+  o.addEventListener("click",function(e){var b=e.target.closest("[data-kb]");if(!b||!KP)return;var k=b.dataset.kb;
+    if(k==="x"){if(KP.fin||!KP.g0||!KP.lg.length&&!KP.rounds)kbClose();else kbEnd(true);}
+    else if(k==="start")kbCount();else if(k==="main")kbMain();else if(k==="next")kbNext(true);else if(k==="prev")kbPrev();
+    else if(k==="w")kbSetW(+b.dataset.v);else if(k==="save")kbSave();else if(k==="quit")kbClose();
+    else if(k==="rr"){KP.rounds=Math.max(0,KP.rounds+(+b.dataset.d));kbSumRender();buzz(6);}
+    else if(k==="re"){KP.extra=Math.max(0,KP.extra+(+b.dataset.d));kbSumRender();buzz(6);}
+    else if(k==="er"){var r=KP.res[+b.dataset.i];r.r=Math.max(1,r.r+(+b.dataset.d));kbSumRender();buzz(6);}
+    else if(k==="ew"){var r2=KP.res[+b.dataset.i];r2.w=kbWStep(r2.w,+b.dataset.d);kbSumRender();buzz(6);}});
+  kbIntro();buzz(10);};
+function kbSetW(v){KP.w=v;document.querySelectorAll("#kbp .kb-wc button").forEach(function(c){c.setAttribute("aria-pressed",+c.dataset.v===v);});buzz(6);}
+function kbIntro(){var F=KP.F,s=KP.s,B=KBF[F.f],m=kbMin(F,s.list);
+  var ws=KBW.filter(function(w){return w<=40;});if(ws.indexOf(KP.w)<0){ws.push(KP.w);ws.sort(function(a,b){return a-b;});}
+  var anyW=s.list.some(function(it){var L=lib(it.id);return !L.noW&&!L.bw;});
+  $("kbB").innerHTML='<div class="wp-intro"><div class="kb-hero"><span class="kb-fe">'+B.e+'</span><b>'+esc(kbLabel(F,s.list))+'</b><span class="kb-hm">≈ '+m+' min</span></div><p class="wp-d">'+B.d+'</p>'
+   +(anyW?'<div class="kb-w"><span>'+(KP.two?'Poids de chaque kettlebell':'Poids de ta kettlebell')+'</span><div class="hscroll kb-wc" data-noswipe>'+ws.map(function(w){return '<button class="chip press" data-kb="w" data-v="'+w+'" aria-pressed="'+(w===KP.w)+'">'+w+' kg</button>';}).join("")+'</div></div>':'')
+   +'<div class="wp-list">'+s.list.map(function(it,i){var L=lib(it.id),h=kbHint(it,F);return '<div class="wp-li" style="--d:'+(Math.min(i,10)*0.04)+'s">'+kbTh(it.id)+'<span class="grow"><b>'+esc(L.n)+'</b>'+(h?'<small>'+h+'</small>':'')+'</span><em>'+(F.f==="ladder"?F.a+" → "+F.b:(F.f==="emom"&&!F.chain?it.s+" min · ":(F.f==="ft"?it.s+" × ":""))+kbRepsLine(it,null,F))+'</em></div>';}).join("")+'</div></div>'
+   +'<div class="wp-foot"><button class="wp-go press" data-kb="start">'+WIC.pl+'<span>C\'est parti</span></button></div>';
+  var wc=document.querySelector("#kbp .kb-wc [aria-pressed=true]");if(wc){var p=wc.parentNode;p.scrollLeft=Math.max(0,wc.offsetLeft-p.clientWidth/2+wc.offsetWidth/2);}}
+function kbPlayUI(){$("kbB").innerHTML='<div class="wp-play"><div class="wp-stage ph" id="kbSt"><div class="wp-fig" id="kbF"></div><span class="wp-side" id="kbS" hidden></span><div class="wp-cd" id="kbCd"></div>'
+   +'<div class="wp-timer" id="kbTm"><svg viewBox="0 0 100 100"><circle class="wp-tt0" cx="50" cy="50" r="44"/><circle class="wp-tt1" id="kbArc" cx="50" cy="50" r="44" pathLength="1000"/></svg><b id="kbN"></b></div></div>'
+   +'<div class="wp-info kb-inf" id="kbI"><small class="kb-lab" id="kbL"></small><h2 id="kbTi"></h2><p class="kb-reps" id="kbR"></p><p class="wp-d" id="kbD"></p></div></div>'
+   +'<div class="wp-foot"><div class="wp-nx" id="kbNx"></div><div class="wp-ctl"><button class="wp-cb press" data-kb="prev" aria-label="Étape précédente">'+WIC.pr+'</button><button class="wp-pp press" data-kb="main" id="kbM" aria-label="Pause">'+WIC.pa+'</button><button class="wp-cb press" data-kb="next" aria-label="Étape suivante">'+WIC.nx+'</button></div></div>';}
+function kbCount(){KP.g0=0;kbPlayUI();kbShow(0);var n=3,cd=$("kbCd"),stg=$("kbSt");stg.classList.add("counting");KP.count=true;
+  var tk=function(){if(!KP||!KP.count)return;if(n===0){cd.innerHTML="";stg.classList.remove("counting");KP.count=false;KP.g0=Date.now();KP.t0=KP.g0;kbStep(0);return;}cd.innerHTML='<b>'+n+'</b>';SFX("tick");buzz(10);n--;setTimeout(tk,850);};tk();}
+function kbWorkLab(x){var F=KP.F,L=KP.s.list;
+  if(x.amrap)return "AMRAP · "+F.min+" min";if(x.min)return "Minute "+x.min+" / "+x.mins;if(x.iv)return "Intervalle "+x.rd+" / "+x.rds+(F.mode==="block"?"":" · "+L.length+" exos");
+  if(x.rung)return "Palier "+x.rung+" · échelle "+x.ld+" / "+x.lds;if(x.set)return "Série "+x.set+" / "+x.sets;if(x.rd)return "Tour "+x.rd+" / "+x.rds;return "";}
+function kbChainHTML(x){var L=KP.s.list;return '<div class="kb-chain">'+x.chain.map(function(i,k){var it=L[i];return '<div class="kb-cr" style="--d:'+(k*0.05)+'s">'+kbTh(it.id)+'<span class="grow"><b>'+esc(lib(it.id).n)+'</b></span><em>'+kbRepTxt(it)+'</em></div>';}).join("")+'</div>';}
+function kbShow(i){var x=KP.steps[i];if(!x)return;var L=KP.s.list,F=$("kbF"),stg=$("kbSt");stg.classList.remove("rest","chain","amrap");
+  var side=$("kbS");side.hidden=true;
+  if(x.k==="rest"){var nx=null;for(var j2=i+1;j2<KP.steps.length;j2++)if(KP.steps[j2].k==="work"){nx=KP.steps[j2];break;}
+    stg.classList.add("rest");F.innerHTML=(nx&&nx.ex!=null?kbStage(L[nx.ex].id,true):'')+'<div class="kb-rs"><span>😮‍💨</span><b>'+esc(x.lab)+'</b></div>';
+    $("kbL").textContent=nx?"Ensuite":"";$("kbTi").textContent=nx?(nx.chain?(nx.amrap?"AMRAP":"Tour "+(nx.rd||nx.min||"")):lib(L[nx.ex].id).n):"Bientôt fini";$("kbR").textContent=nx&&!nx.chain?kbRepTxt(L[nx.ex],nx.reps):"";$("kbD").textContent="Respire, secoue les bras, reprends la kettlebell avant le bip.";}
+  else if(x.chain){stg.classList.add("chain");if(x.amrap)stg.classList.add("amrap");
+    F.innerHTML=kbChainHTML(x)+(x.amrap?'<div class="kb-am" id="kbAm"><b>'+KP.rounds+'</b><span>tour'+(KP.rounds>1?"s":"")+'</span></div>':'');
+    $("kbL").textContent=kbWorkLab(x);$("kbTi").textContent=x.amrap?"Le max de tours":(KP.F.f==="emom"?"Tout le complexe":"Enchaîne sans poser");
+    $("kbR").textContent=x.amrap?"Touche + à chaque tour terminé":"";$("kbD").textContent=x.amrap?"Garde un rythme régulier, la technique d'abord.":(KP.F.f==="emom"?"Puis récupère jusqu'à la minute suivante.":"Un tour = tous les mouvements à la suite.");}
+  else{var it=L[x.ex],Lb=lib(it.id),h=kbHint(it);F.innerHTML=kbStage(it.id,false);if(h){side.textContent=Lb.uni?"Une main":"2 kettlebells";side.hidden=false;}
+    $("kbL").textContent=kbWorkLab(x);$("kbTi").textContent=Lb.n;$("kbR").textContent=(x.iv&&!isTime(it)?(x.reps>0?"Objectif "+x.reps+" reps":"Max de reps"):kbRepsLine(it,x.reps,KP.F));$("kbD").dataset.u=Lb.uni&&kbUniTxt(KP.F)!=="par bras"?kbUniTxt(KP.F):"";
+    var u=$("kbD").dataset.u;$("kbD").textContent=(u?u.charAt(0).toUpperCase()+u.slice(1)+". ":"")+(x.min?"Fais tes reps, puis récupère jusqu'au bip de la minute suivante.":(Lb.st&&Lb.st[1])||"");}
+  var nb=null;for(var k=i+1;k<KP.steps.length;k++){if(KP.steps[k].k==="work"){nb=KP.steps[k];break;}}
+  $("kbNx").innerHTML=nb?(nb.chain?'<span class="wp-mf">'+KBF[KP.F.f].e+'</span><span class="grow"><small>Ensuite</small><b>'+esc(kbWorkLab(nb))+'</b></span>':kbTh(L[nb.ex].id)+'<span class="grow"><small>Ensuite</small><b>'+esc(lib(L[nb.ex].id).n)+'</b></span><em>'+kbRepTxt(L[nb.ex],nb.reps)+'</em>'):'<span class="wp-mf">🏁</span><span class="grow"><small>Ensuite</small><b>C\'est fini !</b></span>';
+  var tm=$("kbTm");if(tm)tm.classList.toggle("idle",!x.dur);kbMainUI();kbProg();}
+function kbManual(x){return x&&x.k==="work"&&!x.dur;}
+function kbMainUI(){var b=$("kbM"),x=KP.steps[KP.i<0?0:KP.i],o=$("kbp");if(!b||!x)return;
+  if(x.amrap){b.innerHTML='<span class="kb-p1">+1</span>';b.setAttribute("aria-label","Un tour de plus");b.classList.add("kb-plus");}
+  else if(kbManual(x)&&!KP.pause){b.innerHTML=IC.check;b.setAttribute("aria-label","Fait");b.classList.add("kb-ok");b.classList.remove("kb-plus");}
+  else{b.classList.remove("kb-ok","kb-plus");b.innerHTML=KP.pause?WIC.pl:WIC.pa;b.setAttribute("aria-label",KP.pause?"Reprendre":"Pause");}
+  if(o)o.classList.toggle("paused",KP.pause);}
+function kbProg(){var pg=$("kbPg");if(!pg)return;var ch=pg.children,wi=0;
+  if(KP.segs){for(var j=0;j<KP.steps.length;j++){if(KP.steps[j].k!=="work")continue;var c=ch[wi++];if(!c)continue;var done=j<KP.i||(j===KP.i&&KP.fin);c.className=done?"on":j===KP.i?"cur":"";c.querySelector("b").style.width=done?"100%":(j===KP.i?c.querySelector("b").style.width:"0%");}}
+  else{var n=0;for(var j2=0;j2<Math.min(KP.i,KP.steps.length);j2++)if(KP.steps[j2].k==="work")n++;var f=KP.steps.length===1?Math.min(1,kbNowEl()/(KP.steps[0].dur*1000||1)):n/Math.max(1,KP.nW);ch[0].querySelector("b").style.width=(f*100)+"%";}}
+function kbStep(i,from){if(!KP||KP.fin)return;if(i>=KP.steps.length){kbEnd(false);return;}if(!$("kbSt"))kbPlayUI();
+  KP.i=i;var x=KP.steps[i],now=Date.now(),t=from||now;KP.ss=t;KP.end=x.dur?t+x.dur*1000:0;KP.last=-1;KP.em=false;KP.pause=false;
+  kbShow(i);$("kbArc").style.strokeDashoffset="0";
+  if(x.k==="work"){SFX("go");buzz([20,40,20]);}else{SFX("set");buzz(15);}
+  cancelAnimationFrame(KP.raf);KP.raf=requestAnimationFrame(kbLoop);}
+function kbLog(i){var x=KP.steps[i];if(!x||x.k!=="work"||x.amrap)return;if(KP.lg.some(function(e){return e.i===i;}))return;
+  var ex=x.chain?x.chain:[x.ex];KP.lg.push({i:i,ex:ex.map(function(e){return {e:e,r:x.chain?KP.s.list[e].lo:x.reps};})});}
+function kbNext(user){if(!KP||KP.count||KP.fin)return;var x=KP.steps[KP.i];if(!x)return;
+  if(x.amrap){kbEnd(false);return;}
+  kbLog(KP.i);var from=null;if(!user&&KP.end)from=KP.end;
+  kbStep(KP.i+1,from);}
+function kbPrev(){if(!KP||KP.count||KP.fin||KP.i<=0)return;var j=KP.i-1;while(j>0&&KP.steps[j].k!=="work")j--;KP.lg=KP.lg.filter(function(e){return e.i<j;});kbStep(j);buzz(8);}
+function kbMain(){if(!KP||KP.count||KP.fin||KP.i<0)return;var x=KP.steps[KP.i];
+  if(x.amrap){KP.rounds++;var a=$("kbAm");if(a){a.innerHTML='<b>'+KP.rounds+'</b><span>tour'+(KP.rounds>1?"s":"")+'</span>';a.classList.remove("pop");void a.offsetWidth;a.classList.add("pop");}SFX("set");buzz(25);return;}
+  if(kbManual(x)&&!KP.pause){kbNext(true);return;}
+  KP.pause=!KP.pause;var now=Date.now();if(KP.pause)KP.pt=now;else{var dt=now-KP.pt;KP.g0+=dt;KP.ss+=dt;if(KP.end)KP.end+=dt;}kbMainUI();buzz(8);}
+function kbLoop(){if(!KP||KP.fin||!$("kbArc"))return;var x=KP.steps[KP.i],now=KP.pause?KP.pt:Date.now(),el=kbNowEl();
+  var T=$("kbT");if(T){var tt=KP.F.f==="ft"&&KP.F.cap?KP.F.cap*60-el/1000:el/1000;T.textContent=kbClk(tt);}
+  if(KP.F.f==="ft"&&KP.F.cap&&el>=KP.F.cap*60000&&!KP.pause){kbEnd(false,true);return;}
+  var N=$("kbN"),arc=$("kbArc");
+  if(x.dur){var l=Math.max(0,(KP.end-now)/1000),n=Math.ceil(l),f=1-l/x.dur;arc.style.strokeDashoffset=String(-1000*f);
+    if(KP.segs&&x.k==="work"){var idx=0;for(var j=0;j<KP.i;j++)if(KP.steps[j].k==="work")idx++;var c=$("kbPg").children[idx];if(c)c.querySelector("b").style.width=(f*100)+"%";}
+    else if(!KP.segs&&KP.steps.length===1){$("kbPg").children[0].querySelector("b").style.width=(f*100)+"%";}
+    if(n!==KP.last){KP.last=n;N.textContent=n>=60?kbClk(n):String(n);if(n<=3&&n>0&&!KP.pause){N.parentNode.classList.remove("hot");void N.offsetWidth;N.parentNode.classList.add("hot");SFX("tick");buzz(10);}}
+    if(!KP.pause&&l<=0){kbNext(false);return;}}
+  else{var se=Math.floor((now-KP.ss)/1000);arc.style.strokeDashoffset="0";if(se!==KP.last){KP.last=se;N.textContent=KP.F.f==="ft"?kbClk(el/1000):kbClk(se);}}
+  KP.raf=requestAnimationFrame(kbLoop);}
+/* fin : résumé à valider */
+function kbEnd(early,capped){if(!KP||KP.fin)return;cancelAnimationFrame(KP.raf);if(KP.pause){var dt=Date.now()-KP.pt;KP.g0+=dt;KP.pause=false;}
+  KP.el=KP.g0?Date.now()-KP.g0:0;KP.fin=true;KP.early=!!early;KP.capped=!!capped;var x=KP.steps[KP.i];
+  if(x&&x.k==="work"&&!x.amrap&&!early&&!capped)kbLog(KP.i);
+  var L=KP.s.list;KP.res=L.map(function(it,i){var Lb=lib(it.id),sets=[];KP.lg.forEach(function(e){e.ex.forEach(function(q){if(q.e===i)sets.push(q.r);});});
+    var r=it.lo>0?it.lo:(isTime(it)?it.lo:10);return {sets:sets,r:r,w:(Lb.noW||Lb.bw)?0:KP.w,uni:KP.F.f!=="ladder",bw:!!(Lb.noW||Lb.bw)};});
+  if(KP.F.f==="amrap")KP.res.forEach(function(r){r.uni=true;});
+  /* reps des intervalles : objectif ou 10 par défaut */
+  KP.res.forEach(function(r){if(r.uni&&r.sets.length)r.sets=r.sets.map(function(){return r.r;});});
+  kbProgAll();SFX("done");buzz([40,60,40,60,120]);var o=$("kbp");if(o)o.classList.add("wdone");kbSumRender(true);if(!early)confetti();}
+function kbProgAll(){var pg=$("kbPg");if(!pg)return;[].slice.call(pg.children).forEach(function(c){c.className="on";var b=c.querySelector("b");if(b)b.style.width="100%";});}
+function kbSetsOf(i){var r=KP.res[i],it=KP.s.list[i];if(KP.F.f==="amrap"){var n=KP.rounds,a=[];for(var k=0;k<n;k++)a.push(r.r);var ex=KP.extra;for(var j=0;j<i;j++)ex-=Math.max(1,KP.res[j].r);if(ex>0)a.push(Math.min(ex,r.r));return a;}
+  return r.uni?r.sets.map(function(){return r.r;}):r.sets.slice();}
+function kbSumRender(first){var F=KP.F,L=KP.s.list,tot=0,secs=Math.round((KP.el||0)/1000);L.forEach(function(it,i){if(isTime(it))return;kbSetsOf(i).forEach(function(r){tot+=r;});});
+  var mins=Math.max(1,Math.round(secs/60)),sc=$("kbB").querySelector(".wp-done"),y=sc?sc.scrollTop:0;
+  var res=F.f==="ft"?(KP.capped?"Temps écoulé":kbClk(secs)):F.f==="amrap"?KP.rounds+" tour"+(KP.rounds>1?"s":"")+(KP.extra?" + "+KP.extra:""):mins+" min";
+  var h='<div class="wp-done kb-sum">'+'<div class="wp-ok"><svg viewBox="0 0 120 120"><circle class="fin-arc" cx="60" cy="60" r="52" pathLength="1"/><path class="fin-ck" d="M40 62l14 14 28-30" pathLength="1"/></svg></div>'
+   +'<h2>'+(KP.early?"Séance arrêtée":F.f==="ft"&&!KP.capped?"Chrono : "+kbClk(secs):"Bien joué 🔥")+'</h2><p class="wp-d">'+(KP.early?"Enregistre ce que tu as fait, ou quitte sans rien garder.":"Vérifie tes reps et le poids, puis enregistre.")+'</p>'
+   +'<div class="wp-ds"><div><b>'+res+'</b><span>'+(F.f==="ft"?"temps":F.f==="amrap"?"résultat":"de travail")+'</span></div><div><b>'+tot+'</b><span>reps</span></div></div>';
+  if(F.f==="amrap")h+='<div class="kb-amr"><div><span>Tours complets</span><div class="kb-st"><button class="press" data-kb="rr" data-d="-1" aria-label="Moins">−</button><b>'+KP.rounds+'</b><button class="press" data-kb="rr" data-d="1" aria-label="Plus">+</button></div></div><div><span>Reps en plus</span><div class="kb-st"><button class="press" data-kb="re" data-d="-1" aria-label="Moins">−</button><b>'+KP.extra+'</b><button class="press" data-kb="re" data-d="1" aria-label="Plus">+</button></div></div></div>';
+  h+='<p class="rc-cap kb-cap">Ce que tu as fait</p><div class="kb-rl">'+L.map(function(it,i){var r=KP.res[i],S=kbSetsOf(i),Lb=lib(it.id);
+    var sum=S.reduce(function(a,b){return a+b;},0),desc=!S.length?"Pas fait":(r.uni?S.length+" × "+(isTime(it)?r.r+" s":(F.f==="amrap"&&S[S.length-1]!==r.r?r.r+" (+ "+S[S.length-1]+")":r.r+" reps")):S.length+" paliers · "+sum+" reps");
+    var ctl=(S.length&&r.uni&&!isTime(it)?'<div class="kb-cl"><span>Reps</span><div class="kb-st sm"><button class="press" data-kb="er" data-i="'+i+'" data-d="-1" aria-label="Moins de reps">−</button><b>'+r.r+'</b><button class="press" data-kb="er" data-i="'+i+'" data-d="1" aria-label="Plus de reps">+</button></div></div>':'')
+     +(S.length&&!r.bw?'<div class="kb-cl"><span>Poids</span><div class="kb-st sm w"><button class="press" data-kb="ew" data-i="'+i+'" data-d="-1" aria-label="Plus léger">−</button><b>'+fmt(r.w)+'<small>kg</small></b><button class="press" data-kb="ew" data-i="'+i+'" data-d="1" aria-label="Plus lourd">+</button></div></div>':'');
+    return '<div class="kb-row'+(S.length?"":" off")+'"><div class="kb-rt">'+kbTh(it.id)+'<span class="grow"><b>'+esc(Lb.n)+'</b><small>'+desc+'</small></span></div>'+(ctl?'<div class="kb-rc">'+ctl+'</div>':'')+'</div>';}).join("")+'</div></div>'
+   +'<div class="wp-foot"><button class="wp-go press" data-kb="save">'+IC.check+'<span>Enregistrer la séance</span></button><button class="kb-quit press" data-kb="quit">Quitter sans enregistrer</button></div>';
+  $("kbB").innerHTML=h;var sc2=$("kbB").querySelector(".wp-done");if(sc2&&!first)sc2.scrollTop=y;if(!first){var o=$("kbp");if(o)o.classList.add("kb-static");}}
+function kbSave(){if(!KP)return;var s=KP.s,L=s.list,keep=[],any=false;
+  L.forEach(function(it,i){var S=kbSetsOf(i),Lb=lib(it.id);if(!S.length){if(dcount(s,it.id))keep.push(it);return;}any=true;var w=KP.res[i].w;
+    s.sets[it.id]=S.map(function(r){return {w:Lb.noW?0:w,r:r};});it.s=S.length;if(!Lb.noW&&!Lb.bw&&w)st.w[it.id]=w;keep.push(it);});
+  if(!any){toast("Rien à enregistrer pour l'instant");return;}
+  s.list=keep;s.custom=true;s.kb=clone(KP.F);s.kb.res={sec:Math.round((KP.el||0)/1000),rounds:KP.rounds,extra:KP.extra,capped:KP.capped||false,early:KP.early||false};
+  if(!s.t0)s.t0=KP.t0||Date.now();s.t1=Date.now();var was=s.done;s.done=s.list.every(function(x){return dcount(s,x.id)>=x.s;});
+  st.set.kbw=KP.w;st.sess[KP.d]=s;save();var d=KP.d;kbClose();
+  if(s.done&&!was)setTimeout(function(){feedDone(s,d);celebrate(s,function(){checkRewards();});},420);else toast("🔔 Séance enregistrée");}
+function kbClose(){var o=$("kbp");if(KP){cancelAnimationFrame(KP.raf);KP.count=false;}KP=null;wake(false);document.body.style.overflow="";
+  if(o){o.classList.remove("in");setTimeout(function(){if(o.parentNode)o.parentNode.removeChild(o);},420);}if(ui.tab==="s")renderSeance(false);}
+
+/* ---------- 4. écran Séance : la carte du chrono ---------- */
+function kbResTxt(s){var F=s.kb,R=F&&F.res;if(!R)return "";if(F.f==="amrap")return R.rounds+" tour"+(R.rounds>1?"s":"")+(R.extra?" + "+R.extra+" reps":"");if(F.f==="ft")return R.capped?"limite atteinte":"en "+kbClk(R.sec);return kbClk(R.sec)+" de travail";}
+var _rs184=renderSeance;renderSeance=function(anim){_rs184.apply(this,arguments);try{var s=curS(),F=kbOf(s);if(!F||!s.list||!s.list.length)return;var v=$("view");if(!v)return;
+  var m=kbMin(F,s.list),sh=kbLabel(F,s.list).split(" · ")[0],shm=sh+(/min/.test(sh)?"":" · ≈ "+m+" min"),p=v.querySelector(".ss-hero .ss-top p");if(p)p.textContent=s.list.length+" exercice"+(s.list.length>1?"s":"")+" · "+shm;
+  var card=s.done?'<div class="kb-card done"><span class="kb-ci">'+KBF[F.f].e+'</span><span class="grow"><small>Chrono kettlebell</small><b>'+esc(kbLabel(F,s.list))+'</b><em>✓ '+esc(s.kb&&s.kb.res?kbResTxt(s):"Séance validée")+'</em></span></div>'
+    :(v.querySelector(".ss-go")?'':'<button class="kb-card press" data-act="kbGo"><span class="kb-ci">'+KBF[F.f].e+'</span><span class="grow"><small>Chrono kettlebell</small><b>'+esc(kbLabel(F,s.list))+'</b><em>'+esc(kbSub(F,s.list))+'</em></span><span class="kb-pl">'+IC.play+'</span></button>');
+  var hero=v.querySelector(".ss-hero");if(hero)hero.insertAdjacentHTML("afterend",card);
+  var go=v.querySelector(".ss-go");if(go&&!s.done){go.setAttribute("data-act","kbGo");go.removeAttribute("data-v");var b=go.querySelector("b"),em=go.querySelector("em");if(b)b.textContent="Lancer le chrono";if(em)em.textContent=kbSub(F,s.list)+" · "+shm;}
+}catch(e){}};
+/* jour de repos : on peut faire une séance kettlebell */
+var _rs184b=renderSeance;renderSeance=function(anim){_rs184b.apply(this,arguments);try{var a=document.querySelector("#view .restcard .rc-acts");if(a&&!a.querySelector('[data-act=kbPick]'))a.insertAdjacentHTML("beforeend",'<button class="btn press" data-act="kbPick" data-v="day">🔔 Kettlebell</button>');}catch(e){}};
+
+/* ---------- 5. éditeur : réglages du format ---------- */
+var KBP={min:[5,60,1],rounds:[1,12,1],rest:[0,300,15],tr:[0,60,5],on:[5,120,5],off:[0,120,5],rr:[0,300,15],a:[1,10,1],b:[2,20,1],n:[1,10,1],cap:[0,60,1]};
+function kbPS(lab,key,val,txt){return '<div class="kb-p"><span>'+lab+'</span><div class="kb-st"><button class="press" data-act="kbP" data-v="'+key+'" data-d="-1" aria-label="Moins">−</button><b>'+(txt!=null?txt:val)+'</b><button class="press" data-act="kbP" data-v="'+key+'" data-d="1" aria-label="Plus">+</button></div></div>';}
+function kbSecTxt(v,zero){return v?restTxt(v):(zero||"Aucun");}
+function kbOpt(key,cur,opts){return '<div class="kb-opts">'+opts.map(function(o){return '<button class="press" data-act="kbO" data-v="'+key+':'+o[0]+'" aria-pressed="'+(String(cur)===String(o[0]))+'">'+o[1]+'</button>';}).join("")+'</div>';}
+function kbEdHTML(W){var F=W.kb,f=F?F.f:"none";
+  var h='<div class="kb-ed"><div class="kb-edh"><span class="kb-edi">'+(F?KBF[f].e:"🔔")+'</span><span class="grow"><b>Format de la séance</b><small>'+(F?esc(kbLabel(F,W.ex))+' · ≈ '+kbMin(F,W.ex)+' min':'Séries classiques · choisis un format pour le chrono guidé')+'</small></span></div>';
+  h+='<div class="hscroll kb-fs" data-noswipe>'+[["none","Classique","📋"]].concat(Object.keys(KBF).map(function(k){return [k,KBF[k].s||KBF[k].n,KBF[k].e];})).map(function(o){return '<button class="chip press" data-act="kbF" data-v="'+o[0]+'" aria-pressed="'+(f===o[0])+'">'+o[2]+' '+o[1]+'</button>';}).join("")+'</div>';
+  if(F){h+='<p class="kb-exp">'+KBF[f].d+'</p>';
+    if(f==="emom"){h+=kbOpt("order",F.chain?"chain":F.order||"alt",[["alt","En alternance"],["seq","Un exo après l'autre"],["chain","Tout chaque minute"]]);
+      h+=F.chain?kbPS("Durée","min",F.min,F.min+" min"):'<p class="kb-tip">1 série = 1 minute. Règle le nombre de minutes de chaque exercice avec ses séries.</p>';}
+    else if(f==="amrap")h+=kbPS("Durée","min",F.min,F.min+" min")+'<p class="kb-tip">Les reps de chaque exercice = un tour.</p>';
+    else if(f==="int")h+=kbOpt("mode",F.mode,[["block","Exo par exo"],["circ","En circuit"]])+kbPS("Effort","on",F.on,F.on+" s")+kbPS("Repos","off",F.off,F.off+" s")+kbPS("Tours","rounds",F.rounds)+kbPS(F.mode==="block"?"Pause entre exos":"Pause entre tours","rr",F.rr,kbSecTxt(F.rr));
+    else if(f==="circ")h+=kbPS("Tours","rounds",F.rounds)+kbPS("Repos entre tours","rest",F.rest,kbSecTxt(F.rest))+kbPS("Entre 2 exos","tr",F.tr,kbSecTxt(F.tr,"Direct"));
+    else if(f==="ladder")h+=kbPS("De","a",F.a,F.a+" rep"+(F.a>1?"s":""))+kbPS("Jusqu'à","b",F.b,F.b+" reps")+kbPS("Échelles","n",F.n)+kbPS("Repos entre paliers","rest",F.rest,kbSecTxt(F.rest,"À ton rythme"))+kbPS("Pause entre échelles","rr",F.rr,kbSecTxt(F.rr));
+    else if(f==="cx")h+=kbPS("Tours","rounds",F.rounds)+kbPS("Repos entre tours","rest",F.rest,kbSecTxt(F.rest));
+    else if(f==="ft")h+=kbPS("Temps limite","cap",F.cap,F.cap?F.cap+" min":"Sans limite");}
+  return h+'</div>';}
+var _re184=renderEditor;renderEditor=function(){_re184.apply(this,arguments);try{var W=st.wk[ui.editWk];if(!W)return;if(!W.kb&&!W.ex.some(function(e){return isKB(lib(e.id));}))return;
+  var box=$("sheetAin"),sec=box&&box.querySelector("h3.sec");if(sec)sec.insertAdjacentHTML("beforebegin",kbEdHTML(W));
+  if(W.kb)box.querySelectorAll("#erlist .er").forEach(function(er,i){var it=W.ex[i],sp=er.querySelector(".erh .grow>span");if(it&&sp){var ss=sp.querySelector(".ss-tag");sp.textContent=kbItemTxt(W.kb,it);}});}catch(e){}};
+function kbItemTxt(F,it){var r=kbRepsLine(it,null,F);if(F.f==="emom")return F.chain?r+" par minute":it.s+" min · "+r;if(F.f==="amrap"||F.f==="cx")return r+" par tour";if(F.f==="int")return it.s+" × "+F.on+" s · "+(isTime(it)?"":(it.lo>0?"objectif "+it.lo+" reps":"max de reps"));
+  if(F.f==="circ")return it.s+" tours · "+r;if(F.f==="ladder")return it.s+" paliers · de "+F.a+" à "+F.b+" reps";if(F.f==="ft")return it.s+" × "+r;return r;}
+function kbEdSave(W){kbSync(W.kb,W.ex);save();var sa=$("sheetA"),y=sa?sa.scrollTop:0;renderEditor();if(sa)sa.scrollTop=y;buzz(6);}
+A.kbF=function(v){var W=st.wk[ui.editWk];if(!W)return;if(v==="none")delete W.kb;else if(!W.kb||W.kb.f!==v){W.kb=clone(KBD[v]);W.kb.f=v;
+    if(v==="amrap")W.ex.forEach(function(it){if(isTime(it))return;it.s=Math.max(3,Math.min(8,it.s));});}
+  kbEdSave(W);};
+A.kbP=function(v,b){var W=st.wk[ui.editWk],F=W&&W.kb,P=KBP[v];if(!F||!P)return;var d=+b.dataset.d,x=(+F[v]||0)+d*P[2];x=Math.max(P[0],Math.min(P[1],x));F[v]=x;
+  if(F.f==="ladder"){if(F.b<=F.a){if(v==="a")F.b=F.a+1;else F.a=Math.max(1,F.b-1);}}
+  if(F.f==="emom"&&v==="min")F.chain=true;kbEdSave(W);};
+A.kbO=function(v){var W=st.wk[ui.editWk],F=W&&W.kb;if(!F)return;var p=v.split(":"),k=p[0],val=p[1];
+  if(k==="order"){if(val==="chain"){F.chain=true;F.min=F.min||10;}else{F.chain=false;F.order=val;}}else F[k]=val;kbEdSave(W);};
+
+/* ---------- 6. séances toutes prêtes ---------- */
+var KBT={
+ kbdeb:{name:"Découverte kettlebell",short:"KB",color:"vert",lv:1,d:"Les mouvements de base en circuit tranquille",kb:{f:"circ",rounds:3,rest:60,tr:15},ex:[I("kbdl",3,10,10,60,""),I("goblet",3,10,10,60,""),I("kbswing",3,10,10,60,""),I("kbrow",3,8,8,60,""),I("kbpress",3,6,6,60,""),I("plank",3,30,30,60," s")]},
+ kbsw10:{name:"Swing EMOM 10 min",short:"Swing",color:"orange",lv:1,d:"10 swings au début de chaque minute",kb:{f:"emom",order:"alt"},ex:[I("kbswing",10,10,10,0,"")]},
+ kbhome:{name:"Full body maison 20 min",short:"Full",color:"bleu",lv:1,d:"Tout le corps avec une seule kettlebell",kb:{f:"circ",rounds:4,rest:60,tr:10},ex:[I("goblet",4,12,12,60,""),I("kbswing",4,15,15,60,""),I("pompes",4,10,10,60,""),I("kbrow",4,10,10,60,""),I("kbrlunge",4,8,8,60,""),I("russian",4,20,20,60,"")]},
+ kbglute:{name:"Fessiers kettlebell",short:"Fess",color:"violet",lv:1,d:"Swing, squats et soulevés pour les fessiers",kb:{f:"circ",rounds:4,rest:60,tr:10},ex:[I("kbswing",4,20,20,60,""),I("sumo",4,15,15,60,""),I("kbsldl",4,8,8,60,""),I("kbrlunge",4,10,10,60,""),I("pont1",4,12,12,60,"")]},
+ kbcore:{name:"Abdos & gainage kettlebell",short:"Abdos",color:"jaune",lv:1,d:"Halo, moulin, rotations et gainage",kb:{f:"circ",rounds:3,rest:45,tr:10},ex:[I("kbhalo",3,8,8,45,""),I("russian",3,20,20,45,""),I("kbwind",3,5,5,45,""),I("kbfig8",3,16,16,45,""),I("kbatw",3,10,10,45,""),I("plank",3,40,40,45," s")]},
+ kbss:{name:"Simple & Sinister",short:"S&S",color:"rouge",lv:2,d:"100 swings à une main puis 10 get-ups, chaque minute",kb:{f:"emom",order:"seq"},ex:[I("kbsw1",10,10,10,0,""),I("kbtgu",10,1,1,0,"")]},
+ kbamrap:{name:"AMRAP 20 min",short:"AMRAP",color:"orange",lv:2,d:"Le max de tours : swing, goblet, push press, rowing",kb:{f:"amrap",min:20},ex:[I("kbswing",5,15,15,0,""),I("goblet",5,10,10,0,""),I("kbpp",5,5,5,0,""),I("kbrow",5,8,8,0,"")]},
+ kbtabata:{name:"Tabata kettlebell",short:"Tabata",color:"rouge",lv:2,d:"4 blocs de 8 × 20 s d'effort / 10 s de repos",kb:{f:"int",on:20,off:10,rounds:8,mode:"block",rr:60},ex:[I("kbswing",8,10,10,10,""),I("goblet",8,8,8,10,""),I("kbhp",8,8,8,10,""),I("kbthr",8,6,6,10,"")]},
+ kb4020:{name:"Intervalles 40/20",short:"40/20",color:"bleu",lv:2,d:"Circuit chronométré de 5 mouvements, 4 tours",kb:{f:"int",on:40,off:20,rounds:4,mode:"circ",rr:60},ex:[I("kbswing",4,16,16,20,""),I("goblet",4,12,12,20,""),I("kbpp",4,8,8,20,""),I("kbren",4,8,8,20,""),I("mclimb",4,30,30,20,"")]},
+ kbladder:{name:"Échelle clean & press",short:"Échelle",color:"violet",lv:2,d:"1-2-3-4 reps par bras, 3 échelles, avec tractions",kb:{f:"ladder",a:1,b:4,n:3,rest:0,rr:90},ex:[I("kbcp",12,1,4,0,""),I("traction",12,1,4,0,"")]},
+ kbflow:{name:"Chaîne une kettlebell",short:"Chaîne",color:"jaune",lv:2,d:"Swing, clean, press, squat sans poser la kettlebell",kb:{f:"cx",rounds:6,rest:60},ex:[I("kbsw1",6,5,5,0,""),I("kbclean",6,5,5,0,""),I("kbpress",6,5,5,0,""),I("goblet",6,5,5,0,"")]},
+ kbup:{name:"Haut du corps kettlebell",short:"Haut",color:"bleu",lv:2,d:"Pecs, dos, épaules et bras en circuit",kb:{f:"circ",rounds:3,rest:75,tr:15},ex:[I("kbfp",3,10,10,60,""),I("kbrow",3,10,10,60,""),I("kbpress",3,8,8,60,""),I("kbgor",3,10,10,60,""),I("kbhalo",3,8,8,60,""),I("kbpush",3,10,10,60,"")]},
+ kb100:{name:"100 swings chrono",short:"100",color:"orange",lv:2,d:"10 séries de 10 swings, le plus vite possible",kb:{f:"ft",cap:0},ex:[I("kbswing",10,10,10,0,"")]},
+ kbcardio:{name:"Cardio EMOM 30 min",short:"EMOM30",color:"rouge",lv:3,d:"4 mouvements en alternance, chaque minute",kb:{f:"emom",order:"alt"},ex:[I("kbswing",8,15,15,0,""),I("goblet",8,10,10,0,""),I("kbhp",7,10,10,0,""),I("pompes",7,10,10,0,"")]},
+ kbabc:{name:"Complexe ABC double kettlebell",short:"ABC",color:"violet",lv:3,d:"2 cleans, 1 press, 3 front squats chaque minute",kb:{f:"emom",chain:true,min:20,order:"alt"},ex:[I("kbclean2",20,2,2,0,""),I("kbpress2",20,1,1,0,""),I("kbfsq2",20,3,3,0,"")]},
+ kblc:{name:"Long cycle EMOM 12",short:"LC",color:"rouge",lv:3,d:"5 clean & jerks chaque minute, en alternant les bras",kb:{f:"emom",order:"alt"},ex:[I("kbcj",12,5,5,0,"")]},
+ kbsnatch:{name:"Test snatch : 100 en 5 min",short:"Snatch",color:"rouge",lv:3,d:"10 séries de 10 snatchs, limite 5 minutes",kb:{f:"ft",cap:5},ex:[I("kbsn",10,10,10,0,"")]},
+ kbforce:{name:"Force double kettlebell",short:"Force",color:"bleu",lv:3,d:"Séries lourdes, repos complet entre les séries",kb:null,ex:[I("kbfsq2",5,5,5,120,""),I("kbpress2",5,5,5,120,""),I("kbrow2",5,8,8,90,""),I("kbswing",3,15,15,60,"")]}};
+function kbTplMin(T){return T.kb?kbMin(T.kb,T.ex):estMin({list:T.ex},{tot:T.ex.reduce(function(a,e){return a+e.s;},0)});}
+function kbToWk(k){var T=KBT[k];for(var key in st.wk){var W0=st.wk[key];if(W0.tpl==="kb:"+k&&((W0.kb&&W0.kb.f)||null)===((T.kb&&T.kb.f)||null))return key;}var nk=uid("w");st.wk[nk]={name:T.name,short:T.short,color:T.color,tpl:"kb:"+k,ex:clone(T.ex)};if(T.kb){st.wk[nk].kb=clone(T.kb);kbSync(st.wk[nk].kb,st.wk[nk].ex);}return nk;}
+A.kbPick=function(v){ui.kbMode=v==="day"?"day":"prog";var h='<h3 class="cz-h">🔔 Séances kettlebell</h3><p class="plabel" style="font-weight:600">'+(ui.kbMode==="day"?"Choisis ta séance du jour. ":"Ajoute-la à tes séances, puis place-la dans ta semaine. ")+'Une seule kettlebell suffit pour la plupart, le chrono te guide.</p>';
+  [1,2,3].forEach(function(lv){h+='<p class="rc-cap kb-lv">'+KBLV[lv]+'</p>';Object.keys(KBT).forEach(function(k){var T=KBT[k];if(T.lv!==lv)return;var F=T.kb;
+    h+='<button class="opt press kb-opt" data-act="kbTpl" data-v="'+k+'"><span class="cz-e" style="--c:'+col(T.color)+'">'+(F?KBF[F.f].e:"🏋️")+'</span><span>'+esc(T.name)+'<small>'+(F?esc(kbLabel(F,T.ex).split(" · ")[0]):"Séries classiques")+' · ≈ '+kbTplMin(T)+' min · '+esc(T.d)+'</small></span></button>';});});
+  openBS(h);};
+A.kbTpl=function(k){if(!KBT[k])return;if(ui.kbMode==="day"){var s=st.sess[ui.sel];if(s&&s.list&&anyDone(s)){toast("Tu as déjà validé des séries ce jour-là");return;}
+    var nk=kbToWk(k),b=build(nk);if(nk!==st.plan[wIdx(ui.sel)])b.custom=true;st.sess[ui.sel]=b;save();closeBS();if(ui.tab!=="s"){ui.tab="s";render(true);}else renderSeance(true);toast("🔔 "+KBT[k].name);return;}
+  var nk2=kbToWk(k);save();closeBS();renderProg(false);openEditor(nk2);toast("Séance ajoutée · place-la dans ta semaine type");};
+var _rp184=renderProg;renderProg=function(anim){_rp184.apply(this,arguments);try{var v=$("view");if(!v)return;var pk=v.querySelector(".pg-pick");
+  var btn='<button class="pg-pick kb-pg press" data-act="kbPick"><span class="e">🔔</span><span class="grow"><b>Séances kettlebell</b><span>EMOM, AMRAP, Tabata, échelles, complexes… '+Object.keys(KBT).length+' séances prêtes</span></span>'+IC.chev+'</button>';
+  if(pk)pk.insertAdjacentHTML("afterend",btn);
+  Object.keys(st.wk).forEach(function(k){var W=st.wk[k];if(!W.kb||!W.kb.f)return;var b=v.querySelector('.pg-c[data-v="'+k+'"]');if(!b)return;var ct=b.querySelector(".pg-ct"),mt=b.querySelector(".pg-meta");
+    if(ct)ct.textContent=KBF[W.kb.f].e+" "+(KBF[W.kb.f].s||KBF[W.kb.f].n);if(mt)mt.textContent=W.ex.length+(W.ex.length>1?" exos · ":" exo · ")+kbLabel(W.kb,W.ex).split(" · ")[0]+" · ≈ "+kbMin(W.kb,W.ex)+" min";});}catch(e){}};
+var _ps184=A.pickSess;A.pickSess=function(){_ps184.apply(this,arguments);try{var b=$("bsin");if(b)b.insertAdjacentHTML("beforeend",'<h3 class="cz-h">Kettlebell</h3><button class="opt press" data-act="kbPick" data-v="day"><span class="cz-e" style="--c:var(--c-orange)">🔔</span><span>Séances kettlebell<small>EMOM, AMRAP, Tabata, échelles, complexes</small></span></button>');}catch(e){}};
 
 try{boot();}catch(e){bootFail(e);}
 if(RES)setTimeout(resumeApply,120);
