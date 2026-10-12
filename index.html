@@ -3400,6 +3400,29 @@ html.safe .tabs{background:var(--card)!important}
 
 /* la fenêtre de recherche garde sa hauteur pendant la saisie */
 .bs-card:has(.lx),.bs-card:has(#fsQ0){height:88vh}
+
+/* 18.5 : la dernière série */
+.srow.sr-hero.sr-final{box-shadow:0 0 0 2px var(--c-jaune),0 16px 38px -16px var(--c-jaune);animation:srfGlow 1.9s ease-in-out infinite}
+@keyframes srfGlow{0%,100%{box-shadow:0 0 0 2px color-mix(in srgb,var(--c-jaune) 75%,transparent),0 14px 32px -18px var(--c-jaune)}50%{box-shadow:0 0 0 4px var(--c-jaune),0 22px 48px -14px var(--c-jaune)}}
+.srf-b{display:flex;align-items:center;justify-content:center;gap:8px;margin:0 0 12px;padding:9px 12px;border-radius:15px;background:linear-gradient(90deg,var(--c-orange),var(--c-jaune));color:#2a1700;font-size:14.5px;font-weight:800;letter-spacing:.01em;box-shadow:0 10px 22px -12px var(--c-orange)}
+.srf-b span{font-size:18px;display:inline-block;animation:srfHop 1.2s ease-in-out infinite}
+.srf-b span:last-child{animation-delay:.6s}
+@keyframes srfHop{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-4px) rotate(-8deg)}}
+.swv.swv-final{height:74px;border-radius:26px;background:linear-gradient(90deg,color-mix(in srgb,var(--c-vert) 22%,var(--card)),color-mix(in srgb,var(--c-jaune) 26%,var(--card)))}
+.swv.swv-final .swv-fill{width:74px;border-radius:26px;background:linear-gradient(90deg,color-mix(in srgb,var(--c-vert) 70%,transparent),var(--c-vert))}
+.swv.swv-final .swv-th{left:6px;top:6px;width:62px;height:62px;border-radius:21px;color:var(--c-vert);animation:srfPulse 1.6s ease-out infinite}
+.swv.swv-final .swv-th svg{width:28px;height:28px}
+.swv.swv-final .swv-lbl{padding-left:72px;font-size:16px;white-space:nowrap}
+.swv.swv-final.drag .swv-th,.swv.swv-final.done .swv-th{animation:none}
+@keyframes srfPulse{0%{box-shadow:0 6px 16px -6px rgba(0,0,0,.45),0 0 0 0 color-mix(in srgb,var(--c-vert) 65%,transparent)}100%{box-shadow:0 6px 16px -6px rgba(0,0,0,.45),0 0 0 16px transparent}}
+.ss-go.ss-last{box-shadow:0 0 0 2px var(--c-jaune),0 14px 30px -16px var(--c-jaune);animation:srfGlow 1.9s ease-in-out infinite}
+/* récap : durée corrigée */
+.fin-fx{display:flex;align-items:center;gap:10px;margin:8px 0;padding:10px 10px 10px 12px;border-radius:18px;background:rgba(0,0,0,.2);text-align:left;animation:finPop .6s cubic-bezier(.34,1.5,.64,1) .9s both}
+.fin-fx .grow{flex:1;min-width:0}
+.fin-fx b{display:block;font-size:13.5px;font-weight:800}
+.fin-fx small{display:block;margin-top:1px;font-size:12px;font-weight:700;opacity:.8;line-height:1.3}
+.fin-fxi{flex:none;width:32px;height:32px;border-radius:11px;display:grid;place-items:center;background:rgba(255,255,255,.16);font-size:16px}
+.fin-fx button{flex:none;padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.18);color:inherit;font-size:12px;font-weight:800;white-space:nowrap}
 </style>
 </head>
 <body class="intro">
@@ -8496,6 +8519,40 @@ var _rp184=renderProg;renderProg=function(anim){_rp184.apply(this,arguments);try
   Object.keys(st.wk).forEach(function(k){var W=st.wk[k];if(!W.kb||!W.kb.f)return;var b=v.querySelector('.pg-c[data-v="'+k+'"]');if(!b)return;var ct=b.querySelector(".pg-ct"),mt=b.querySelector(".pg-meta");
     if(ct)ct.textContent=KBF[W.kb.f].e+" "+(KBF[W.kb.f].s||KBF[W.kb.f].n);if(mt)mt.textContent=W.ex.length+(W.ex.length>1?" exos · ":" exo · ")+kbLabel(W.kb,W.ex).split(" · ")[0]+" · ≈ "+kbMin(W.kb,W.ex)+" min";});}catch(e){}};
 var _ps184=A.pickSess;A.pickSess=function(){_ps184.apply(this,arguments);try{var b=$("bsin");if(b)b.insertAdjacentHTML("beforeend",'<h3 class="cz-h">Kettlebell</h3><button class="opt press" data-act="kbPick" data-v="day"><span class="cz-e" style="--c:var(--c-orange)">🔔</span><span>Séances kettlebell<small>EMOM, AMRAP, Tabata, échelles, complexes</small></span></button>');}catch(e){}};
+
+/* ================= 18.5 : fin de séance ================= */
+APPV="18.5";
+/* la toute dernière série de la séance (s'il n'en reste qu'une) */
+function lastSet(s){if(!s||s.rest||s.done||!s.list)return null;var rem=0,pos=null;s.list.forEach(function(it,i){var c=dcount(s,it.id);if(c<it.s){rem+=it.s-c;pos=i;}});return rem===1?pos:null;}
+/* A. fin de séance recalée sur la vraie dernière série */
+function endFix(s){delete s.t1fix;delete s.t1raw;if(!s.t1)return;var T=[];
+  (s.list||[]).forEach(function(it){(s.sets[it.id]||[]).forEach(function(x){if(x&&x.t)T.push(x.t);});});
+  if(T.length<3)return;T.sort(function(a,b){return a-b;});
+  var last=T[T.length-1],prev=T[T.length-2],g=[];for(var i=1;i<T.length-1;i++)g.push(T[i]-T[i-1]);
+  g.sort(function(a,b){return a-b;});var med=Math.max(60000,Math.min(360000,g[Math.floor(g.length/2)]));
+  if(last-prev<=Math.max(2*med,med+240000))return;
+  var est=prev+med;if(est>=s.t1)return;s.t1raw=s.t1;s.t1=est;s.t1fix=1;}
+var _rc185=rowCheck;rowCheck=function(j,btn){var s0=curS(),it=s0&&s0.list&&s0.list[ui.ex],id=it&&it.id,was=id&&(s0.sets[id]||[])[j],wasDone=!!(s0&&s0.done);
+  _rc185.apply(this,arguments);if(!id)return;
+  try{var s=st.sess[ui.sel];if(!s||!s.sets)return;var now=(s.sets[id]||[])[j],ch=false;
+    if(!was&&now&&!now.t){now.t=Date.now();ch=true;}
+    if(!wasDone&&s.done){endFix(s);ch=true;}else if(!s.done&&(s.t1fix||s.t1raw)){delete s.t1fix;delete s.t1raw;ch=true;}
+    if(ch)save();}catch(e){}};
+/* récap : on montre la correction et on peut garder l'heure réelle */
+var FX185={s:null};
+var _fo185=finOpen;finOpen=function(s,after){_fo185.apply(this,arguments);try{FX185.s=s;if(!s||!s.t1fix||!s.t1raw||!s.t0)return;var o=$("fin"),tl=o&&o.querySelector(".fin-tiles");if(!tl)return;
+  tl.insertAdjacentHTML("afterend",'<div class="fin-fx"><span class="fin-fxi">⏱</span><span class="grow"><b>Durée corrigée : '+durTxt(s.t1-s.t0)+'</b><small>Ta dernière série a été validée '+durTxt(s.t1raw-s.t1)+' après l\'avoir faite.</small></span><button class="press" data-act="finFixKeep">Garder '+durTxt(s.t1raw-s.t0)+'</button></div>');}catch(e){}};
+A.finFixKeep=function(){var s=FX185.s;if(!s||!s.t1raw)return;s.t1=s.t1raw;delete s.t1raw;delete s.t1fix;save();
+  var o=$("fin");if(o){var b=o.querySelectorAll(".fin-tiles b"),m=Math.max(1,Math.round((s.t1-s.t0)/60000)),allC=s.list.every(function(x){return lib(x.id).cardio;});
+    if(b[2]){b[2].dataset.to=m;b[2].textContent=fmt(m);}if(b[1]&&!allC){var k=sessKcal(s,false);b[1].dataset.to=k;b[1].textContent=fmt(k);}
+    var fx=o.querySelector(".fin-fx");if(fx)fx.innerHTML='<span class="fin-fxi">✓</span><span class="grow"><b>Heure réelle gardée : '+durTxt(s.t1-s.t0)+'</b></span>';}buzz(8);};
+/* la dernière série : un gros bouton qu'on ne peut pas rater */
+var _rx185=renderEx;renderEx=function(full){_rx185.apply(this,arguments);try{var s=curS();if(lastSet(s)!==ui.ex)return;var h=document.querySelector("#exDyn .sr-hero");if(!h)return;h.classList.add("sr-final");
+  if(!h.querySelector(".srf-b"))h.insertAdjacentHTML("afterbegin",'<div class="srf-b"><span>🏁</span><b>C\'est la dernière série !</b><span>🔥</span></div>');
+  var sw=h.querySelector(".swv");if(sw){sw.classList.add("swv-final");sw.setAttribute("aria-label","Glisse vers la droite pour terminer la séance");}var lb=h.querySelector(".swv-lbl");if(lb)lb.textContent="Glisse pour finir 🏁";}catch(e){}};
+var _st185=startTimer;startTimer=function(sec,sub){try{var s=curS();if(lastSet(s)!=null)sub="Puis : dernière série 🏁";}catch(e){}return _st185.call(this,sec,sub);};
+var _rs185=renderSeance;renderSeance=function(anim){_rs185.apply(this,arguments);try{var s=curS(),p=lastSet(s);if(p==null||(typeof kbOf==="function"&&kbOf(s)))return;var go=document.querySelector("#view .ss-go");if(!go)return;
+  go.classList.add("ss-last");var b=go.querySelector("b"),em=go.querySelector("em");if(b)b.textContent="🏁 Dernière série !";if(em)em.textContent=lib(s.list[p].id).n;}catch(e){}};
 
 try{boot();}catch(e){bootFail(e);}
 if(RES)setTimeout(resumeApply,120);
